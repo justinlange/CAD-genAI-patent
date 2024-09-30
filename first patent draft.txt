@@ -1,0 +1,235 @@
+System and Method for Automated Training Data Generation for AI-Assisted Design Using Object Groupings and Semantic Labeling
+
+Abstract
+
+The present invention relates to a system and method for automating the generation of training data for artificial intelligence (AI)-assisted design applications. Specifically, it utilizes object groupings within computer-aided design (CAD) models to represent design principles or element hierarchies. The system automatically generates variations of the CAD model by altering visual properties, camera viewpoints, lighting, and backgrounds. It then generates semantic labels based on the object groupings and applied variations. The resulting dataset of images and semantic labels is used to train a text-to-image AI model, enabling designers to generate new designs through natural language prompts. This innovation streamlines the CAD-to-render process, reduces manual effort, and enhances the incorporation of design principles into AI-generated outputs.
+
+Background of the Invention
+
+Field of the Invention
+
+The present invention relates to the fields of artificial intelligence (AI)-assisted design, computer-aided design (CAD), computer graphics, and machine learning. It particularly focuses on automating the creation of training datasets for AI models used in design applications by leveraging object groupings and semantic labeling within CAD models.
+
+Description of the Related Art
+
+Traditionally, the design and rendering process in industrial and product design is labor-intensive and time-consuming. Designers manually create 3D models using CAD software and then proceed to render these models, adjusting materials, textures, lighting, and camera angles to produce high-quality images. This process requires specialized skills and significant time investment, often limiting the ability to explore multiple design variations rapidly.
+
+Existing AI-based design tools have attempted to alleviate some of these challenges by generating designs or renderings based on pre-trained models. However, these models often rely on manually created training data that may not explicitly incorporate specific design principles or hierarchies. Consequently, the AI-generated outputs may lack the desired level of control, precision, and alignment with the designer’s intent.
+
+Problems to be Solved by the Invention
+
+	1.	Automation of Training Data Generation: There is a need for a system that automates the creation of training datasets for AI models, reducing the manual effort required and accelerating the design process.
+	2.	Incorporation of Design Principles: Existing AI models do not explicitly encode design principles or element hierarchies, leading to outputs that may not align with the designer’s vision. A solution is required to integrate these principles into the AI training process.
+	3.	Improved AI-Assisted Design Outputs: By incorporating design principles and automating data generation, the quality and relevance of AI-assisted design outputs can be enhanced, providing designers with tools that better meet their needs.
+
+Summary of the Invention
+
+The present invention addresses the aforementioned problems by providing a system and method for automating the generation of training data for AI-assisted design applications. The key aspects of the invention include:
+
+	1.	Object Grouping in CAD Models: Designers utilize existing functionalities within CAD software (such as layers, groups, or tags) to organize objects according to design principles or element hierarchies (e.g., dominant, subdominant, subordinate elements).
+	2.	Automated Variation Generation: The system automatically generates variations of the CAD model by altering visual properties (colors, textures, materials), manipulating camera viewpoints (angles, focal lengths), adjusting lighting conditions, and changing backgrounds.
+	3.	Semantic Label Generation: For each variation, the system generates semantic labels (text descriptions) that are based on the object groupings and the specific variations applied. These labels are grammatically correct and descriptive, capturing the essential attributes of each image.
+	4.	Training of AI Model: The generated dataset of images and corresponding semantic labels is used to train a text-to-image AI model. This model can be based on pre-trained architectures (e.g., Stable Diffusion) and fine-tuned using techniques like Low-Rank Adaptation (LoRA).
+	5.	AI-Assisted Design Interface: Designers interact with the trained AI model through a user interface, providing text prompts to generate new designs. The AI model leverages its understanding from the training data to produce outputs that align with the designer’s intent and incorporate specific design principles.
+
+By automating the data generation process and explicitly incorporating design principles into the training data, the invention enhances the efficiency of the design workflow and the quality of AI-generated design outputs.
+
+Brief Description of the Drawings
+
+	1.	Figure 1: System Overview Diagram
+Illustrates the interaction between the CAD system, the automated data generation module, the AI model training module, and the user interface for AI-assisted design.
+	2.	Figure 2: CAD Model with Object Groupings
+Depicts a sample CAD model (e.g., a chair) with visual representations of object groupings, highlighting dominant, subdominant, and subordinate elements.
+	3.	Figure 3: Automated Variation Generation Flowchart
+Shows the steps involved in automatically generating variations of the CAD model, including altering visual properties, camera angles, lighting, and backgrounds.
+	4.	Figure 4: Metadata Generation Diagram
+Demonstrates how semantic labels are generated and associated with each variation based on object groupings and applied changes.
+	5.	Figure 5: AI Model Training Process
+Illustrates the process of training the text-to-image AI model using the generated dataset of images and semantic labels.
+	6.	Figure 6: AI-Assisted Design Interface Mockup
+Provides a visual representation of the user interface where designers interact with the trained AI model using text prompts to generate new designs.
+
+Detailed Description of the Invention
+
+System Components
+
+The invention comprises the following main components:
+
+	1.	CAD System: A computer-aided design software platform used to create and manipulate 3D models. It provides functionalities for organizing objects within the model using layers, groups, tags, or similar mechanisms.
+	2.	Automated Data Generation Module: A software module that interfaces with the CAD system to perform the following functions:
+	•	Identification of Object Groupings: Recognizes the organization of objects within the CAD model based on layers, groups, or tags that represent design principles or hierarchies.
+	•	Generation of Variations: Automatically produces multiple variations of the CAD model by altering visual properties, camera viewpoints, lighting conditions, and backgrounds.
+	•	Semantic Labeling: Generates descriptive text labels for each variation, capturing the essential attributes and changes applied.
+	3.	AI Model Training Module: A component responsible for training a text-to-image AI model using the generated dataset. It may utilize pre-trained models and apply fine-tuning techniques to adapt the model to the specific design data.
+	4.	AI-Assisted Design Interface: A user interface that allows designers to interact with the trained AI model, providing text prompts to generate new design outputs.
+
+Process Steps
+
+1. Object Grouping in CAD Model
+
+Designers create 3D models using the CAD system and organize objects according to specific design principles or hierarchies. This organization can be achieved using existing CAD functionalities:
+
+	•	Layers: Objects are assigned to different layers representing their role in the design (e.g., dominant, subdominant, subordinate).
+	•	Groups: Objects are grouped together based on functional or aesthetic categories.
+	•	Tags: Metadata tags are attached to objects to indicate their characteristics or relationships.
+
+Examples of Design Principles:
+
+	•	Dominant/Subdominant/Subordinate Elements: Categorizing elements based on their visual prominence or importance within the design.
+	•	Functional Groupings: Grouping objects based on their functional roles (e.g., seating surfaces, supports, connectors).
+	•	Aesthetic Categories: Organizing elements by aesthetic attributes such as color schemes, textures, or materials.
+
+2. Automated Variation Generation
+
+The automated data generation module produces multiple variations of the CAD model by systematically altering specific parameters. The variations aim to capture a wide range of visual representations while maintaining the core design structure.
+
+a. Visual Properties:
+
+	•	Colors: Random or systematic changes to the color of objects, ensuring coverage of different color palettes.
+	•	Textures: Applying various texture maps to surfaces to simulate materials like wood, metal, fabric, etc.
+	•	Materials: Changing material properties such as glossiness, reflectivity, transparency.
+
+Algorithm for Varying Visual Properties:
+
+	•	Iterate over object groupings.
+	•	For each grouping, select a set of possible visual attributes.
+	•	Apply combinations of attributes to generate distinct variations.
+
+b. Camera Viewpoints:
+
+	•	Angles: Adjusting the camera position to capture the model from different perspectives (front, side, top, isometric views).
+	•	Focal Lengths: Varying the camera lens settings to simulate different levels of zoom or field of view.
+
+Methods for Creating Different Perspectives:
+
+	•	Define a set of standard camera positions relative to the model’s bounding box.
+	•	Randomly or systematically select camera positions and orientations.
+	•	Ensure coverage of all relevant angles to capture the design effectively.
+
+c. Lighting Conditions:
+
+	•	Intensity: Modulating the brightness of the lighting setup.
+	•	Direction: Changing the angle of light sources to create different shadow effects.
+	•	Color: Altering the color temperature or hue of the lights to affect the mood.
+
+Algorithm for Varying Lighting:
+
+	•	Use a combination of ambient, directional, point, and spotlights.
+	•	Randomly adjust lighting parameters within predefined ranges.
+	•	Simulate different environments (e.g., studio lighting, natural daylight, indoor illumination).
+
+d. Backgrounds:
+
+	•	Colors: Using solid color backgrounds to highlight the model.
+	•	Textures: Applying background textures or patterns.
+	•	Images: Placing the model in different environmental contexts using background images.
+
+3. Semantic Label Generation
+
+For each generated variation, the system creates a semantic label—a text description that encapsulates the key attributes of the image.
+
+Process of Generating Semantic Labels:
+
+	•	Extract Information from Object Groupings: Identify the roles and characteristics of objects based on their groupings (e.g., “dominant element: chair backrest”).
+	•	Describe Applied Variations: Note the specific visual properties, camera settings, lighting conditions, and background used in the variation (e.g., “material: polished wood”, “lighting: warm ambient light”).
+	•	Formulate Descriptive Sentences: Combine the extracted information into grammatically correct sentences or captions (e.g., “A side view of a chair with a polished wood backrest under warm ambient lighting”).
+
+Examples of Semantic Labels:
+
+	•	“An isometric view of a chair with a steel frame and leather upholstery, illuminated by cool directional light against a neutral gray background.”
+	•	“A front view of a wooden table with a glass top, captured under warm studio lighting with a textured backdrop.”
+
+4. AI Model Training
+
+The AI model training module uses the dataset of images and semantic labels to train a text-to-image AI model.
+
+Training Process:
+
+	•	Data Preparation: Organize the images and corresponding labels into a format suitable for training.
+	•	Model Selection: Choose a pre-trained text-to-image model (e.g., Stable Diffusion).
+	•	Fine-Tuning Techniques: Apply methods like Low-Rank Adaptation (LoRA) to fine-tune the model on the specific dataset.
+	•	Training Parameters: Set hyperparameters such as learning rate, batch size, number of epochs.
+
+Outcomes of Training:
+
+	•	The AI model learns to associate textual descriptions with visual representations based on the designer’s specific design principles.
+	•	It can generate images that align with the designer’s intent when provided with appropriate text prompts.
+
+5. AI-Assisted Design Interface
+
+Designers interact with the trained AI model through a user-friendly interface.
+
+Features of the Interface:
+
+	•	Text Prompt Input: Designers input natural language descriptions of the desired design.
+	•	Real-Time Generation: The AI model generates visual outputs based on the input prompts.
+	•	Customization Options: Users can adjust parameters such as style, materials, lighting within the interface.
+	•	Iteration and Refinement: Designers can refine their prompts or select preferred outputs for further development.
+
+Benefits:
+
+	•	Accelerates the ideation and visualization process.
+	•	Provides a collaborative tool that enhances creativity while maintaining designer control over the output.
+
+Claims
+
+What is claimed is:
+
+	1.	Independent Claim 1:
+A system for generating training data for an artificial intelligence (AI) model for use in design, the system comprising:
+	•	a computer-aided design (CAD) module configured to:
+	•	receive a CAD model comprising objects grouped according to at least one design principle; and
+	•	generate a plurality of variations of the CAD model by altering at least one of visual properties, camera viewpoints, lighting conditions, and backgrounds of the objects in the CAD model; and
+	•	a data generation module configured to:
+	•	generate semantic labels for each variation of the CAD model, the semantic labels comprising text descriptions based on the object groupings and the altered properties of the variations; and
+	•	output a training dataset comprising the variations of the CAD model and the semantic labels.
+	2.	Dependent Claim 2:
+The system of claim 1, wherein the object groupings represent at least one of dominant elements, subdominant elements, subordinate elements, functional groups, and aesthetic categories.
+	3.	Dependent Claim 3:
+The system of claim 1, wherein the visual properties comprise at least one of color, texture, and material properties of the objects.
+	4.	Dependent Claim 4:
+The system of claim 1, wherein the camera viewpoints comprise variations in at least one of camera angle, position, orientation, and focal length.
+	5.	Dependent Claim 5:
+The system of claim 1, wherein the lighting conditions include variations in at least one of light intensity, direction, color temperature, and type of lighting.
+	6.	Dependent Claim 6:
+The system of claim 1, wherein the backgrounds include variations in at least one of background color, texture, pattern, and environmental context.
+	7.	Dependent Claim 7:
+The system of claim 1, wherein the semantic labels are generated by extracting metadata from the object groupings and variations and formulating descriptive sentences.
+	8.	Dependent Claim 8:
+The system of claim 1, further comprising an AI model training module configured to:
+	•	receive the training dataset; and
+	•	train a text-to-image AI model using the variations and corresponding semantic labels.
+	9.	Dependent Claim 9:
+The system of claim 8, wherein the AI model training module utilizes a pre-trained text-to-image model and fine-tunes it using techniques including Low-Rank Adaptation (LoRA).
+	10.	Dependent Claim 10:
+The system of claim 1, wherein the CAD module is further configured to:
+	•	allow designers to organize objects using layers, groups, or tags that correspond to the design principles.
+	11.	Independent Claim 11:
+A method for generating training data for an artificial intelligence (AI) model for use in design, the method comprising:
+	•	receiving a CAD model comprising objects grouped according to at least one design principle;
+	•	generating a plurality of variations of the CAD model by altering at least one of visual properties, camera viewpoints, lighting conditions, and backgrounds of the objects in the CAD model;
+	•	generating semantic labels for each variation of the CAD model, the semantic labels comprising text descriptions based on the object groupings and the altered properties of the variations; and
+	•	outputting a training dataset comprising the variations of the CAD model and the semantic labels.
+	12.	Dependent Claim 12:
+The method of claim 11, further comprising training a text-to-image AI model using the training dataset.
+	13.	Dependent Claim 13:
+The method of claim 12, wherein the training includes fine-tuning a pre-trained AI model using Low-Rank Adaptation (LoRA) techniques.
+	14.	Dependent Claim 14:
+The method of claim 11, wherein generating variations includes systematically altering parameters within predefined ranges to ensure coverage of diverse representations.
+	15.	Dependent Claim 15:
+The method of claim 11, wherein the semantic labels are used to enhance the explainability and interpretability of the AI model’s outputs.
+	16.	Dependent Claim 16:
+The method of claim 11, further comprising providing an interface for designers to interact with the trained AI model using text prompts to generate new design outputs.
+	17.	Dependent Claim 17:
+The method of claim 11, wherein the design principles include visual hierarchy, functional relationships, and aesthetic attributes.
+	18.	Dependent Claim 18:
+The method of claim 11, wherein the generated training dataset enhances the AI model’s ability to produce outputs that align with specific design intents and principles.
+	19.	Dependent Claim 19:
+The system of claim 1, wherein the data generation module is further configured to:
+	•	store metadata associated with each variation, including the parameters used for visual properties, camera viewpoints, lighting, and backgrounds.
+	20.	Dependent Claim 20:
+The method of claim 11, wherein the CAD model comprises annotations or metadata that facilitate the generation of semantic labels.
+
+Conclusion
+
+The present invention provides a novel system and method for automating the generation of training data for AI-assisted design applications. By leveraging object groupings within CAD models and automating the creation of variations and semantic labels, the invention addresses the limitations of manual data generation and enhances the incorporation of design principles into AI models. This innovation has the potential to significantly impact the field of AI-assisted design, offering designers more efficient tools that maintain control over visual intent and improve the quality of AI-generated outputs.
