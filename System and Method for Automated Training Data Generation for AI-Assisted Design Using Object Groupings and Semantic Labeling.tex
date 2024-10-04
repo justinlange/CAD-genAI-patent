@@ -1,0 +1,177 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\title{System and Method for Automated Training Data Generation for AI-Assisted Design Using Object Groupings and Semantic Labeling}
+
+\begin{document}
+
+
+\begin{abstract}
+   This invention describes a system and method for automating the generation of training data tailored for AI-assisted design applications. The system leverages the hierarchical structure of objects within CAD models, generating diverse variations through systematic manipulation of visual properties, camera viewpoints, lighting, and backgrounds, while critically maintaining the core design form. This "form isolation" technique addresses a key challenge in training AI models for design: preventing overfitting to irrelevant aesthetic qualities. By decoupling form from style, the AI learns to generalize design intent more effectively. The system automatically generates descriptive semantic labels for each variation, facilitating the training of a text-to-image AI model. A sophisticated user interface empowers designers to generate renderings via natural language prompts, offering fine-grained control over CMF properties and other visual attributes while preserving design integrity. Advanced features such as location-based backgrounds, automated cost analysis, design callouts, and character continuity further streamline the design workflow and enhance collaborative capabilities.
+\end{abstract}
+
+\section{Background of the Invention}
+
+\subsection{Field of the Invention}
+
+This invention lies at the confluence of artificial intelligence (AI), computer-aided design (CAD), computer graphics, machine learning, and design theory, specifically addressing the automated creation of training datasets for AI-driven design applications. The core innovation lies in the methodology of generating a training corpus that emphasizes the isolation of design form, thereby enabling the AI model to learn and generalize design intent more effectively.
+
+\subsection{Description of the Related Art}
+
+Traditional design and rendering workflows are resource-intensive, requiring significant manual effort and specialized skills. Existing AI-assisted design tools, while promising, often lack the precision and control required by professional designers, particularly regarding the preservation of design intent and the ability to manipulate specific attributes like CMF properties independently of form.
+
+Previous attempts to automate training data generation for AI models have focused on general image processing techniques (e.g., US20190156487A1, image segmentation and masking) or domain-specific applications like computer-aided engineering (US20220215145A1, mesh generation) and automated driving systems (US11308357B2, sensor data). However, these approaches do not address the unique challenges inherent in AI-assisted design, specifically the need to isolate and preserve the core design form during the training process. They also lack the comprehensive feature set and integrated workflow offered by this invention. A key differentiator of this invention is the explicit focus on form isolation, achieved by systematically varying all other visual elements except the core form. This approach directly addresses the problem of overfitting, a common challenge in machine learning where a model becomes too specialized to the training data and fails to generalize to new examples. By training the AI on a dataset where the form remains constant while all other attributes vary, the model learns to recognize and generate the form independently of specific styles, colors, textures, or viewpoints. This is crucial for enabling designers to manipulate these attributes freely through natural language prompts without altering the fundamental design. The provided code snippet exemplifies this principle by demonstrating the random application of materials and lighting to different parts of a CAD model (defined by sublayers), while the underlying geometry of the model remains unchanged. This code forms a part of the Automated Data Generation Module, which is a core component of this invention. It demonstrates how the system programmatically generates variations in visual properties to create a diverse training dataset.
+
+\section{Problems to be Solved by the Invention}
+
+This invention directly addresses several crucial limitations of current AI-assisted design technologies:
+
+\begin{itemize}
+    \item Overfitting to Irrelevant Aesthetic Qualities: Existing AI models trained on conventional datasets often overfit to specific styles, colors, textures, lighting, or camera angles, hindering their ability to generalize design intent and limiting the designer's control over these attributes.
+    \item Manual and Time-Consuming Rendering Workflows: Traditional rendering processes are labor-intensive and slow, hindering rapid design exploration and iteration.
+    \item Lack of Seamless CAD and AI Integration: Current AI design tools often exist as separate entities, requiring cumbersome data transfer and limiting the integration with established CAD workflows.
+    \item Insufficient Designer Control over Generated Outputs: Many AI tools lack the fine-grained control that designers need to manipulate specific design attributes while preserving the overall form and intent.
+    \item Limited Collaboration and Feedback Capabilities: Traditional design review processes can be inefficient, lacking tools for streamlined feedback and collaborative iteration.
+    \item Lack of Design Analysis and Optimization: Existing AI tools primarily focus on generating visually appealing outputs but lack the ability to analyze designs for potential functional or manufacturing issues.
+\end{itemize}
+
+\section{Summary of the Invention}
+
+This invention provides a system and method for automating the generation of training data for AI-assisted design applications, focusing on form isolation to prevent overfitting and enhance designer control. The key components and functionalities include:
+
+\begin{itemize}
+    \item Object Grouping in CAD Models: Leveraging existing CAD functionalities (layers, groups, tags) to define hierarchical object relationships that reflect design intent. This structured organization facilitates semantic understanding and automated label generation. This structure mirrors the way designers think about their creations, breaking down complex forms into meaningful components and sub-systems. The code example provided demonstrates how object groupings (represented by sublayers in Rhino) are used to apply materials to specific parts of the model. This granular control over material application is essential for generating diverse variations and training the AI to understand the relationship between form and material.
+
+    \item Form Isolation through Systematic Variation: Generating diverse variations of the CAD model by systematically altering visual properties (CMF), camera viewpoints, lighting conditions, and backgrounds while maintaining the core design form as the invariant element. This form isolation is the central innovation, enabling the AI model to learn the form independently of other visual attributes and preventing overfitting. The code snippet illustrates this by randomly assigning materials and lighting to the different parts of the chair model, effectively creating numerous variations while the chair's shape remains constant. This process, applied across a wide range of parameters, generates a robust training dataset that emphasizes form recognition.
+
+    \item Automated Semantic Label Generation: Automatically creating descriptive text labels for each generated variation, capturing object groupings, applied variations, and design intent. These labels provide the textual context necessary for training the AI model and facilitate natural language interaction with the system. The code example shows how these labels are constructed by combining the class name (e.g., "chair"), instance name, viewpoint description, lighting description, and material descriptions. This structured approach ensures consistency and clarity in the labels, allowing the AI to effectively associate text prompts with specific visual attributes.
+
+    \item AI Model Training using LoRA: Fine-tuning a pre-trained text-to-image AI model (e.g., Stable Diffusion) using Low-Rank Adaptation (LoRA). This efficient method adapts the model to the specific design data without retraining the entire model, preserving computational resources and accelerating the training process. LoRA is particularly well-suited for this application as it allows the model to learn the nuances of the specific design while retaining the general image generation capabilities of the pre-trained model.
+
+    \item AI-Assisted Design Interface with Advanced Features: A user-friendly interface enabling designers to interact with the trained AI model through natural language prompts. This interface includes advanced features that streamline the design workflow and enhance creative exploration:
+
+    \item Automated File Management (Naming, Storage, Archiving): Automates file organization and storage in the cloud, simplifying asset management and facilitating collaboration.
+
+    \item Detailed Close-Ups: Generates high-resolution close-up renders of specific design elements.
+
+    \item Location-Based Backgrounds (Google Maps Integration, Depth Maps, ControlNet): Incorporates real-world locations as backgrounds, enhancing realism and context.
+
+    \item Mass & Volume Calculations (Cost Estimation, Environmental Impact, Automated RFQs): Provides valuable data for design optimization and cost analysis.
+
+    \item Design Callouts (Automated Generation, Editable Annotations): Automates the creation of professional-style design callouts.
+
+    \item Character Continuity (Face Swapping, Consistent Descriptions): Ensures consistent character appearance across multiple renders.
+
+    \item Dynamic UI Sliders (Context-Sensitive Parameters): Provides intuitive control over rendering parameters based on the prompt.
+
+    \item Patent Drawing Generation: Automates the creation of patent drawings from the CAD model.
+
+    \item Design Analysis (GPT Integration, Potential Problem Highlighting): Offers valuable feedback on design feasibility and potential issues.
+
+    \item Client Annotation Tools (Collaborative Review and Feedback): Facilitates collaborative review and feedback directly on rendered images.
+
+    \item Image Security (Watermarking, Serialization): Protects intellectual property and tracks image usage.
+
+    \item Vision Tracking (Gaze Analysis, Heatmaps): Provides insights into viewer attention patterns.
+
+    \item Modular UI (Drag-and-Drop, Texture Blending): Offers a flexible and customizable interface for applying materials and styles.
+
+    \item  Style References (Style Transfer, Dynamic Style Parameters): Allows designers to apply different artistic styles to their renders.
+
+    \item Thematic Sliders (Mood and Style Control): Provides control over the overall mood and aesthetic of the render.
+
+    \item Preset Management (Saving, Loading, Sharing): Enables efficient reuse of rendering settings and styles.
+
+    \item Export Options (3D Printing, Foldable Models, etc.): Supports various output formats for different applications.
+
+    \item History Tree and Visual Diff: Tracks design iterations and visually compares variations.
+
+\end{itemize}
+\end{summary of the invention}
+\section{Brief Description of the Drawings}
+
+Figures 1-10 as described previously, potentially adding more diagrams to illustrate specific UI elements and functionalities
+
+
+\section{Detailed Description of the Invention}
+
+\subsection{Outline of the Detailed description}
+**Detailed Description of the Invention**
+
+This section provides a comprehensive explanation of the invention, elaborating on the functionalities of each component and the overall workflow.  It will reference the provided code examples to illustrate the implementation of specific features and explain how the system addresses the challenges outlined in the previous sections.
+
+**I. System Components**
+
+   **A. CAD System**
+      1. Supported CAD Software:  List specific compatible software (e.g., Rhinoceros 3D, Fusion 360, SolidWorks) and the rationale for their selection (e.g., feature set, scripting capabilities).
+      2. Object Grouping Mechanisms: Explain how object groupings are represented in different CAD systems (e.g., layers in Rhino, components in Fusion 360) and how these mechanisms are leveraged by the system.
+      3. Importing and Preprocessing CAD Data: Detail the process of importing CAD models into the system and any necessary preprocessing steps (e.g., mesh conversion, geometry simplification).
+
+   **B. Automated Data Generation Module**
+      1. Identifying Object Groupings: Describe the algorithms and methods used to automatically identify object groupings within the CAD model based on user-defined criteria or pre-defined rules.  Reference the code example where sublayers are used to define object groups.
+      2. Generating Variations:
+         a. Visual Properties (CMF): Detail the process of systematically varying color, material, and finish properties. Explain how randomness and predefined ranges are used, referencing the MATERIAL_LIST and create_random_material() function from the code.
+         b. Camera Viewpoints: Explain how camera positions, angles, orientations, and focal lengths are varied.  Reference the generate_camera_positions() and generate_viewpoint_description() functions from the code, explaining how hero shot and orbital representation modes are implemented.
+         c. Lighting Conditions: Describe the process of generating diverse lighting scenarios, including variations in intensity, direction, color temperature, and type of light source.  Reference the generate_lighting_variation() and apply_lighting_to_render() functions.
+         d. Backgrounds:  Explain how different backgrounds are applied to the rendered images, including solid colors, gradients, textures, patterns, and environmental contexts.  Discuss the integration with Google Maps for location-based backgrounds, using depth maps and ControlNet.
+      3. Semantic Label Generation: Detail the process of automatically generating descriptive text labels for each variation. Explain how the labels incorporate information about object groupings, applied variations, and design intent. Reference the generate_caption() function and explain how it combines different elements to create a comprehensive caption.
+      4. Data Augmentation Techniques: Discuss any additional data augmentation techniques used to further diversify the training dataset (e.g., random cropping, rotation, noise addition).
+
+   **C. AI Model Training Module**
+      1. Pre-trained Model Selection: Justify the choice of the pre-trained text-to-image AI model (e.g., Stable Diffusion) and explain its advantages in the context of design.
+      2. Fine-tuning with LoRA: Detail the process of fine-tuning the pre-trained model using Low-Rank Adaptation (LoRA).  Explain the benefits of LoRA in terms of efficiency and targeted adaptation.
+      3. Training Process and Hyperparameter Tuning: Describe the training process, including data preparation, batch size, learning rate, and number of epochs.  Explain how hyperparameters are tuned to optimize model performance.
+      4. Evaluation Metrics:  Discuss the metrics used to evaluate the performance of the trained AI model (e.g., image quality, fidelity to design intent, diversity of generated outputs).
+
+   **D. AI-Assisted Design Interface**
+
+      1.  **Core Rendering Functionality:** Explain how designers use natural language prompts to generate renderings. Discuss the parsing of prompts and the translation of text descriptions into rendering parameters.
+
+      2.  **Advanced Features:**  Provide a detailed explanation of each advanced feature, including implementation details and user interaction:
+         a. Automated File Management (Naming, Cloud Storage, Archiving): Discuss the implementation details and benefits of automated file organization, cloud storage integration, and version control.
+         b. Detailed Close-Ups: Explain how users can specify regions of interest for generating high-resolution close-ups.
+         c. Location-Based Backgrounds: Detail the integration with Google Maps API, depth map generation, and the use of ControlNet for precise background placement and control.
+         d. Mass & Volume Calculations:  Explain how the system calculates mass, volume, estimated cost, and environmental impact based on CMF properties and CAD data.  Describe the automated RFQ generation process.
+         e. Design Callouts: Detail the process of automatically generating design callouts using image segmentation and prompt generation.  Explain how users can edit and customize the callouts.
+         f. Character Continuity:  Explain the techniques used to maintain character consistency across renders, including face swapping and text-based character description analysis.
+         g. Dynamic UI Sliders: Describe how sliders are dynamically generated based on the prompt context and how they provide intuitive control over rendering parameters.
+         h. Patent Drawing Generation: Detail the process of automatically generating patent drawings from the CAD data, including line art generation and annotation placement.
+         i. Design Analysis:  Explain the integration with a GPT-based model for design analysis.  Describe how potential problems and areas for improvement are identified and presented to the user.
+         j. Client Annotation Tools: Describe the collaborative annotation features, allowing clients and reviewers to provide feedback directly on rendered images.
+         k. Image Security:  Explain the watermarking and serialization techniques used to protect intellectual property and track image usage.
+         l. Vision Tracking: Detail the implementation of eye-tracking analysis and the generation of heatmaps to visualize user attention patterns.
+         m. Modular UI:  Describe the drag-and-drop interface, texture blending capabilities, and customization options.
+         n. Style References: Explain how users can apply different artistic styles to their renders and how style parameters are controlled.
+         o. Thematic Sliders: Discuss the implementation of sliders for controlling mood and overall style.
+         p. Preset Management: Detail the preset management system, allowing users to save, load, and share rendering configurations.
+         q. Export Options:  List the supported export formats and their respective applications.
+         r. History Tree and Visual Diff: Explain how the system tracks design iterations and provides visual comparison capabilities.
+
+
+**II. Process Steps**
+
+Provide a detailed walkthrough of the entire process, from importing the CAD model to generating final renderings, referencing the specific functionalities of each component described in Section I.
+
+1.  **Preparing the CAD Model:** Importing the CAD model, defining object groupings, and setting up any necessary preprocessing steps.
+2.  **Generating the Training Dataset:** Running the Automated Data Generation Module to create variations and semantic labels.  Illustrate this with specific examples and reference the code provided.
+3.  **Training the AI Model:**  Fine-tuning the pre-trained model using the generated dataset and LoRA.  Discuss the training parameters and evaluation metrics.
+4.  **Generating Renderings with the AI-Assisted Design Interface:**  Demonstrate the use of natural language prompts and the various advanced features of the interface.  Provide specific examples and illustrate the workflow with screenshots or mockups.
+
+This expanded outline provides a more comprehensive structure for the Detailed Description of the Invention section of the patent application.  By filling in the details for each subsection, you can create a thorough and technically sound description of your invention, exceeding the 10,000-word target and providing sufficient information for a patent examiner to understand and evaluate your claims. Remember to consult with a patent attorney for guidance on the specific legal requirements and best practices for patent drafting.
+\end{Outline of the Detailed Description}
+
+(This section would significantly expand on the original draft, providing detailed explanations of each component and functionality of the system, referencing the code examples where applicable, and illustrating the integration of Kostellow's design principles throughout the process. Due to the length constraints, this section is not fully fleshed out here, but should be the most substantial part of the patent application.)
+
+1. System Components: (Detailed description of each component: CAD System, Automated Data Generation Module, AI Model Training Module, AI-Assisted Design Interface)
+
+2. Process Steps: (Step-by-step explanation of the workflow, referencing the specific functionalities of each component and providing concrete examples.)
+
+Claims
+
+(Expand claims to thoroughly cover the described features and functionalities, including the core innovation of form isolation and its application to preventing overfitting. Consult with a patent attorney for precise legal wording.)
+
+Conclusion
+
+This invention significantly advances the field of AI-assisted design by addressing key challenges in training data generation, workflow integration, and designer control. By focusing on form isolation and incorporating a comprehensive suite of advanced features, the system empowers designers to leverage the creative potential of AI while maintaining full control over their design intent and streamlining their workflow. The provided code examples offer a glimpse into the technical implementation of the system, demonstrating how the core functionalities are realized in practice. 
