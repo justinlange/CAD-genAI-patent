@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.3)  4 OCT 2024 11:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.3)  4 OCT 2024 14:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -200,44 +200,27 @@ Package hyperref Info: Link coloring OFF on input line 8.
 
  [1
 
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (0.94496pt too wide) in paragraph at lines 29--30
-\OT1/cmr/m/n/10 This in-ven-tion di-rectly ad-dresses sev-eral cru-cial lim-i-ta-tions of cur-rent AI-assisted
- []
-
-[2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [3]
-Overfull \hbox (3.29234pt too wide) in paragraph at lines 59--60
-[]\OT1/cmr/m/n/10 Location-Based Back-grounds (Google Maps In-te-gra-tion, Depth Maps, Con-
- []
-
-[4]
-Overfull \hbox (9.58282pt too wide) in paragraph at lines 108--109
-[]\OT1/cmr/m/n/10 Supported CAD Soft-ware: List spe-cific com-pat-i-ble soft-ware (e.g., Rhinoceros
- []
-
-[5]
-Overfull \hbox (50.00415pt too wide) in paragraph at lines 122--123
-\OT1/cmr/m/n/10 fined ranges are used, ref-er-enc-ing the \OT1/cmtt/m/n/10 MATERIAL[]LIST \OT1/cmr/m/n/10 and \OT1/cmtt/m/n/10 create[]random[]material()
- []
-
-
-Overfull \hbox (2.60538pt too wide) in paragraph at lines 123--124
-\OT1/cmr/m/n/10 and fo-cal lengths are var-ied. Ref-er-ence the \OT1/cmtt/m/n/10 generate[]camera[]positions()
- []
-
-[6] [7] [8])
-! Emergency stop.
-<*> ...Object Groupings and Semantic Labeling.tex"
-                                                  
-*** (job aborted, no legal \end found)
-
- 
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] (./System and Method for Automated Training Data Generation for AI-Assisted Design Using Object Groupings and Semantic Labeling.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+ ***********
+Package rerunfilecheck Info: File `"System and Method for Automated Training Data Generation for AI-Assisted Design Using Object Groupings and Semantic Labeling".out' has not changed.
+(rerunfilecheck)             Checksum: 16E6A8FA46A19F181E5579ABD3787872;6854.
+ ) 
 Here is how much of TeX's memory you used:
- 8341 strings out of 474116
- 132264 string characters out of 5743682
- 1939187 words of memory out of 5000000
- 30613 multiletter control sequences out of 15000+600000
- 560697 words of font info for 45 fonts, out of 8000000 for 9000
+ 8371 strings out of 474116
+ 133144 string characters out of 5743682
+ 1936187 words of memory out of 5000000
+ 30628 multiletter control sequences out of 15000+600000
+ 559587 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,5n,79p,2095b,502s stack positions out of 10000i,1000n,20000p,200000b,200000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 75i,6n,79p,1046b,436s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on "System and Method for Automated Training Data Generation for AI-Assisted Design Using Object Groupings and Semantic Labeling.pdf" (7 pages, 77441 bytes).
+PDF statistics:
+ 210 PDF objects out of 1000 (max. 8388607)
+ 193 compressed objects within 2 object streams
+ 44 named destinations out of 1000 (max. 500000)
+ 289 words of extra memory for PDF output out of 10000 (max. 10000000)
+
