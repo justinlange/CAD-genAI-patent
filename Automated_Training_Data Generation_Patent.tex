@@ -1,12 +1,52 @@
 \documentclass{article}
 
 \usepackage{graphicx}
+\usepackage{geometry}
 \usepackage{float} 
 \usepackage{hyperref}
+
+\geometry{
+  left=3cm,
+  right=2cm,
+  top=3cm,
+  bottom=3cm,
+}
 
 \title{System and Method for Automated Training Data Generation for AI-Assisted Design Using Object Groupings and Semantic Labeling}
 
 \begin{document}
+
+\maketitle
+
+\tableofcontents
+
+
+
+\section{AI notes}
+
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|p{2cm}|p{7cm}|p{4cm}|p{4cm}|}
+    \hline
+    \textbf{Section} & \textbf{Original Text} & \textbf{Revised Text} & \textbf{Reason for Change} \\
+    \hline
+    \textbf{Brief... Drawings} & Figures 1-10... as described previously, potentially adding more diagrams to illustrate specific UI elements and functionalities. & Figures 1-10 illustrate various aspects of the invention, including: (Followed by a list of figures with captions) & Added a more specific and descriptive list of figures to clarify the visual elements of the invention. \\
+    \hline
+    \textbf{Detail... CAD Software} & Rhinoceros 3D (Rhino): Rhino is 3D design enviorment with a programatic interface (API). It is discussed extensively herin because of its robust scripting capabilities using Python, but similar deep integration with the Automated Data Generation Modul is possible within most modern CAD packages. The provided Rhino and Python code show examples of the integration, which skilled practioners can extrapolate to other design software programs and their respective APIs.  tilizing Rhino's Python API (rhinoscriptsyntax) to access and manipulate model data, such as object layers, materials, and rendering settings. Rhino’s widespread use in industrial design and its open architecture make it an ideal platform for developing and deploying this invention. & (Revised text with improved clarity and grammar, including specific mentions of Fusion 360 and SolidWorks) & Improved clarity, grammar, and organization of the section on supported CAD software. Added specific examples of Fusion 360 and SolidWorks to show the adaptability of the invention. \\
+    \hline
+    \textbf{Detail... CAD Data} & (Original text with some minor grammatical errors and lack of clarity) & (Revised text with improved clarity and grammar, emphasizing mesh conversion and geometry simplification) & Improved the clarity and organization of the section on importing and preprocessing CAD data. Added details about mesh conversion and geometry simplification techniques. \\
+    \hline
+    \textbf{Detail... Object Groupings} & (Original text with code example) & (Revised text with improved explanation and contextualization of the code example) & Improved the explanation of how object groupings are identified, providing more context for the code example. \\
+    \hline
+    \textbf{Detail... Variations} & (Original text with subheadings and code examples) & (Revised text with improved organization, clearer explanations, and more consistent formatting) & Reorganized and rewrote this section to improve clarity and consistency. Added more detailed explanations of how variations are generated for each aspect (visual properties, camera viewpoints and perspectives, lighting, backgrounds). \\
+    \hline
+    \textbf{Detail... Module} & (Original text with fragmented subheadings and explanations) & (Revised text with consolidated subheadings, improved flow, and stronger emphasis on form recognition and LoRA) & Reorganized and rewrote this section to improve the flow and clarity of the explanation. Added a stronger emphasis on the unique aspect of training for form recognition and the benefits of using LoRA. \\
+    \hline
+    \textbf{Detail... Advanced ...} & (Original text with inconsistent formatting and lack of visual references) & (Revised text with consistent formatting, illustrative examples, and references to specific figures where applicable) & Improved the organization and clarity of this section by using consistent formatting for each feature. Added illustrative examples and references to specific figures to enhance understanding. \\
+    \hline
+    \textbf{Throughout...} & Minor grammatical errors, typos, and inconsistencies in formatting. & Corrected errors, typos, and inconsistencies. & Improved the overall quality and readability of the document by addressing minor errors and inconsistencies. \\
+    \hline
+    \end{tabular}
+}
 
 \section{Abstract}
 
