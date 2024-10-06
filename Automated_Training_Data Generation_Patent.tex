@@ -365,11 +365,60 @@ Beyond core rendering functionality, the interface offers a rich set of advanced
 \end{itemize}
 
 \subsubsection{Dynamic UI Sliders}
+
+This feature provides an advanced level of interactivity and control within the AI-assisted design interface, allowing designers to fine-tune rendering parameters intuitively.
+
 \begin{itemize}
-\item \textbf{Context-Sensitive Sliders}: The interface dynamically generates sliders for controlling rendering parameters based on the context of the text prompt. For example, if the prompt mentions "a bench against a backdrop of a stormy sky and waves," sliders would appear for controlling the intensity of the storm, the turbulence of the waves, the brightness of the lightning, as well as more conventional parameters like time of day (see Figure \ref{fig:dynamic-ui-sliders}).
-\item \textbf{Intuitive Control}: These sliders provide a visual and intuitive way for designers to fine-tune the rendering without needing to modify the text prompt directly. They allow for a more granular and interactive exploration of the design space. This interactivity can speed up the design process, allowing for rapid experimentation and refinement.
-\item \textbf{Parameter Mapping}: The system maps the slider values to specific rendering parameters in the AI model, ensuring that the slider adjustments are accurately reflected in the generated image. This mapping could be linear, non-linear, or even based on learned relationships between slider values and desired visual effects, depending on the complexity of the parameter and its impact on the rendering.
+    \item \textbf{Context-Sensitive Sliders}: The interface dynamically generates sliders for controlling rendering parameters based on the context of the text prompt. For instance, if a designer inputs a prompt like "a bench against a backdrop of a stormy sky and waves," the system recognizes elements such as "stormy sky" and "waves." It then generates sliders corresponding to these elements, such as:
+
+    \begin{itemize}
+        \item \textbf{Intensity of the Storm}: Adjusts the severity and visual impact of the stormy sky.
+        \item \textbf{Turbulence of the Waves}: Controls the roughness or calmness of the water.
+        \item \textbf{Brightness of the Lightning}: Modifies the prominence and luminosity of lightning effects.
+        \item \textbf{Time of Day}: Alters the overall lighting and atmosphere, from dawn to dusk.
+    \end{itemize}
+
+    \item \textbf{Intuitive Control}: These sliders offer a visual and interactive means for designers to adjust parameters without modifying the text prompt directly. This capability allows for:
+
+    \begin{itemize}
+        \item \textbf{Granular Exploration}: Designers can incrementally adjust parameters to observe subtle changes in real-time.
+        \item \textbf{Rapid Experimentation}: Facilitates quick iteration by enabling immediate visual feedback from slider adjustments.
+        \item \textbf{Enhanced Creativity}: Encourages designers to explore a wider range of design variations that they might not have considered through text prompts alone.
+    \end{itemize}
+
+    \item \textbf{Parameter Mapping}: The system intelligently maps slider values to the AI model's rendering parameters:
+
+    \begin{itemize}
+        \item \textbf{Adaptive Mapping}: Depending on the parameter's complexity, the mapping can be linear, non-linear, or based on a learned function that correlates slider positions with visual outcomes.
+        \item \textbf{Real-Time Rendering}: As sliders are adjusted, the AI model updates the rendering in real-time or near-real-time, providing immediate visual feedback.
+        \item \textbf{User Customization}: Designers can customize the range and sensitivity of sliders, tailoring the interface to their specific needs and preferences.
+    \end{itemize}
+
+    \item \textbf{Integration with Other Features}: The dynamic sliders work in conjunction with other interface elements:
+
+    \begin{itemize}
+        \item \textbf{Preset Management}: Slider configurations can be saved as presets for future use or sharing with team members.
+        \item \textbf{Modular UI}: Sliders are part of the modular user interface, allowing designers to add or remove them based on the design context.
+        \item \textbf{Design Analysis Feedback}: Adjustments made via sliders can be analyzed by the system to provide feedback or suggestions, enhancing the iterative design process.
+    \end{itemize}
 \end{itemize}
+
+\textbf{Illustrative Example}:
+
+Consider a scenario where a designer is creating a rendering of a modern living room featuring their custom-designed chair. The prompt might be: "A modern living room with large windows overlooking a cityscape, featuring my custom-designed chair in the center."
+
+Based on this prompt, the system generates sliders for:
+
+\begin{itemize}
+    \item \textbf{Window Size}: Adjusts the proportion of windows in the scene.
+    \item \textbf{Cityscape Lighting}: Controls the brightness and activity level of the city view (e.g., daytime vs. nighttime).
+    \item \textbf{Ambient Light}: Modifies the interior lighting to match the desired mood.
+    \item \textbf{Chair Material Reflectivity}: Adjusts how reflective the chair's material appears.
+\end{itemize}
+
+By adjusting these sliders, the designer can fine-tune the rendering to achieve the exact visual effect they desire, such as transitioning from a bright morning scene to a cozy evening setting without changing the text prompt.
+
+
 
 
 \subsubsection{Patent Drawing Generation}
