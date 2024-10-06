@@ -1,0 +1,279 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+\usepackage{float} 
+\usepackage{hyperref}
+
+\title{System and Method for Automated Training Data Generation for AI-Assisted Design Using Object Groupings and Semantic Labeling}
+
+\begin{document}
+
+\section{Abstract}
+
+This invention presents a novel system and method for automated training data generation in AI-assisted design, leveraging object groupings and semantic labeling in CAD models. The system utilizes existing CAD functionalities to define hierarchical object relationships, facilitating semantic understanding and automated label generation. By systematically varying visual properties while maintaining core design forms, the system generates diverse training datasets that emphasize form recognition. Automated semantic label generation captures object groupings, applied variations, and design intent. The system employs Low-Rank Adaptation (LoRA) for efficient AI model training and includes an advanced user interface for enhanced design exploration and workflow optimization.
+
+\section{Background of the Invention}
+
+\subsection{Field of the Invention}
+
+This invention resides at the intersection of artificial intelligence (AI), computer-aided design (CAD), computer graphics, machine learning, and design theory. It specifically addresses the challenges of automating the creation of training datasets for AI models employed in design applications, with a particular focus on maintaining designer control and integrating seamlessly with existing CAD workflows. A core innovation lies in the methodology of generating a training corpus that emphasizes the isolation of design form, thereby enabling the AI model to learn and generalize design intent more effectively.
+
+\subsection{Description of the Related Art}
+
+Traditional design and rendering processes in industrial and product design are labor-intensive and time-consuming. Designers create 3D models using CAD software, followed by meticulous adjustments of materials, textures, lighting, and camera angles to produce high-quality visualizations. This iterative process demands specialized skills and significant time investment, often hindering the rapid exploration of design variations.
+
+Existing AI-based design tools have made strides in automating certain aspects of the design process but often fall short in providing the level of control and precision required by professional designers. Many rely on pre-trained models trained on generic datasets, which may not adequately capture the specific design principles or hierarchical relationships inherent in a given design. Consequently, AI-generated outputs may lack fidelity to the designer's intent, exhibiting stylistic inconsistencies or failing to capture the nuances of the original design.
+
+Several patents and publications have explored related aspects of AI training data generation and image processing:
+
+\begin{itemize}
+    \item \textbf{US20190156487A1}: Automated generation of pre-labeled training data for machine learning models, focusing on image segmentation and masking techniques.
+    \item \textbf{US20220215145A1}: Machine learning in rapid automatic computer-aided engineering modeling, emphasizing mesh generation for engineering analysis.
+    \item \textbf{US11308357B2}: Training data generation for automated driving systems, utilizing sensor data from vehicles.
+\end{itemize}
+
+However, these solutions do not address the unique challenges of AI-assisted design in CAD contexts. They lack the crucial aspect of form isolation through systematic variation, which is essential for preventing overfitting and preserving the integrity of the designer's original form. Furthermore, they do not offer the comprehensive suite of features and functionalities presented in this invention, such as advanced UI controls, location-based background integration, and design analysis feedback.
+
+\textbf{Additional Prior Art Suggestions:}
+
+\begin{itemize}
+    \item \textbf{US20180338949A1}: Systems and methods for generating synthetic training data for machine learning models, particularly in the context of object recognition.
+    \item \textbf{US20200305128A1}: Techniques for automating the generation of labeled datasets using simulation environments, relevant for training AI models in virtual design spaces.
+    \item \textbf{"Data Augmentation for Deep Learning: A Survey" by Shorten and Khoshgoftaar (2019)}: A comprehensive overview of data augmentation techniques in deep learning, highlighting the importance of diversity in training datasets.
+    \item \textbf{"DesignScape: Design with Interactive Layout Suggestions" by O'Donovan et al. (2015)}: Discusses tools for assisting designers with layout suggestions, emphasizing the role of AI in design workflows.
+\end{itemize}
+
+These additional references provide context for the current state of AI-assisted design tools and underscore the novelty of the present invention in addressing form isolation and designer control within CAD environments.
+
+\section{Problems to be Solved by the Invention}
+
+This invention addresses several critical challenges in AI-assisted design:
+
+\subsection{Automation of Training Data Generation}
+Existing methods for generating training data for AI design models are often manual and time-consuming. This invention automates this process, significantly reducing the effort required and accelerating the design workflow.
+
+\subsection{Form Isolation for AI Learning}
+Current AI models may struggle to learn and generalize design forms effectively due to the confounding influence of stylistic variations and visual attributes. This invention introduces a method for isolating the core design form as the constant element, allowing the AI to focus on learning the form itself.
+
+\subsection{Preventing Overfitting in AI Models}
+AI models trained on limited or biased datasets are prone to overfitting, hindering their ability to generalize to new contexts and limiting their creative potential. This invention employs systematic variation of visual attributes to create a diverse training dataset, mitigating the risk of overfitting.
+
+\subsection{Seamless Integration of CAD and AI}
+There exists a gap between traditional CAD workflows and AI-assisted design tools, hindering the widespread adoption of AI in professional design practice. This invention bridges this gap by integrating seamlessly with existing CAD software and providing a user-friendly interface for interacting with AI models.
+
+\subsection{Maintaining Designer Control}
+Many existing AI-assisted design tools lack the fine-grained control over design outputs that designers require. This invention prioritizes designer control, allowing designers to specify adjustments to color, material, and finish (CMF) properties and other visual attributes while preserving the integrity of the original design form.
+
+\subsection{Enhancing Design Workflow Efficiency}
+The traditional design process involves numerous iterative steps, often requiring manual adjustments and revisions. This invention streamlines the design workflow by automating tedious tasks, enabling rapid exploration of design variations, and facilitating seamless collaboration between designers and stakeholders.
+
+\section{Summary of the Invention}
+
+Designers utilize existing CAD functionalities, such as layers, groups, or tags, to organize objects within their models according to design principles and hierarchical relationships. This structured organization facilitates semantic understanding of the design components and enables automated labeling of the training data.
+
+The system systematically generates a diverse set of variations of the CAD model by altering visual properties (color, texture, material), camera viewpoints (angle, position, focal length), lighting conditions (intensity, direction, color temperature), and backgrounds (color, texture, environment), while meticulously preserving the core design form as the constant element. This form isolation is crucial for preventing overfitting and enabling the AI model to learn the underlying design intent.
+
+For each generated variation, the system automatically generates descriptive text labels that capture the essential attributes of the image, including object groupings, applied variations, and design intent. These semantic labels are used to train the AI model and enable natural language interaction with the system.
+
+The generated dataset of images and corresponding semantic labels is then used to fine-tune a pre-trained text-to-image AI model, such as Stable Diffusion, using Low-Rank Adaptation (LoRA). This efficient fine-tuning technique allows the model to adapt to the specific design data while preserving its general capabilities.
+
+Finally, the system provides a user-friendly interface for interacting with the trained AI model. Designers can input natural language prompts to generate new renderings, specifying adjustments to CMF properties and other visual attributes. The interface includes advanced features such as automated file management, location-based background integration, cost and environmental impact analysis, automated RFQ generation, design callouts, character continuity management, dynamic UI sliders, patent drawing generation, design analysis feedback, client annotation tools, and image security features.
+
+\section{Brief Description of the Drawings}
+
+\begin{figure}[H]
+    \centering
+    \caption{CAD Model with Object Groupings}
+    \label{fig:cad_model_groupings}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption{Form Isolation through Systematic Variation Flowchart}
+    \label{fig:form_isolation_flowchart}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption{Semantic Label Generation Diagram}
+    \label{fig:semantic_label_generation}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption{AI Model Training Process using LoRA}
+    \label{fig:ai_model_training_lora}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption{AI-Assisted Design Interface Mockup}
+    \label{fig:design_interface_mockup}
+\end{figure}
+
+\section{Detailed Description of the Invention}
+
+\subsection{Object Grouping in CAD Models}
+
+The system is designed to be compatible with a range of industry-standard CAD software, enhancing its accessibility and integration into existing design workflows. While the principles of the invention apply broadly, specific implementations may leverage particular features of different CAD packages.
+
+\subsubsection{Supported CAD Software}
+
+The system supports CAD software that allows for hierarchical object organization and programmatic access to model data. These features are crucial for automating the variation generation and semantic labeling processes. Specifically, the current implementation supports:
+
+\begin{itemize}
+    \item \textbf{Rhinoceros 3D (Rhino)}: Utilizes Rhino's Python API to access and manipulate model data, such as object layers, materials, and rendering settings. Rhino’s widespread use in industrial design and its open architecture make it an ideal platform for developing and deploying this invention.
+    \item \textbf{Fusion 360}: Employs components and bodies for object grouping, with scriptable access through Python or JavaScript APIs.
+    \item \textbf{SolidWorks}: Leverages assemblies and sub-assemblies for hierarchical organization, accessible via the SolidWorks API.
+\end{itemize}
+
+\subsubsection{Object Grouping Mechanisms}
+
+The system adapts to different object grouping mechanisms provided by various CAD software:
+
+\begin{itemize}
+    \item \textbf{Layers (Rhino)}: Layers and sublayers are used to group different parts of the model (e.g., "Chair::Legs," "Chair::Seat"). Materials are applied based on layer assignments.
+    \item \textbf{Components (Fusion 360)}: Components represent distinct parts or sub-assemblies within a design. The system utilizes component information for object grouping and variation generation.
+    \item \textbf{Assemblies (SolidWorks)}: Assemblies and sub-assemblies are used to define object groupings, which the system accesses for applying variations and generating semantic labels.
+\end{itemize}
+
+\subsubsection{Importing and Preprocessing CAD Data}
+
+The system imports CAD models and performs necessary preprocessing steps:
+
+\begin{itemize}
+    \item \textbf{Mesh Conversion}: For efficient rendering and processing, CAD geometry may be converted into mesh representations while maintaining object groupings.
+    \item \textbf{Geometry Simplification}: Techniques like mesh decimation are employed for complex models to reduce computational load without significantly impacting visual fidelity.
+\end{itemize}
+
+\subsection{Automated Data Generation Module}
+
+This module is responsible for creating a diverse and richly labeled dataset to train the AI model. It interacts directly with the CAD system, extracting object groupings, applying systematic variations, and generating corresponding semantic labels.
+
+\subsubsection{Identifying Object Groupings}
+
+The module parses the CAD model to identify object groupings based on the hierarchical organization:
+
+\begin{itemize}
+    \item \textbf{Extraction of Group Information}: The system iterates through object groupings (e.g., layers or components) to extract object names and relationships.
+    \item \textbf{Mapping Materials to Groups}: Materials and textures are applied to objects based on their group assignments.
+\end{itemize}
+
+\subsubsection{Generating Variations}
+
+The system systematically applies variations across key aspects while preserving the core design form:
+
+\begin{itemize}
+    \item \textbf{Visual Properties (CMF)}: Varies color, material, and finish properties using randomness and predefined ranges. A material library with properties like name, RGB color, gloss, and reflectivity is used.
+    \item \textbf{Camera Viewpoints}: Varies camera perspectives to capture the design from different angles and distances. Modes like "Hero Shot" and "Orbital Representation" are implemented.
+    \item \textbf{Lighting Conditions}: Generates diverse lighting scenarios by varying intensity, direction, and color temperature.
+    \item \textbf{Backgrounds}: Applies different backgrounds, including solid colors, gradients, textures, and environmental scenes. Integration with Google Maps allows for location-based backgrounds.
+\end{itemize}
+
+\subsubsection{Automated Semantic Label Generation}
+
+For each variation, the system generates detailed semantic labels:
+
+\begin{itemize}
+    \item \textbf{Structured Descriptions}: Labels capture object groupings, materials, camera viewpoints, lighting conditions, and backgrounds.
+    \item \textbf{Consistency and Clarity}: Structured labeling ensures the AI model effectively associates text prompts with specific visual attributes.
+\end{itemize}
+
+\subsubsection{Data Augmentation Techniques}
+
+Additional techniques are used to enhance dataset diversity:
+
+\begin{itemize}
+    \item \textbf{Random Cropping and Rotation}: Introduces variations in image composition.
+    \item \textbf{Color Jitter and Noise Addition}: Simulates real-world imperfections and lighting variations.
+\end{itemize}
+
+\subsection{AI Model Training Module}
+
+This module fine-tunes a pre-trained text-to-image AI model using the generated dataset, focusing on form recognition and generalization.
+
+\subsubsection{Pre-trained Model Selection}
+
+The system selects an open-source, text-to-image AI model such as Stable Diffusion, based on:
+
+\begin{itemize}
+    \item \textbf{Open-Source License}: Ensures ownership and control over the technology.
+    \item \textbf{Architectural Flexibility}: Allows for efficient fine-tuning with techniques like LoRA.
+    \item \textbf{Image Quality}: Capable of generating high-quality images suitable for design visualization.
+\end{itemize}
+
+\subsubsection{Training for Form Recognition}
+
+The model is trained to recognize and reproduce the underlying form of the design:
+
+\begin{itemize}
+    \item \textbf{Form-Isolated Dataset}: Utilizes variations where form remains constant while other attributes vary.
+    \item \textbf{Semantic Label Guidance}: Labels emphasize the form and constituent parts, guiding the AI to focus on the core design.
+\end{itemize}
+
+\subsubsection{Fine-tuning with LoRA}
+
+Low-Rank Adaptation (LoRA) is used for efficient model adaptation:
+
+\begin{itemize}
+    \item \textbf{Targeted Modification}: Adapts the model with minimal parameter changes, preserving general capabilities.
+    \item \textbf{Preventing Overfitting}: Reduces the risk of overfitting due to the dataset's focus on a single form.
+    \item \textbf{Multiple LoRA Combinations}: Allows for training multiple forms simultaneously, enabling complex scene generation.
+\end{itemize}
+
+\subsubsection{Evaluation and Validation}
+
+The training process includes:
+
+\begin{itemize}
+    \item \textbf{Visual Inspection}: Designers assess the fidelity of generated images to the original form.
+    \item \textbf{Quantitative Metrics}: Uses metrics like Fréchet Inception Distance (FID) to evaluate image quality.
+    \item \textbf{Generalization Tests}: Ensures the model can handle unseen prompts and variations.
+\end{itemize}
+
+\subsection{AI-Assisted Design Interface}
+
+This interface allows designers to interact with the trained AI model through natural language, incorporating advanced features to enhance the design process.
+
+\subsubsection{Core Rendering Functionality}
+
+\begin{itemize}
+    \item \textbf{Natural Language Prompts}: Designers specify adjustments to CMF properties, lighting, and viewpoints.
+    \item \textbf{Prompt Parsing and Parameter Translation}: Extracts key elements from prompts to guide rendering.
+    \item \textbf{Rendering Generation}: Produces images that preserve the core form while reflecting specified changes.
+\end{itemize}
+
+\subsubsection{Advanced Features}
+
+Includes functionalities such as:
+
+\begin{itemize}
+    \item \textbf{Automated File Management}: Organizes files with descriptive naming and cloud storage.
+    \item \textbf{Detailed Close-Ups}: Generates high-resolution close-ups of specific design elements.
+    \item \textbf{Location-Based Backgrounds}: Integrates real-world locations using Google Maps data.
+    \item \textbf{Mass \& Volume Calculations}: Estimates weight, volume, cost, and environmental impact.
+    \item \textbf{Design Callouts}: Automatically generates annotations for design features.
+    \item \textbf{Character Continuity}: Maintains consistent character appearance across renders.
+    \item \textbf{Dynamic UI Sliders}: Provides intuitive control over rendering parameters.
+    \item \textbf{Patent Drawing Generation}: Automates creation of line art drawings suitable for patents.
+    \item \textbf{Design Analysis}: Integrates with language models for feedback on potential issues.
+    \item \textbf{Client Annotation Tools}: Facilitates collaborative feedback directly on images.
+    \item \textbf{Image Security}: Embeds watermarks and serialization for IP protection.
+    \item \textbf{Vision Tracking \& Form Review}: Analyzes user gaze patterns to assess design focus.
+    \item \textbf{Modular UI}: Offers drag-and-drop interface for applying materials and styles.
+    \item \textbf{Style References}: Allows application of different artistic styles via reference images.
+    \item \textbf{Thematic Sliders}: Controls mood and atmosphere through adjustable parameters.
+    \item \textbf{Preset Management}: Enables saving and sharing of rendering configurations.
+    \item \textbf{Export Options}: Supports various formats, including 3D printable models and vector graphics.
+    \item \textbf{History Tree and Visual Diff}: Tracks design iterations and highlights changes.
+\end{itemize}
+
+\section{Claims}
+
+\textbf{Note}: Detailed claims would be included here, outlining the specific legal protections sought for the invention.
+
+\section{Conclusion}
+
+This invention significantly advances the field of AI-assisted design by automating training data generation, focusing on form isolation, and integrating advanced features that streamline the design workflow. It empowers designers to leverage AI's creative potential while maintaining full control over their design intent. The system addresses key challenges in existing tools and offers a comprehensive solution that enhances efficiency, fosters innovation, and supports seamless collaboration.
+
+\end{document}
