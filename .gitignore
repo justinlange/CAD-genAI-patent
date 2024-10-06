@@ -3,3 +3,8 @@
 *.fls
 *.log
 *.out
+*.gz
+*.toc
+*.gitignore.gitignore
+*.synctex.gz
+.gitignore
