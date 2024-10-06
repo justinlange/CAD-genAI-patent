@@ -31,7 +31,7 @@ I’ve maintained the richness and depth of information while ensuring the text 
 
 \section{Abstract}
 
-This invention presents a novel system and method for automated training data generation in AI-assisted design, leveraging object groupings and semantic labeling in CAD models. The system utilizes existing CAD functionalities to define hierarchical object relationships, facilitating semantic understanding and automated label generation. By systematically varying visual properties while maintaining core design forms, the system generates diverse training datasets that emphasize form recognition. Automated semantic label generation captures object groupings, applied variations, and design intent. The system employs Low-Rank Adaptation (LoRA) for efficient AI model training and includes an advanced user interface for enhanced design exploration and workflow optimization.
+This invention presents a novel system and method for automated training data generation in AI-assisted design, leveraging object groupings and semantic labeling in CAD models. The system utilizes existing CAD functionalities to define hierarchical object relationships, facilitating semantic understanding and automated label generation. By systematically varying visual properties while maintaining core design forms, the system generates diverse training datasets that emphasize form recognition. Automated semantic label generation captures object groupings, applied variations, and design intent. The system employs Low-Rank Adaptation (LoRA) for efficient AI model training and includes an advanced user interface for enhanced design exploration and workflow optimization...
 
 \section{Background of the Invention}
 
@@ -156,7 +156,9 @@ Parameters adjusted include:
     \item \textit{Depth of Field}: Modifying the focus range to emphasize certain parts of the design.
 \end{itemize}
 
-By varying these parameters, the system generates a rich set of images that teach the AI model how the form appears under different perspectives, enhancing its ability to render the design accurately from any requested viewpoint.
+By varying these parameters, the system generates a rich set of images that teach the AI model how the form appears under different perspectives, enhancing its ability to render the design accurately from any requested viewpoint. 
+
+The hero shot labled renders provide the model with a dominant or preferred perspective of the object based on the designer's input, as the variation of the camera position and orientation changes varies in a limited manner.
 
 \textbf{Varying Lighting Conditions}
 
@@ -254,18 +256,3 @@ The interface's ability to understand and respond to natural language inputs all
 This invention significantly advances the field of AI-assisted design by automating training data generation, focusing on form isolation, and integrating advanced features that streamline the design workflow. It empowers designers to leverage AI's creative potential while maintaining full control over their design intent. The system addresses key challenges in existing tools and offers a comprehensive solution that enhances efficiency, fosters innovation, and supports seamless collaboration.
 
 \end{document}
-
-
-
-% Explanation:
-
-% I have expanded and enriched the main body text of the “Detailed Description of the Invention” up to and including the “Core Rendering Functionality” section, providing detailed explanations and examples to illustrate how each component of the system operates. I’ve focused on enhancing the fluidity of the writing by integrating related concepts into cohesive paragraphs, reducing excessive sectioning, and ensuring that the text flows naturally.
-
-% The detailed description now covers:
-
-% 	•	Object Grouping in CAD Models: Elaborated on how designers use existing CAD tools to organize their designs and how the system leverages this structure.
-% 	•	Automated Data Generation Module: Provided in-depth explanations of how the system systematically varies visual properties, camera viewpoints, lighting conditions, and backgrounds, and how it generates semantic labels to guide the AI model.
-% 	•	AI Model Training Module: Described the selection of the pre-trained model, the use of LoRA for efficient fine-tuning, and the training process, including evaluation methods.
-% 	•	AI-Assisted Design Interface: Detailed the core rendering functionality, emphasizing natural language understanding and real-time feedback.
-
-% I’ve maintained the richness and depth of information while ensuring the text remains engaging and accessible to practitioners skilled in the art. The reduced sectioning aims to improve readability and flow, aligning with your preference for slightly less compartmentalization in the writing.
