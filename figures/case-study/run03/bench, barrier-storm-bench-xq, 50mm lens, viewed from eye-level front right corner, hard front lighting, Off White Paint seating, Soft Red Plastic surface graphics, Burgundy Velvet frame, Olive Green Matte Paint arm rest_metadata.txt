@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-storm-bench-xq
+Viewpoint: 50mm lens, viewed from eye-level front right corner, soft-lighting-interior
+Materials:
+  Seating: Off White Paint
+  Surface graphics: Soft Red Plastic
+  Frame: Burgundy Velvet
+  Arm rest: Olive Green Matte Paint

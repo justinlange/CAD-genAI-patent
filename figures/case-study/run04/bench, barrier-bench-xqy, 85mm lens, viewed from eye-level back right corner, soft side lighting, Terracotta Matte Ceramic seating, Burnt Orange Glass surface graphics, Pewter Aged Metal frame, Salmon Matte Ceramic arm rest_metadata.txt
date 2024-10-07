@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 85mm lens, viewed from eye-level back right corner, soft-interior-lighting
+Materials:
+  Seating: Terracotta Matte Ceramic
+  Surface graphics: Burnt Orange Glass
+  Frame: Pewter Aged Metal
+  Arm rest: Salmon Matte Ceramic

@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 24mm lens, viewed from eye-level front left corner, soft-interior-lighting
+Materials:
+  Seating: Charcoal Rubber
+  Surface graphics: Burnt Orange Glass
+  Frame: Sage Green Canvas
+  Arm rest: Pewter Aged Metal

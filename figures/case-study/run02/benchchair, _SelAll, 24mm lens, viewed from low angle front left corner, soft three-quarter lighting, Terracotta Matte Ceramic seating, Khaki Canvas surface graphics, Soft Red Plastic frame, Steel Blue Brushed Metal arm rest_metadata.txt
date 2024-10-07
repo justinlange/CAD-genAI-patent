@@ -1,0 +1,8 @@
+Class: benchchair
+Instance: _SelAll
+Viewpoint: 24mm lens, viewed from low angle front left corner
+Materials:
+  Seating: Terracotta Matte Ceramic
+  Surface graphics: Khaki Canvas
+  Frame: Soft Red Plastic
+  Arm rest: Steel Blue Brushed Metal

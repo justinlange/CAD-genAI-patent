@@ -1,0 +1,39 @@
+<mxGraphModel>
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="2" value="AI-Assisted Design Interface" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1a1a1a;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="50" y="50" width="500" height="400" as="geometry"/>
+    </mxCell>
+    <mxCell id="3" value="Natural Language Input" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="70" y="80" width="150" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+      <mxGeometry x="70" y="110" width="300" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="5" value="Rendering Output" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="70" y="160" width="150" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="6" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6e6e6;strokeColor=#999999;" vertex="1" parent="1">
+      <mxGeometry x="70" y="190" width="300" height="150" as="geometry"/>
+    </mxCell>
+    <mxCell id="7" value="Material Controls" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="70" y="360" width="150" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="8" value="Color:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="90" y="390" width="50" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="9" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+      <mxGeometry x="140" y="390" width="80" height="20" as="geometry"/>
+    </mxCell>
+    <!-- Add more controls for material properties (e.g., Texture, Finish) -->
+    <mxCell id="10" value="Lighting Controls" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="400" y="80" width="150" height="30" as="geometry"/>
+    </mxCell>
+    <!-- Add controls for lighting properties (e.g., Intensity, Direction) -->
+    <mxCell id="11" value="Viewpoint Controls" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="400" y="200" width="150" height="30" as="geometry"/>
+    </mxCell>
+    <!-- Add controls for viewpoint properties (e.g., Angle, Distance) -->
+  </root>
+</mxGraphModel>

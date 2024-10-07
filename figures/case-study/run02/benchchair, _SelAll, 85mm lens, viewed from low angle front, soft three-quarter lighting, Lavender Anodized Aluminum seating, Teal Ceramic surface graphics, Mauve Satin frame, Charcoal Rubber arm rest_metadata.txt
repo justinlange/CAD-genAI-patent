@@ -1,0 +1,8 @@
+Class: benchchair
+Instance: _SelAll
+Viewpoint: 85mm lens, viewed from low angle front
+Materials:
+  Seating: Lavender Anodized Aluminum
+  Surface graphics: Teal Ceramic
+  Frame: Mauve Satin
+  Arm rest: Charcoal Rubber

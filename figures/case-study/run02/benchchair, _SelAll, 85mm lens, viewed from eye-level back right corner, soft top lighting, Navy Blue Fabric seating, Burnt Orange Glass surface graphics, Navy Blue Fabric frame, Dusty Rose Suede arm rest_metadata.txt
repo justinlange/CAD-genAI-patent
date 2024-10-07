@@ -1,0 +1,8 @@
+Class: benchchair
+Instance: _SelAll
+Viewpoint: 85mm lens, viewed from eye-level back right corner
+Materials:
+  Seating: Navy Blue Fabric
+  Surface graphics: Burnt Orange Glass
+  Frame: Navy Blue Fabric
+  Arm rest: Dusty Rose Suede

@@ -1,0 +1,8 @@
+Class: bench
+Instance: _SelAll
+Viewpoint: 85mm lens, viewed from low angle left side
+Materials:
+  Seating: Teal Ceramic
+  Surface graphics: Coral Polished Plastic
+  Frame: Slate Gray Polished Concrete
+  Arm rest: Plum Wood

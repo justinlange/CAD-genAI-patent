@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 50mm lens, viewed from low angle front right corner, soft-interior-lighting
+Materials:
+  Seating: Plum Wood
+  Surface graphics: Dusty Rose Suede
+  Frame: Charcoal Rubber
+  Arm rest: Pewter Aged Metal

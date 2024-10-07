@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-storm-bench-xq
+Viewpoint: 35mm lens, viewed from eye-level front right corner, soft-lighting-interior
+Materials:
+  Seating: Mustard Yellow Leather
+  Surface graphics: Mustard Yellow Leather
+  Frame: Mint Green Enamel
+  Arm rest: Goldenrod Brushed Brass

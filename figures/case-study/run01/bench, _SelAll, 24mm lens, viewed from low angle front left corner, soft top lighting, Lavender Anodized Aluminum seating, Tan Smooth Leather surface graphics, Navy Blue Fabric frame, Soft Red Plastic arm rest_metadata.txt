@@ -1,0 +1,8 @@
+Class: bench
+Instance: _SelAll
+Viewpoint: 24mm lens, viewed from low angle front left corner
+Materials:
+  Seating: Lavender Anodized Aluminum
+  Surface graphics: Tan Smooth Leather
+  Frame: Navy Blue Fabric
+  Arm rest: Soft Red Plastic

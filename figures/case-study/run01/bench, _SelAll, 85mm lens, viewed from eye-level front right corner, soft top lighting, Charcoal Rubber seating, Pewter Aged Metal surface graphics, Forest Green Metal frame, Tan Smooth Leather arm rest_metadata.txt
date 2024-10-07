@@ -1,0 +1,8 @@
+Class: bench
+Instance: _SelAll
+Viewpoint: 85mm lens, viewed from eye-level front right corner
+Materials:
+  Seating: Charcoal Rubber
+  Surface graphics: Pewter Aged Metal
+  Frame: Forest Green Metal
+  Arm rest: Tan Smooth Leather

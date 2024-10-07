@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 85mm lens, viewed from low angle front right corner, soft-interior-lighting
+Materials:
+  Seating: Off White Paint
+  Surface graphics: Slate Gray Polished Concrete
+  Frame: Terracotta Matte Ceramic
+  Arm rest: Olive Green Matte Paint

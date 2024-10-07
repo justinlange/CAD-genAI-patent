@@ -1,0 +1,8 @@
+Class: benchchair
+Instance: _SelAll
+Viewpoint: 50mm lens, viewed from low angle back right corner
+Materials:
+  Seating: Steel Blue Brushed Metal
+  Surface graphics: Mustard Yellow Leather
+  Frame: Chestnut Brown Leather
+  Arm rest: Olive Green Matte Paint

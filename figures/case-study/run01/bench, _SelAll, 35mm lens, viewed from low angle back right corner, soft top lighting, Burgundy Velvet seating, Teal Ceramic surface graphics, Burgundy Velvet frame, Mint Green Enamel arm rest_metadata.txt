@@ -1,0 +1,8 @@
+Class: bench
+Instance: _SelAll
+Viewpoint: 35mm lens, viewed from low angle back right corner
+Materials:
+  Seating: Burgundy Velvet
+  Surface graphics: Teal Ceramic
+  Frame: Burgundy Velvet
+  Arm rest: Mint Green Enamel

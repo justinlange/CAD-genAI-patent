@@ -1,0 +1,17 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}
+    % Define styles
+    \tikzstyle{part} = [rounded corners=5pt, draw=black, fill=gray!20, text width=2cm, align=center]
+    
+    % Draw parts
+    \node[part] (seat) at (0, 0) {Seat};
+    \node[part] (legs) at (0, -2) {Legs};
+    \node[part] (backrest) at (0, -4) {Backrest};
+    
+    % Add connectors (optional)
+    % \draw[->] (seat) -- (legs);
+    % \draw[->] (legs) -- (backrest);
+\end{tikzpicture}
+\end{document}

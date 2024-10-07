@@ -1,0 +1,8 @@
+Class: benchchair
+Instance: _SelAll
+Viewpoint: 35mm lens, viewed from low angle front
+Materials:
+  Seating: Mint Green Enamel
+  Surface graphics: Pewter Aged Metal
+  Frame: Warm Gray Concrete
+  Arm rest: Turquoise Polished Stone

@@ -1,0 +1,8 @@
+Class: bench
+Instance: _SelAll
+Viewpoint: 85mm lens, viewed from low angle left side
+Materials:
+  Seating: Khaki Canvas
+  Surface graphics: Mauve Satin
+  Frame: Chestnut Brown Leather
+  Arm rest: Sage Green Canvas

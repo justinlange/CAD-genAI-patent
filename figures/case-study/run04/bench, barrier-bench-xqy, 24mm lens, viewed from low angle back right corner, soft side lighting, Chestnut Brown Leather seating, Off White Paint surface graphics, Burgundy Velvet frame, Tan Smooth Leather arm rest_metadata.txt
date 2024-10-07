@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 24mm lens, viewed from low angle back right corner, soft-interior-lighting
+Materials:
+  Seating: Chestnut Brown Leather
+  Surface graphics: Off White Paint
+  Frame: Burgundy Velvet
+  Arm rest: Tan Smooth Leather

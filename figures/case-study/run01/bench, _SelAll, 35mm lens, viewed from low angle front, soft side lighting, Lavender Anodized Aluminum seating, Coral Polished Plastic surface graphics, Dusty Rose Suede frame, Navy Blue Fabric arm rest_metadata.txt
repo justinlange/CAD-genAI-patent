@@ -1,0 +1,8 @@
+Class: bench
+Instance: _SelAll
+Viewpoint: 35mm lens, viewed from low angle front
+Materials:
+  Seating: Lavender Anodized Aluminum
+  Surface graphics: Coral Polished Plastic
+  Frame: Dusty Rose Suede
+  Arm rest: Navy Blue Fabric

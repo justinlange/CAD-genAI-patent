@@ -1,0 +1,8 @@
+Class: benchchair
+Instance: _SelAll
+Viewpoint: 85mm lens, viewed from low angle front right corner
+Materials:
+  Seating: Terracotta Matte Ceramic
+  Surface graphics: Steel Blue Brushed Metal
+  Frame: Off White Paint
+  Arm rest: Teal Ceramic

@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 85mm lens, viewed from low angle front right corner, soft-interior-lighting
+Materials:
+  Seating: Steel Blue Brushed Metal
+  Surface graphics: Lavender Anodized Aluminum
+  Frame: Warm Gray Concrete
+  Arm rest: Forest Green Metal

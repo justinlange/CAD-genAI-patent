@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-storm-bench-xq
+Viewpoint: 24mm lens, viewed from eye-level front right corner, soft-lighting-interior
+Materials:
+  Seating: Mauve Satin
+  Surface graphics: Warm Gray Concrete
+  Frame: Burgundy Velvet
+  Arm rest: Off White Paint

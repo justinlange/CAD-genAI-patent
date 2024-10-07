@@ -1,0 +1,8 @@
+Class: bench
+Instance: _SelAll
+Viewpoint: 35mm lens, viewed from low angle front left corner
+Materials:
+  Seating: Coral Polished Plastic
+  Surface graphics: Taupe Nubuck
+  Frame: Terracotta Matte Ceramic
+  Arm rest: Warm Gray Concrete

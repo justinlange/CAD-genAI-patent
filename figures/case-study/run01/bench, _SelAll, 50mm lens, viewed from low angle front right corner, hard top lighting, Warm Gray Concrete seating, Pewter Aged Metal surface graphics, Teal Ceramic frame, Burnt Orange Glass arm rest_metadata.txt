@@ -1,0 +1,8 @@
+Class: bench
+Instance: _SelAll
+Viewpoint: 50mm lens, viewed from low angle front right corner
+Materials:
+  Seating: Warm Gray Concrete
+  Surface graphics: Pewter Aged Metal
+  Frame: Teal Ceramic
+  Arm rest: Burnt Orange Glass

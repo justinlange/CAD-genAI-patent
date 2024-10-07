@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 24mm lens, viewed from low angle left side, soft-interior-lighting
+Materials:
+  Seating: Mustard Yellow Leather
+  Surface graphics: Soft Red Plastic
+  Frame: Forest Green Metal
+  Arm rest: Burnt Orange Glass

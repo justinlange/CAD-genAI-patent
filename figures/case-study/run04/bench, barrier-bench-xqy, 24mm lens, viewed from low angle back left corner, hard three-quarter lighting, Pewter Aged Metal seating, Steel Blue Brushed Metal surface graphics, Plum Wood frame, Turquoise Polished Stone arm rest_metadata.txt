@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 24mm lens, viewed from low angle back left corner, soft-interior-lighting
+Materials:
+  Seating: Pewter Aged Metal
+  Surface graphics: Steel Blue Brushed Metal
+  Frame: Plum Wood
+  Arm rest: Turquoise Polished Stone

@@ -1,0 +1,8 @@
+Class: bench
+Instance: _SelAll
+Viewpoint: 50mm lens, viewed from low angle back right corner
+Materials:
+  Seating: Coral Polished Plastic
+  Surface graphics: Navy Blue Fabric
+  Frame: Slate Gray Polished Concrete
+  Arm rest: Dusty Rose Suede

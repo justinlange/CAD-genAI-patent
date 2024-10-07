@@ -3,6 +3,9 @@
 
 % Remove unnecessary packages
 \usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{subcaption}
+
 
 % Set margins to USPTO requirements
 \geometry{
@@ -104,6 +107,13 @@ Any CAD software offering similar functionalities in terms of object hierarchy a
     \item \textbf{Groups/Bodies (SolidWorks):} SolidWorks employs groups and bodies for organizing geometry. The system can be implemented to recognize these groupings and utilize them for applying variations and generating semantic labels.
 \end{itemize}
 
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/figure-perspective-right-layers-colors-labled-arrows-2.jpg}
+    \caption{CAD Model with Object Groupings and Layer Correspondence}
+    \label{fig:cad_model_groupings}
+\end{figure}
+
 The system is designed to be adaptable to different object grouping mechanisms. The core concept of organizing objects hierarchically to represent design intent remains consistent, regardless of the specific CAD software or its internal representation of groups.
 
 \paragraph{Importing and Preprocessing CAD Data}
@@ -117,26 +127,70 @@ For very complex CAD models, geometry simplification techniques may be employed 
 
 The Automated Data Generation Module is the core of the invention, responsible for creating the diverse and richly labeled dataset required to train the AI model. It interacts directly with the CAD system, extracting object groupings, applying systematic variations, and generating corresponding semantic labels.
 
-\subparagraph{Identifying Object Groupings:} This module parses the CAD model to identify object groupings based on user-defined criteria within the hierarchical organization enforced within the CAD system.
+\subparagraph{Identifying Object Groupings:} This module parses the CAD model to identify object groupings based on user-defined criteria within the hierarchical organization enforced within the CAD system. The module can be considered both the Rhino template that enforces three levels of hierarchy (dominant, subdominant and subordinate) and the computer code that traverses the layers and sublayers to manipulate the objects found therein as well as return a semantic label based on chosen naming schemas of the designer.
 
-For example, in Rhino:
+For example, in one exemplary  CAD systes, Rhino, might see code such as the following: 
 
     \begin{verbatim}
-      # Example code for identifying object groupings in Rhino
-      # The `get_objects_from_sublayers()` function iterates through 
-      # all sublayers (identified by the "::" delimiter) and extracts 
-      # the names of objects belonging to each sublayer, as well as 
-      # targets these layers during the assignment of differing colors
-      # and textures.
+        def get_objects_from_sublayers():
+        """Get all objects from sublayers, organized by sublayer name."""
+        sublayers = get_all_sublayers()
+        objects_by_sublayer = {}
+        for sublayer in sublayers:
+            objects = rs.ObjectsByLayer(sublayer)
+            if objects:
+                objects_by_sublayer[sublayer] = objects
+        return objects_by_sublayer
     \end{verbatim}  
 
 This explicit modularity, provided as layer-based grouping in Rhino (as an example), provides a direct mapping between the CAD model's organization and the system's understanding of design components.
+
+
+\subsection{User Interface for Variation Setup and Semantic Label Generation}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/figure-process-choose-render-mode-monochrome.jpg} 
+    %    \caption{Step \arabic{figCounter}
+    \caption{Step   Selecting the Rendering Mode - The user interface allows the designer to choose between different rendering modes, such as "Hero Shot" for focused product-style renders and "Orbital Representation" for a more comprehensive 360-degree view of the design. This flexibility enables the generation of a diverse dataset capturing the object from various perspectives.}
+    \label{fig:render_mode_selection_unique}
+
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/figure-process-instance-name-barrier-1up-xy-monochrome.jpg}
+    \caption{Entering a Unique Instance Name - The user interface prompts the designer to enter a unique instance name for the object being rendered. This instance name, along with other relevant information (class name, lighting, etc.), forms part of the semantic label for each generated variation. These labels provide textual descriptions that help the AI model associate visual features with specific attributes.}
+    \label{fig:instance_name_input}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/figure-process-class-name-bench-4up-bw.jpg}
+    \caption{Specifying the Class Name - The user interface prompts the designer to enter a class name for the object, providing a broader categorization that helps the AI model understand the object's general type (e.g., furniture, vehicle, appliance). This class name, along with the instance name and other details, forms part of the semantic label for each variation.}
+    \label{fig:class_name_input}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/figure-process-light-description-monochrome.jpg}
+    \caption{Describing the Lighting Setup - The user interface allows the designer to enter a description of the lighting setup used for each rendering. This information, captured as part of the semantic label, enables the AI model to learn the relationship between lighting conditions and the object's appearance. In this example, the description "very-soft-light-top-studio" provides a concise representation of the lighting setup.}
+    \label{fig:lighting_description_input}
+\end{figure}
+
 
 \subsection{Generating Variations:} This module systematically applies variations to the CAD model across four key aspects: visual properties, camera viewpoints and perspectives, lighting conditions, and backgrounds.
 
 \subsubsection{Object Visual Properties}
 
 \textbf{Visual Properties (CMF):} The system varies the color, material, and finish (CMF) properties of objects within the defined groupings.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/figure-process-orbital-and-hero-shot-combined-color.jpg} 
+    \caption{The output of both 'hero mode' and product-style perspective renders and "Orbital Representation" to provide comprehensive 360-degree views of the design. The contribution of angles and emphasis isdiscussed to a diverse dataset is discussed in more detail elsewhere but is to be appreciated visually here.}
+    \label{fig:render_mode_selection}
+\end{figure}
 
 \textbf{Randomness and Predefined Ranges:}
 
@@ -154,11 +208,41 @@ The code example showcases the use of randomness and predefined ranges for mater
     ("Off White Paint", (245, 245, 240), 25, 0.1),
     ("Charcoal Rubber", (54, 69, 79), 35, 0.05),
     ...etc...
+\end{verbatim}
+
+To apply random materials to all objects in sublayers, while keeping track of of the material choices for labeling purposes, we might use code such as the following:
+
+\begin{verbatim}
+
+    def apply_random_materials():
+
+    objects_by_sublayer = get_objects_from_sublayers()
+    materials = {}
+    
+    for sublayer, objects in objects_by_sublayer.items():
+        material_index, material_name = create_random_material()
+        
+        for obj in objects:
+            rs.ObjectMaterialIndex(obj, material_index)
+        
+        sublayer_name = sublayer.split("::")[-1].lower()
+        
+        # Create a grammatically correct description
+        description = f"{material_name} {sublayer_name}"
+        
+        materials[sublayer_name] = {
+            'name': sublayer_name,
+            'material': material_name,
+            'description': description
+        }
+    
+    print(f"\nApplied materials: {materials}")
+    return materials
         \end{verbatim}
 
 \subsubsection{Camera Viewpoints and Perspectives}
 
-The system varies the camera perspective to capture the design from different angles and distances. Many ways of doing this are possible. Consider two examples as implemented in Rhino: \texttt{Hero Shot} and \texttt{Orbital Representation}. "Hero shot" generates camera positions clustered around a focal point, simulating product photography. "Orbital representation" generates camera positions along circular orbits around the object, providing a more comprehensive view of the design. The `variation\_degrees` parameter controls the degree of randomness in camera positioning within each mode.
+The system varies the camera perspective to capture the design from different angles and distances. Many ways of doing this are possible. Consider two examples as implemented in Rhino: \texttt{Hero Shot} and \texttt{Orbital Representation}. "Hero shot" generates camera positions clustered around a focal point, simulating product photography. Importantly, the primary focal point is chosen by the designer. The \texttt{'variation\_degrees'} parameter controls the degree of randomness in camera positioning within components of the automated data generation model such as 'Hero Shot'.Thus one representative sample of the object is clustered around a viewpoint representing a preferred view of the object by the designer. Because such preferred views are labled, aspects of the preferred view such as focal lentgh, azimuth, inclination, object orientation relative to groundplane and other aspects of composition (virtual or otherwise) can be trained into the AI model. "Orbital representation" generates camera positions along one or many circular, elliptical  orbits around the object, providing a more comprehensive view of the design. Designers and other parties will appreciate that the form governing or representing the path traversed by the virtual camera used in automated rendering is not limited to circles or ellipses and can be one of many patterns
 
 The \texttt{generate\_viewpoint\_description()} function, as an example, demonstrates how variation in focal length can be implemented, simulating different lens effects and perspectives. This adds additional variation to the generated renders to avoid overfitting in training.
 
@@ -198,7 +282,7 @@ This structured approach ensures consistency and facilitates the AI model's unde
 
 \begin{itemize}
     \item \textbf{Random Cropping:} Randomly cropping sections of the rendered images.
-    \item \textbf{Rotation and Flipping:} Rotating and flipping images to create variations in orientation.
+    \item \textbf{Rotation and Flipping:} Rotating and flipping components to create variations in orientation. It is to be appreciated that because they are flipped in their CAD enviorment as opposed to merely rotating the automatically rendered image, any simulated interaction between the form and its enviorment may be shown. For example, flipping an element in Maya relative to the gravity vector in Maya will cause elements created with nCloth, a flexible mesh simulation, to fall along the gravity vector. In such a way, the essential properties of the form in addition to the form may be deeply encoded into the model by means in addition to mere semantic labeling. One should note that rotation of images may still be done to enrich the training set, but such rotation is properly labled. It is to be appreciated that specialty language used by cinematographers and photographers, such as "dutch angle" may be utilized in a virtual camera enviorment to aptly label the variation to the outputted image. 
     \item \textbf{Color Jitter:} Randomly adjusting brightness, contrast, saturation, and hue.
     \item \textbf{Noise Addition:} Adding small amounts of random noise to the images to simulate real-world imperfections.
 \end{itemize}

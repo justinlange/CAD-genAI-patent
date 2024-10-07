@@ -1,0 +1,8 @@
+Class: benchchair
+Instance: _SelAll
+Viewpoint: 35mm lens, viewed from eye-level front left corner
+Materials:
+  Seating: Navy Blue Fabric
+  Surface graphics: Warm Gray Concrete
+  Frame: Teal Ceramic
+  Arm rest: Lavender Anodized Aluminum

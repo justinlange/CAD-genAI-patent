@@ -1,0 +1,8 @@
+Class: benchchair
+Instance: _SelAll
+Viewpoint: 35mm lens, viewed from low angle front
+Materials:
+  Seating: Forest Green Metal
+  Surface graphics: Off White Paint
+  Frame: Plum Wood
+  Arm rest: Charcoal Rubber

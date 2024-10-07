@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 85mm lens, viewed from low angle front, soft-interior-lighting
+Materials:
+  Seating: Plum Wood
+  Surface graphics: Lavender Anodized Aluminum
+  Frame: Steel Blue Brushed Metal
+  Arm rest: Coral Polished Plastic

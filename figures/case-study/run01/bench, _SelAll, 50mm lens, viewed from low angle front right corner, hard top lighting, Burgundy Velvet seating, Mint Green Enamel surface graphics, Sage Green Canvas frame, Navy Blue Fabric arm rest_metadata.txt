@@ -1,0 +1,8 @@
+Class: bench
+Instance: _SelAll
+Viewpoint: 50mm lens, viewed from low angle front right corner
+Materials:
+  Seating: Burgundy Velvet
+  Surface graphics: Mint Green Enamel
+  Frame: Sage Green Canvas
+  Arm rest: Navy Blue Fabric

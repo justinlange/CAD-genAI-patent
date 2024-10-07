@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-storm-bench-xq
+Viewpoint: 85mm lens, viewed from eye-level front right corner, soft-lighting-interior
+Materials:
+  Seating: Warm Gray Concrete
+  Surface graphics: Warm Gray Concrete
+  Frame: Slate Gray Polished Concrete
+  Arm rest: Chestnut Brown Leather

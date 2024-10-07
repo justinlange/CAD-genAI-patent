@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 85mm lens, viewed from low angle front, soft-interior-lighting
+Materials:
+  Seating: Chestnut Brown Leather
+  Surface graphics: Sage Green Canvas
+  Frame: Forest Green Metal
+  Arm rest: Dusty Rose Suede

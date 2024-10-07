@@ -1,0 +1,8 @@
+Class: bench
+Instance: _SelAll
+Viewpoint: 35mm lens, viewed from eye-level back right corner
+Materials:
+  Seating: Mustard Yellow Leather
+  Surface graphics: Pewter Aged Metal
+  Frame: Dusty Rose Suede
+  Arm rest: Slate Gray Polished Concrete

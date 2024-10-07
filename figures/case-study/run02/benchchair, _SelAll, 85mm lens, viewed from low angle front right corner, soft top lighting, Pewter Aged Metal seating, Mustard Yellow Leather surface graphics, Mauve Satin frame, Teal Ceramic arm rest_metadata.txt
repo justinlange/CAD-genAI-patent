@@ -1,0 +1,8 @@
+Class: benchchair
+Instance: _SelAll
+Viewpoint: 85mm lens, viewed from low angle front right corner
+Materials:
+  Seating: Pewter Aged Metal
+  Surface graphics: Mustard Yellow Leather
+  Frame: Mauve Satin
+  Arm rest: Teal Ceramic

@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-storm-bench-xq
+Viewpoint: 24mm lens, viewed from eye-level front right corner, soft-lighting-interior
+Materials:
+  Seating: Chestnut Brown Leather
+  Surface graphics: Goldenrod Brushed Brass
+  Frame: Olive Green Matte Paint
+  Arm rest: Chestnut Brown Leather

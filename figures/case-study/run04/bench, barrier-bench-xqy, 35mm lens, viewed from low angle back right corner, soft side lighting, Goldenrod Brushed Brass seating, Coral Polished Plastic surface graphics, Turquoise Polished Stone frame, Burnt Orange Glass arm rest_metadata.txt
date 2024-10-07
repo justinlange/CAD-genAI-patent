@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 35mm lens, viewed from low angle back right corner, soft-interior-lighting
+Materials:
+  Seating: Goldenrod Brushed Brass
+  Surface graphics: Coral Polished Plastic
+  Frame: Turquoise Polished Stone
+  Arm rest: Burnt Orange Glass

@@ -1,0 +1,8 @@
+Class: benchchair
+Instance: _SelAll
+Viewpoint: 50mm lens, viewed from eye-level back left corner
+Materials:
+  Seating: Khaki Canvas
+  Surface graphics: Lavender Anodized Aluminum
+  Frame: Tan Smooth Leather
+  Arm rest: Tan Smooth Leather

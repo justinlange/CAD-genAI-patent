@@ -1,0 +1,8 @@
+Class: bench
+Instance: _SelAll
+Viewpoint: 35mm lens, viewed from eye-level back left corner
+Materials:
+  Seating: Khaki Canvas
+  Surface graphics: Burgundy Velvet
+  Frame: Mint Green Enamel
+  Arm rest: Warm Gray Concrete

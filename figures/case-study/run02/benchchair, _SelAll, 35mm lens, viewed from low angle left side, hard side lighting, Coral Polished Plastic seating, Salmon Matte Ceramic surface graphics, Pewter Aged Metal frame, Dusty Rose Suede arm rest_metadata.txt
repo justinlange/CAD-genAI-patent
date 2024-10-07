@@ -1,0 +1,8 @@
+Class: benchchair
+Instance: _SelAll
+Viewpoint: 35mm lens, viewed from low angle left side
+Materials:
+  Seating: Coral Polished Plastic
+  Surface graphics: Salmon Matte Ceramic
+  Frame: Pewter Aged Metal
+  Arm rest: Dusty Rose Suede

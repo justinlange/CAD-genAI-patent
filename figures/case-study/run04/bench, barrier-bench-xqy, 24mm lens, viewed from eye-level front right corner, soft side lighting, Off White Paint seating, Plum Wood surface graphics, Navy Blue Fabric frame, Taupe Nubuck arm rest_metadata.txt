@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 24mm lens, viewed from eye-level front right corner, soft-interior-lighting
+Materials:
+  Seating: Off White Paint
+  Surface graphics: Plum Wood
+  Frame: Navy Blue Fabric
+  Arm rest: Taupe Nubuck

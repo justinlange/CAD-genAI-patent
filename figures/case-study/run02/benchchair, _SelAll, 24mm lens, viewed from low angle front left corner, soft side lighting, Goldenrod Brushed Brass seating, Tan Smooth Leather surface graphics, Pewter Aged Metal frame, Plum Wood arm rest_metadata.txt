@@ -1,0 +1,8 @@
+Class: benchchair
+Instance: _SelAll
+Viewpoint: 24mm lens, viewed from low angle front left corner
+Materials:
+  Seating: Goldenrod Brushed Brass
+  Surface graphics: Tan Smooth Leather
+  Frame: Pewter Aged Metal
+  Arm rest: Plum Wood

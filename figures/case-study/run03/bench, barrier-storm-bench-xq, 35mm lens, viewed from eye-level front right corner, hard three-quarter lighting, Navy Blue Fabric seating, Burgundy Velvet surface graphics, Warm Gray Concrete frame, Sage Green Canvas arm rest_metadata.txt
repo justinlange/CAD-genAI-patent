@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-storm-bench-xq
+Viewpoint: 35mm lens, viewed from eye-level front right corner, soft-lighting-interior
+Materials:
+  Seating: Navy Blue Fabric
+  Surface graphics: Burgundy Velvet
+  Frame: Warm Gray Concrete
+  Arm rest: Sage Green Canvas

@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 35mm lens, viewed from low angle front, soft-interior-lighting
+Materials:
+  Seating: Dusty Rose Suede
+  Surface graphics: Indigo Denim
+  Frame: Lavender Anodized Aluminum
+  Arm rest: Olive Green Matte Paint

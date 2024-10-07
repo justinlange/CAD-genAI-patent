@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-storm-bench-xq
+Viewpoint: 50mm lens, viewed from eye-level front right corner, soft-lighting-interior
+Materials:
+  Seating: Steel Blue Brushed Metal
+  Surface graphics: Turquoise Polished Stone
+  Frame: Plum Wood
+  Arm rest: Teal Ceramic

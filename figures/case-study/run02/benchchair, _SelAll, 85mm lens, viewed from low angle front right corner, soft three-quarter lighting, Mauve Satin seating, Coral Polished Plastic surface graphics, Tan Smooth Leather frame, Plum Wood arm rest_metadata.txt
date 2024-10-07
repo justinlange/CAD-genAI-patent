@@ -1,0 +1,8 @@
+Class: benchchair
+Instance: _SelAll
+Viewpoint: 85mm lens, viewed from low angle front right corner
+Materials:
+  Seating: Mauve Satin
+  Surface graphics: Coral Polished Plastic
+  Frame: Tan Smooth Leather
+  Arm rest: Plum Wood

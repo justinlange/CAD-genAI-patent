@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-storm-bench-xq
+Viewpoint: 35mm lens, viewed from eye-level front right corner, soft-lighting-interior
+Materials:
+  Seating: Sage Green Canvas
+  Surface graphics: Coral Polished Plastic
+  Frame: Salmon Matte Ceramic
+  Arm rest: Taupe Nubuck

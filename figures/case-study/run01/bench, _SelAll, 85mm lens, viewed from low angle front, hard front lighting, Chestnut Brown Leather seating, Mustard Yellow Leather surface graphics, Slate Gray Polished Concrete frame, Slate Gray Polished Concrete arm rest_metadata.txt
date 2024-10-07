@@ -1,0 +1,8 @@
+Class: bench
+Instance: _SelAll
+Viewpoint: 85mm lens, viewed from low angle front
+Materials:
+  Seating: Chestnut Brown Leather
+  Surface graphics: Mustard Yellow Leather
+  Frame: Slate Gray Polished Concrete
+  Arm rest: Slate Gray Polished Concrete

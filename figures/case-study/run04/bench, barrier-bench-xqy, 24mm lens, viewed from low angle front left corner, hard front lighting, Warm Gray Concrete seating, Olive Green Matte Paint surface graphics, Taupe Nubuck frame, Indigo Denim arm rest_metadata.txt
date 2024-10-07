@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 24mm lens, viewed from low angle front left corner, soft-interior-lighting
+Materials:
+  Seating: Warm Gray Concrete
+  Surface graphics: Olive Green Matte Paint
+  Frame: Taupe Nubuck
+  Arm rest: Indigo Denim

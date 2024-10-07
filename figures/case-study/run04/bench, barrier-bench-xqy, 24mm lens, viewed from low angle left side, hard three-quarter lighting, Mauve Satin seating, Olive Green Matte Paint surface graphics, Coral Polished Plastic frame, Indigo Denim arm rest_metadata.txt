@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 24mm lens, viewed from low angle left side, soft-interior-lighting
+Materials:
+  Seating: Mauve Satin
+  Surface graphics: Olive Green Matte Paint
+  Frame: Coral Polished Plastic
+  Arm rest: Indigo Denim

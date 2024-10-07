@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-storm-bench-xq
+Viewpoint: 85mm lens, viewed from eye-level front right corner, soft-lighting-interior
+Materials:
+  Seating: Lavender Anodized Aluminum
+  Surface graphics: Dusty Rose Suede
+  Frame: Forest Green Metal
+  Arm rest: Sage Green Canvas

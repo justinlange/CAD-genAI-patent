@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 50mm lens, viewed from low angle front left corner, soft-interior-lighting
+Materials:
+  Seating: Khaki Canvas
+  Surface graphics: Burnt Orange Glass
+  Frame: Teal Ceramic
+  Arm rest: Charcoal Rubber

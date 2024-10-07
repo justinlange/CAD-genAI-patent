@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 50mm lens, viewed from low angle front left corner, soft-interior-lighting
+Materials:
+  Seating: Dusty Rose Suede
+  Surface graphics: Slate Gray Polished Concrete
+  Frame: Khaki Canvas
+  Arm rest: Charcoal Rubber

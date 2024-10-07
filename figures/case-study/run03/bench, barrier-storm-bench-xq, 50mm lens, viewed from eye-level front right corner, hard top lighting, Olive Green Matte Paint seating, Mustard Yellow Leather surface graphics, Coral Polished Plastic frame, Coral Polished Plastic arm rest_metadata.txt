@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-storm-bench-xq
+Viewpoint: 50mm lens, viewed from eye-level front right corner, soft-lighting-interior
+Materials:
+  Seating: Olive Green Matte Paint
+  Surface graphics: Mustard Yellow Leather
+  Frame: Coral Polished Plastic
+  Arm rest: Coral Polished Plastic

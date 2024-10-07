@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-storm-bench-xq
+Viewpoint: 35mm lens, viewed from eye-level front right corner, soft-lighting-interior
+Materials:
+  Seating: Mint Green Enamel
+  Surface graphics: Plum Wood
+  Frame: Mint Green Enamel
+  Arm rest: Warm Gray Concrete

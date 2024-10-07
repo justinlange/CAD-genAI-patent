@@ -1,0 +1,8 @@
+Class: bench
+Instance: _SelAll
+Viewpoint: 35mm lens, viewed from low angle back left corner
+Materials:
+  Seating: Goldenrod Brushed Brass
+  Surface graphics: Soft Red Plastic
+  Frame: Warm Gray Concrete
+  Arm rest: Olive Green Matte Paint

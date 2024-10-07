@@ -1,0 +1,8 @@
+Class: bench
+Instance: _SelAll
+Viewpoint: 35mm lens, viewed from low angle front
+Materials:
+  Seating: Turquoise Polished Stone
+  Surface graphics: Mustard Yellow Leather
+  Frame: Lavender Anodized Aluminum
+  Arm rest: Mauve Satin

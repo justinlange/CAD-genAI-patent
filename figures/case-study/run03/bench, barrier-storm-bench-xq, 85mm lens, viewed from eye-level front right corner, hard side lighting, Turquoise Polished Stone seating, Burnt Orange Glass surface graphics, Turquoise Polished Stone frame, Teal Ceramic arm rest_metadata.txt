@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-storm-bench-xq
+Viewpoint: 85mm lens, viewed from eye-level front right corner, soft-lighting-interior
+Materials:
+  Seating: Turquoise Polished Stone
+  Surface graphics: Burnt Orange Glass
+  Frame: Turquoise Polished Stone
+  Arm rest: Teal Ceramic

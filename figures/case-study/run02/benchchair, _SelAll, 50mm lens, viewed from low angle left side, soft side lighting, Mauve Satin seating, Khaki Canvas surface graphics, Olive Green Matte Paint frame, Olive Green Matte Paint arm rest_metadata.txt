@@ -1,0 +1,8 @@
+Class: benchchair
+Instance: _SelAll
+Viewpoint: 50mm lens, viewed from low angle left side
+Materials:
+  Seating: Mauve Satin
+  Surface graphics: Khaki Canvas
+  Frame: Olive Green Matte Paint
+  Arm rest: Olive Green Matte Paint

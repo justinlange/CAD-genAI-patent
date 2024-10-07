@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 85mm lens, viewed from low angle back left corner, soft-interior-lighting
+Materials:
+  Seating: Burnt Orange Glass
+  Surface graphics: Off White Paint
+  Frame: Charcoal Rubber
+  Arm rest: Indigo Denim

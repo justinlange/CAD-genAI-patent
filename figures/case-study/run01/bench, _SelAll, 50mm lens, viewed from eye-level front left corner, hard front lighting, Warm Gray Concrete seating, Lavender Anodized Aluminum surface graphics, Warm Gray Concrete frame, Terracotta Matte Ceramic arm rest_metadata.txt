@@ -1,0 +1,8 @@
+Class: bench
+Instance: _SelAll
+Viewpoint: 50mm lens, viewed from eye-level front left corner
+Materials:
+  Seating: Warm Gray Concrete
+  Surface graphics: Lavender Anodized Aluminum
+  Frame: Warm Gray Concrete
+  Arm rest: Terracotta Matte Ceramic

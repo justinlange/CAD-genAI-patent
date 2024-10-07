@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-bench-xqy
+Viewpoint: 24mm lens, viewed from low angle back left corner, soft-interior-lighting
+Materials:
+  Seating: Sage Green Canvas
+  Surface graphics: Terracotta Matte Ceramic
+  Frame: Mauve Satin
+  Arm rest: Olive Green Matte Paint

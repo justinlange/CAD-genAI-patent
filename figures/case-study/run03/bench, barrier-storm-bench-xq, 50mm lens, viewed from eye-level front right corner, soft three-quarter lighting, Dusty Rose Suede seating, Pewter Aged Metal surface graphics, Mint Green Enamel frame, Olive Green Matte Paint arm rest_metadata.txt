@@ -1,0 +1,8 @@
+Class: bench
+Instance: barrier-storm-bench-xq
+Viewpoint: 50mm lens, viewed from eye-level front right corner, soft-lighting-interior
+Materials:
+  Seating: Dusty Rose Suede
+  Surface graphics: Pewter Aged Metal
+  Frame: Mint Green Enamel
+  Arm rest: Olive Green Matte Paint
