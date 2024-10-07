@@ -6,6 +6,9 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows.meta, positioning}
+
 
 % Set margins to USPTO requirements
 \geometry{
@@ -59,6 +62,31 @@ Designers utilize existing CAD functionalities, such as layers, groups, or tags,
 
 For each generated variation, the system automatically generates descriptive text labels that capture the essential attributes of the image, including object groupings, applied variations, and design intent. These semantic labels are used to train the AI model and enable natural language interaction with the system.
 
+\begin{tikzpicture}[
+    node distance=2cm,
+    block/.style={rectangle, draw, fill=gray, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
+    arrow/.style={-Stealth}
+  ]
+
+  \node[block] (start) {Start with CAD Model};
+  \node[block, below of=start] (objectgrouping) {Identify Object Groupings};
+  \node[block, below of=objectgrouping] (cmfvariation) {Vary CMF Properties (Color, Material, Finish)};
+  \node[block, below of=cmfvariation] (cameraviewpoint) {Vary Camera Viewpoint/Perspective};
+  \node[block, below of=cameraviewpoint] (lighting) {Vary Lighting Conditions};
+  \node[block, below of=lighting] (background) {Apply Backgrounds};
+  \node[block, below of=background] (semanticlabeling) {Generate Semantic Labels};
+  \node[block, below of=semanticlabeling] (dataset) {Form-Isolated Dataset};
+
+  \draw[arrow] (start) -- (objectgrouping);
+  \draw[arrow] (objectgrouping) -- (cmfvariation);
+  \draw[arrow] (cmfvariation) -- (cameraviewpoint);
+  \draw[arrow] (cameraviewpoint) -- (lighting);
+  \draw[arrow] (lighting) -- (background);
+  \draw[arrow] (background) -- (semanticlabeling);
+  \draw[arrow] (semanticlabeling) -- (dataset);
+
+\end{tikzpicture}
+
 The generated dataset of images and corresponding semantic labels is then used to fine-tune a pre-trained text-to-image AI model, such as Stable Diffusion, using Low-Rank Adaptation (LoRA). This efficient fine-tuning technique allows the model to adapt to the specific design data while preserving its general capabilities.
 
 Finally, the system provides a user-friendly interface for interacting with the trained AI model. Designers can input natural language prompts to generate new renderings, specifying adjustments to CMF properties and other visual attributes. The interface also includes advanced features such as automated file management, location-based background integration, cost and environmental impact analysis, automated RFQ generation, design callouts, character continuity management, dynamic UI sliders, patent drawing generation, design analysis feedback, client annotation tools, and image security features.
@@ -85,6 +113,31 @@ Figures 1-10 illustrate various aspects of the invention, including:
 \begin{center}
 DETAILED DESCRIPTION OF THE INVENTION
 \end{center}
+
+\begin{tikzpicture}[
+    node distance=2cm,
+    block/.style={rectangle, draw, fill=lightgray, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
+    arrow/.style={-Stealth}
+  ]
+
+  \node[block] (start) {Start with CAD Model};
+  \node[block, below of=start] (objectgrouping) {Identify Object Groupings};
+  \node[block, below of=objectgrouping] (cmfvariation) {Vary CMF Properties (Color, Material, Finish)};
+  \node[block, below of=cmfvariation] (cameraviewpoint) {Vary Camera Viewpoint/Perspective};
+  \node[block, below of=cameraviewpoint] (lighting) {Vary Lighting Conditions};
+  \node[block, below of=lighting] (background) {Apply Backgrounds};
+  \node[block, below of=background] (semanticlabeling) {Generate Semantic Labels};
+  \node[block, below of=semanticlabeling] (dataset) {Form-Isolated Dataset};
+
+  \draw[arrow] (start) -- (objectgrouping);
+  \draw[arrow] (objectgrouping) -- (cmfvariation);
+  \draw[arrow] (cmfvariation) -- (cameraviewpoint);
+  \draw[arrow] (cameraviewpoint) -- (lighting);
+  \draw[arrow] (lighting) -- (background);
+  \draw[arrow] (background) -- (semanticlabeling);
+  \draw[arrow] (semanticlabeling) -- (dataset);
+
+\end{tikzpicture}
 
 \subsection{Object Grouping in CAD Models}
 
@@ -316,7 +369,29 @@ Unlike conventional approaches that focus on teaching the AI to mimic specific v
 \paragraph{Semantic Label Guidance:} The semantic labels accompanying each image reinforce this focus on form. Instead of merely describing the specific visual features present in each image, the labels emphasize the underlying form and its constituent parts. For example, a label might read: "A chair with [varied material] legs, a [varied material] seat, and a [varied material] backrest, viewed from a [varied angle]." This structured labeling, combined with the dataset's visual emphasis on form, guides the AI to learn a representation of the form that is decoupled from specific stylistic choices.
 
 \subsubsection{Fine-tuning with LoRA}
-Low-Rank Adaptation (LoRA) is a highly efficient fine-tuning technique that allows the pre-trained model to learn from the custom dataset without retraining the entire model from scratch. This is particularly beneficial when working with large, complex models:
+Low-Rank Adaptation (LoRA) is a highly efficient fine-tuning technique that allows the pre-trained model to learn from the custom dataset without retraining the entire model from scratch. 
+
+
+
+\figure\begin{tikzpicture}[
+    node distance=2cm,
+    block/.style={rectangle, draw, fill=gray, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
+    arrow/.style={-Stealth}
+  ]
+  \centering
+
+  \node[block] (pretrainedmodel) {Pre-trained Text-to-Image Model};
+  \node[block, below of=pretrainedmodel] (formisolateddataset) {Form-Isolated Dataset};
+  \node[block, below of=formisolateddataset] (lorafinetuning) {LoRA Fine-tuning};
+  \node[block, below of=lorafinetuning] (trainedmodel) {Trained AI Model (Form-Aware)};
+
+  \draw[arrow] (pretrainedmodel) -- (lorafinetuning);
+  \draw[arrow] (formisolateddataset) -- (lorafinetuning);
+  \draw[arrow] (lorafinetuning) -- (trainedmodel);
+
+\end{tikzpicture}
+
+This is particularly beneficial when working with large, complex models:
 
 \begin{itemize}
     \item \textbf{Targeted Modification:} LoRA injects small, low-rank matrices into specific layers of the pre-trained model, allowing for targeted modifications that specialize the model's behavior without disrupting its general capabilities. This ensures that the model retains its ability to understand and generate images from text prompts while also incorporating the unique knowledge gained from the form-focused dataset.
@@ -378,6 +453,25 @@ Beyond core rendering functionality, the interface offers a rich set of advanced
 \item \textbf{Depth Map Generation}: The system automatically retrieves depth information from Google Maps data for the chosen location. This depth data is used to create a 3D representation of the environment, ensuring accurate placement and perspective of the design within the background.
 \item \textbf{ControlNet}: ControlNet is employed to precisely position the design object within the 3D environment created from the Google Maps data. This ensures that the perspective, scale, and occlusion relationships between the design and the background are rendered realistically.
 \end{itemize}
+
+\begin{tikzpicture}[
+    node distance=2cm,
+    block/.style={rectangle, draw, fill=yellow, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
+    arrow/.style={-Stealth}
+  ]
+
+  \node[block] (selectlocation) {Select Location (Google Maps)};
+  \node[block, below of=selectlocation] (depthmap) {Retrieve Depth Map Data};
+  \node[block, below of=depthmap] (controlnet) {Position Design (ControlNet)};
+  \node[block, below of=controlnet] (rendering) {Render with Real-World Background};
+
+  \draw[arrow] (selectlocation) -- (depthmap);
+  \draw[arrow] (depthmap) -- (controlnet);
+  \draw[arrow] (controlnet) -- (rendering);
+
+\end{tikzpicture}
+
+
 
 
 \subsubsection{Mass \& Volume Calculations}
