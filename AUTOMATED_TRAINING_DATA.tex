@@ -62,30 +62,30 @@ Designers utilize existing CAD functionalities, such as layers, groups, or tags,
 
 For each generated variation, the system automatically generates descriptive text labels that capture the essential attributes of the image, including object groupings, applied variations, and design intent. These semantic labels are used to train the AI model and enable natural language interaction with the system.
 
-\begin{tikzpicture}[
-    node distance=2cm,
-    block/.style={rectangle, draw, fill=gray, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
-    arrow/.style={-Stealth}
-  ]
+% \begin{tikzpicture}[
+%     node distance=2cm,
+%     block/.style={rectangle, draw, fill=gray, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
+%     arrow/.style={-Stealth}
+%   ]
 
-  \node[block] (start) {Start with CAD Model};
-  \node[block, below of=start] (objectgrouping) {Identify Object Groupings};
-  \node[block, below of=objectgrouping] (cmfvariation) {Vary CMF Properties (Color, Material, Finish)};
-  \node[block, below of=cmfvariation] (cameraviewpoint) {Vary Camera Viewpoint/Perspective};
-  \node[block, below of=cameraviewpoint] (lighting) {Vary Lighting Conditions};
-  \node[block, below of=lighting] (background) {Apply Backgrounds};
-  \node[block, below of=background] (semanticlabeling) {Generate Semantic Labels};
-  \node[block, below of=semanticlabeling] (dataset) {Form-Isolated Dataset};
+%   \node[block] (start) {Start with CAD Model};
+%   \node[block, below of=start] (objectgrouping) {Identify Object Groupings};
+%   \node[block, below of=objectgrouping] (cmfvariation) {Vary CMF Properties (Color, Material, Finish)};
+%   \node[block, below of=cmfvariation] (cameraviewpoint) {Vary Camera Viewpoint/Perspective};
+%   \node[block, below of=cameraviewpoint] (lighting) {Vary Lighting Conditions};
+%   \node[block, below of=lighting] (background) {Apply Backgrounds};
+%   \node[block, below of=background] (semanticlabeling) {Generate Semantic Labels};
+%   \node[block, below of=semanticlabeling] (dataset) {Form-Isolated Dataset};
 
-  \draw[arrow] (start) -- (objectgrouping);
-  \draw[arrow] (objectgrouping) -- (cmfvariation);
-  \draw[arrow] (cmfvariation) -- (cameraviewpoint);
-  \draw[arrow] (cameraviewpoint) -- (lighting);
-  \draw[arrow] (lighting) -- (background);
-  \draw[arrow] (background) -- (semanticlabeling);
-  \draw[arrow] (semanticlabeling) -- (dataset);
+%   \draw[arrow] (start) -- (objectgrouping);
+%   \draw[arrow] (objectgrouping) -- (cmfvariation);
+%   \draw[arrow] (cmfvariation) -- (cameraviewpoint);
+%   \draw[arrow] (cameraviewpoint) -- (lighting);
+%   \draw[arrow] (lighting) -- (background);
+%   \draw[arrow] (background) -- (semanticlabeling);
+%   \draw[arrow] (semanticlabeling) -- (dataset);
 
-\end{tikzpicture}
+% \end{tikzpicture}
 
 The generated dataset of images and corresponding semantic labels is then used to fine-tune a pre-trained text-to-image AI model, such as Stable Diffusion, using Low-Rank Adaptation (LoRA). This efficient fine-tuning technique allows the model to adapt to the specific design data while preserving its general capabilities.
 
@@ -372,25 +372,6 @@ Unlike conventional approaches that focus on teaching the AI to mimic specific v
 Low-Rank Adaptation (LoRA) is a highly efficient fine-tuning technique that allows the pre-trained model to learn from the custom dataset without retraining the entire model from scratch. 
 
 
-
-\figure\begin{tikzpicture}[
-    node distance=2cm,
-    block/.style={rectangle, draw, fill=gray, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
-    arrow/.style={-Stealth}
-  ]
-  \centering
-
-  \node[block] (pretrainedmodel) {Pre-trained Text-to-Image Model};
-  \node[block, below of=pretrainedmodel] (formisolateddataset) {Form-Isolated Dataset};
-  \node[block, below of=formisolateddataset] (lorafinetuning) {LoRA Fine-tuning};
-  \node[block, below of=lorafinetuning] (trainedmodel) {Trained AI Model (Form-Aware)};
-
-  \draw[arrow] (pretrainedmodel) -- (lorafinetuning);
-  \draw[arrow] (formisolateddataset) -- (lorafinetuning);
-  \draw[arrow] (lorafinetuning) -- (trainedmodel);
-
-\end{tikzpicture}
-
 This is particularly beneficial when working with large, complex models:
 
 \begin{itemize}
@@ -432,7 +413,7 @@ This component serves as the bridge between the designer's intent and the AI's r
 
 \subsubsection{Advanced Features}
 
-Beyond core rendering functionality, the interface offers a rich set of advanced features to enhance the design process:
+In addition to the fundamental rendering capabilities, the interface provides an extensive array of sophisticated features designed to optimize and streamline the design workflow:
 
 \subsubsection{Automated File Management}
 \begin{itemize}
