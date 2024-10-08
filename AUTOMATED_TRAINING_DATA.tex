@@ -8,6 +8,8 @@
 
 \usepackage{tikz}
 \usetikzlibrary{shapes, arrows.meta, positioning}
+\usepackage{listings}
+\usepackage{amsmath} 
 
 
 % Set margins to USPTO requirements
@@ -24,415 +26,374 @@
 \begin{document}
 
 \begin{center}
-SYSTEM AND METHOD FOR AUTOMATED TRAINING DATA GENERATION FOR AI-ASSISTED DESIGN USING OBJECT GROUPINGS AND SEMANTIC LABELING
+{\Large SYSTEM AND METHOD FOR AUTOMATED TRAINING DATA GENERATION FOR AI-ASSISTED DESIGN USING OBJECT GROUPINGS AND SEMANTIC LABELING}
 \end{center}
+
+% \vspace{24pt}
+% \begin{center}
+%     SYSTEM AND METHOD FOR AUTOMATED TRAINING DATA GENERATION FOR AI-ASSISTED DESIGN USING OBJECT GROUPINGS AND SEMANTIC LABELING
+%     \end{center}
 
 \vspace{24pt}
 
 
+\section{BACKGROUND OF THE INVENTION}
 
+\subsection{Field of the Invention}
+This invention pertains to the field of computer-aided design (CAD), specifically addressing the generation of training data for AI models used in design applications. The invention resides at the intersection of artificial intelligence (AI), computer-aided design (CAD), computer graphics, machine learning, and design theory.
 
+\subsection{Background Art}
+Traditional design processes, particularly in industrial and product design, are time-consuming and require specialized skills.  Designers rely on CAD software to create 3D models and engage in iterative rendering processes involving adjustments of materials, textures, lighting, and camera angles to produce visualizations. This iterative process can hinder the exploration of diverse design variations.
 
-\begin{center}
-BACKGROUND OF THE INVENTION
-\end{center}
+Existing AI-based design tools, while offering some automation, often lack the control and precision demanded by professional designers. Many of these tools are based on pre-trained AI models that were trained on generic datasets. These datasets may not capture the nuanced design principles and hierarchical object relationships inherent in specific designs. As a result, AI-generated outputs can deviate from the designer's intent, showing inconsistencies in style or failing to represent the subtle details of the original design.
 
-
-\subsection{BACKGROUND OF THE INVENTION}
-
-This invention resides at the intersection of artificial intelligence (AI), computer-aided design (CAD), computer graphics, machine learning, and design theory. It specifically addresses the challenges of automating the creation of training datasets for AI models employed in design applications, with a particular focus on maintaining designer control and integrating seamlessly with existing CAD workflows. A core innovation lies in the methodology of generating a training corpus that emphasizes the isolation of design form, thereby enabling the AI model to learn and generalize design intent more effectively.
-
-
-
-\subsection{Description of the Related Art}
-
-Traditional design and rendering processes, especially in industrial and product design, are notoriously labor-intensive and time-consuming. Designers typically create 3D models using CAD software, followed by a laborious rendering process involving meticulous adjustments of materials, textures, lighting, and camera angles to produce high-quality visualizations. This iterative process demands specialized skills and significant time investment, often hindering the rapid exploration of design variations.
-
-While existing AI-based design tools have made strides in automating certain aspects of the design process, they often fall short in providing the level of control and precision required by professional designers. Many of these tools rely on pre-trained models trained on generic datasets, which may not adequately capture the specific design principles or hierarchical relationships inherent in a given design. Consequently, the AI-generated outputs may lack the desired level of fidelity to the designer's intent, often exhibiting stylistic inconsistencies or failing to capture the nuances of the original design.
-
-Several patents and publications have explored related aspects of AI training data generation and image processing. For instance, US20190156487A1 describes a method for automated generation of pre-labeled training data for machine learning models, focusing on image segmentation and masking techniques. US20220215145A1 presents a system for machine learning in rapid automatic computer-aided engineering modeling, emphasizing mesh generation for engineering analysis. US11308357B2 discusses training data generation for automated driving systems, utilizing sensor data from vehicles.
-
-However, these existing solutions do not address the unique challenges of AI-assisted design in CAD contexts. They lack the crucial aspect of form isolation through systematic variation, which is essential for preventing overfitting and preserving the integrity of the designer's original form. Furthermore, they do not offer the comprehensive suite of features and functionalities presented in this invention, such as advanced UI controls, location-based background integration, and design analysis feedback.
-
-\begin{center}
-SUMMARY OF THE INVENTION  
-\end{center}
-
-Designers utilize existing CAD functionalities, such as layers, groups, or tags, to organize objects within their models according to design principles and hierarchical relationships. This structured organization facilitates semantic understanding of the design components and enables automated labeling of the training data. The system systematically generates a diverse set of variations of the CAD model by altering visual properties (color, texture, material), camera viewpoints (angle, position, focal length), lighting conditions (intensity, direction, color temperature), and backgrounds (color, texture, environment), while meticulously preserving the core design form as the constant element. This form isolation is crucial for preventing overfitting and enabling the AI model to learn the underlying design intent.
-
-For each generated variation, the system automatically generates descriptive text labels that capture the essential attributes of the image, including object groupings, applied variations, and design intent. These semantic labels are used to train the AI model and enable natural language interaction with the system.
-
-% \begin{tikzpicture}[
-%     node distance=2cm,
-%     block/.style={rectangle, draw, fill=gray, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
-%     arrow/.style={-Stealth}
-%   ]
-
-%   \node[block] (start) {Start with CAD Model};
-%   \node[block, below of=start] (objectgrouping) {Identify Object Groupings};
-%   \node[block, below of=objectgrouping] (cmfvariation) {Vary CMF Properties (Color, Material, Finish)};
-%   \node[block, below of=cmfvariation] (cameraviewpoint) {Vary Camera Viewpoint/Perspective};
-%   \node[block, below of=cameraviewpoint] (lighting) {Vary Lighting Conditions};
-%   \node[block, below of=lighting] (background) {Apply Backgrounds};
-%   \node[block, below of=background] (semanticlabeling) {Generate Semantic Labels};
-%   \node[block, below of=semanticlabeling] (dataset) {Form-Isolated Dataset};
-
-%   \draw[arrow] (start) -- (objectgrouping);
-%   \draw[arrow] (objectgrouping) -- (cmfvariation);
-%   \draw[arrow] (cmfvariation) -- (cameraviewpoint);
-%   \draw[arrow] (cameraviewpoint) -- (lighting);
-%   \draw[arrow] (lighting) -- (background);
-%   \draw[arrow] (background) -- (semanticlabeling);
-%   \draw[arrow] (semanticlabeling) -- (dataset);
-
-% \end{tikzpicture}
-
-The generated dataset of images and corresponding semantic labels is then used to fine-tune a pre-trained text-to-image AI model, such as Stable Diffusion, using Low-Rank Adaptation (LoRA). This efficient fine-tuning technique allows the model to adapt to the specific design data while preserving its general capabilities.
-
-Finally, the system provides a user-friendly interface for interacting with the trained AI model. Designers can input natural language prompts to generate new renderings, specifying adjustments to CMF properties and other visual attributes. The interface also includes advanced features such as automated file management, location-based background integration, cost and environmental impact analysis, automated RFQ generation, design callouts, character continuity management, dynamic UI sliders, patent drawing generation, design analysis feedback, client annotation tools, and image security features.
-
-\begin{center}
-BRIEF DESCRIPTION OF THE DRAWINGS
-\end{center}
-
-Figures 1-10 illustrate various aspects of the invention, including:
-
+Prior art exists in related areas:
 \begin{itemize}
-    \item System Overview Diagram
-    \item CAD Model with Object Groupings
-    \item Form Isolation through Systematic Variation Flowchart
-    \item Semantic Label Generation Diagram
-    \item AI Model Training Process using LoRA
-    \item AI-Assisted Design Interface Mockup
-    \item Location-Based Background Integration using Google Maps
-    \item Dynamic UI Sliders for Rendering Parameters
-    \item Automated Design Callout Generation
-    \item Modular UI for Texture and Style Application
+    \item US20190156487A1 describes automated generation of pre-labeled training data for machine learning models, focusing on image segmentation and masking for general image processing, not specifically for CAD.
+    \item US20220215145A1 focuses on mesh generation for engineering analysis in computer-aided engineering modeling, not the broader aspects of visual design generation. 
+    \item US11308357B2 addresses training data generation for automated driving systems using sensor data, which is distinct from the design-centric data needed for AI-assisted CAD.
 \end{itemize}
 
-\begin{center}
-DETAILED DESCRIPTION OF THE INVENTION
-\end{center}
 
-\begin{tikzpicture}[
-    node distance=2cm,
-    block/.style={rectangle, draw, fill=lightgray, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
-    arrow/.style={-Stealth}
-  ]
+Crucially, these existing solutions do not address the unique challenges of AI-assisted design in CAD contexts.  They lack the crucial element of \textbf{form isolation} through systematic variation.  Form isolation is essential for preventing overfitting of AI models on specific stylistic choices present in training data and for preserving the core form intended by the designer. Additionally, existing solutions do not provide the comprehensive suite of features presented in this invention, including advanced user interface controls, location-based background integration, design analysis feedback, and others, as detailed herein.
 
-  \node[block] (start) {Start with CAD Model};
-  \node[block, below of=start] (objectgrouping) {Identify Object Groupings};
-  \node[block, below of=objectgrouping] (cmfvariation) {Vary CMF Properties (Color, Material, Finish)};
-  \node[block, below of=cmfvariation] (cameraviewpoint) {Vary Camera Viewpoint/Perspective};
-  \node[block, below of=cameraviewpoint] (lighting) {Vary Lighting Conditions};
-  \node[block, below of=lighting] (background) {Apply Backgrounds};
-  \node[block, below of=background] (semanticlabeling) {Generate Semantic Labels};
-  \node[block, below of=semanticlabeling] (dataset) {Form-Isolated Dataset};
+\section{SUMMARY OF THE INVENTION}
+This invention discloses a system and method for the automated generation of training data for AI-assisted design, using object groupings and semantic labeling within CAD models.  The invention allows designers to leverage existing CAD functionalities (layers, groups, tags) to organize objects hierarchically, reflecting design principles and relationships.  This structure is then used by the system to perform the following:
 
-  \draw[arrow] (start) -- (objectgrouping);
-  \draw[arrow] (objectgrouping) -- (cmfvariation);
-  \draw[arrow] (cmfvariation) -- (cameraviewpoint);
-  \draw[arrow] (cameraviewpoint) -- (lighting);
-  \draw[arrow] (lighting) -- (background);
-  \draw[arrow] (background) -- (semanticlabeling);
-  \draw[arrow] (semanticlabeling) -- (dataset);
+\begin{enumerate}
+    \item \textbf{Systematic Variation:} The system automatically generates a diverse set of variations of the CAD model by systematically altering visual properties (color, texture, material), camera viewpoints (angle, position, focal length), lighting conditions (intensity, direction, color temperature), and backgrounds (color, texture, environment). Critically, this variation is performed while meticulously preserving the core design form as a constant element. This form isolation is crucial for preventing overfitting and enabling the AI model to learn the underlying design intent rather than superficial stylistic features.
 
-\end{tikzpicture}
+    \item \textbf{Automated Semantic Labeling:} For each generated variation, the system automatically produces descriptive text labels. These labels capture essential attributes of the image, including object groupings, applied variations, and design intent. These labels facilitate the training of the AI model and enable natural language interaction with the system. 
+
+    \item \textbf{AI Model Fine-tuning:} The generated dataset of images and their corresponding semantic labels is used to fine-tune a pre-trained text-to-image AI model, such as Stable Diffusion, using Low-Rank Adaptation (LoRA). LoRA is an efficient technique that allows the model to adapt to the specific design data while preserving its general capabilities learned from a much larger dataset. 
+
+    \item \textbf{AI-Assisted Design Interface:}  The invention provides a user-friendly interface for designers to interact with the trained AI model.  Designers can input natural language prompts to generate new renderings, specifying adjustments to CMF properties (Color, Material, Finish) and other visual attributes. The interface also includes advanced features:
+        \begin{itemize}
+            \item Automated file management
+            \item Location-based background integration 
+            \item Cost and environmental impact analysis 
+            \item Automated RFQ (Request For Quotation) generation
+            \item Design callouts
+            \item Character continuity management
+            \item Dynamic UI sliders
+            \item Patent drawing generation
+            \item Design analysis feedback
+            \item Client annotation tools
+            \item Image security features
+        \end{itemize}
+\end{enumerate}
+
+\section{BRIEF DESCRIPTION OF THE DRAWINGS}
+Figures 1-10 illustrate various aspects of the invention.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+        node distance=2cm,
+        block/.style={rectangle, draw, fill=lightgray, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
+        arrow/.style={-Stealth}
+      ]
+
+      \node[block] (start) {Start with CAD Model};
+      \node[block, below of=start] (objectgrouping) {Identify Object Groupings};
+      \node[block, below of=objectgrouping] (cmfvariation) {Vary CMF Properties (Color, Material, Finish)};
+      \node[block, below of=cmfvariation] (cameraviewpoint) {Vary Camera Viewpoint/Perspective};
+      \node[block, below of=cameraviewpoint] (lighting) {Vary Lighting Conditions};
+      \node[block, below of=lighting] (background) {Apply Backgrounds};
+      \node[block, below of=background] (semanticlabeling) {Generate Semantic Labels};
+      \node[block, below of=semanticlabeling] (dataset) {Form-Isolated Dataset};
+
+      \draw[arrow] (start) -- (objectgrouping);
+      \draw[arrow] (objectgrouping) -- (cmfvariation);
+      \draw[arrow] (cmfvariation) -- (cameraviewpoint);
+      \draw[arrow] (cameraviewpoint) -- (lighting);
+      \draw[arrow] (lighting) -- (background);
+      \draw[arrow] (background) -- (semanticlabeling);
+      \draw[arrow] (semanticlabeling) -- (dataset);
+
+    \end{tikzpicture}
+    \caption{Form Isolation through Systematic Variation Flowchart}
+    \label{fig:flowchart}
+\end{figure}
+
+
+\begin{itemize}
+    \item Figure \ref{fig:cad_model_groupings}: CAD Model with Object Groupings and Layer Correspondence
+    \item Figure \ref{fig:render_mode_selection_unique}: User Interface for Variation Setup - Selecting the Rendering Mode
+    \item Figure \ref{fig:instance_name_input}: User Interface for Variation Setup - Entering a Unique Instance Name
+    \item Figure \ref{fig:class_name_input}: User Interface for Variation Setup - Specifying the Class Name
+    \item Figure \ref{fig:lighting_description_input}: User Interface for Variation Setup - Describing the Lighting Setup
+    \item Figure \ref{fig:flowchart}: Form Isolation through Systematic Variation Flowchart
+    \item Figure \ref{fig:render_mode_selection}: Generating Variations - 'Hero Mode', Product-Style Perspective Renders, and "Orbital Representation" 
+    \item Figure \ref{fig:automated-design-callout}: Automated Design Callout Generation
+    \item Figure \ref{fig:modular-ui-texture-style}:  Modular User Interface for Texture and Style Application
+    \item Figure \ref{fig:location-based-background}:  Location-Based Background Integration using Google Maps
+\end{itemize}
+
+
+\section{DETAILED DESCRIPTION OF THE INVENTION}
+
 
 \subsection{Object Grouping in CAD Models}
 
-The system is designed to be compatible with a range of industry-standard CAD software, enhancing its accessibility and integration into existing design workflows. While the principles of the invention apply broadly, specific implementations may leverage particular features of different CAD packages. The following describes the supported software and their relevance to the invention:
+The system is designed to be compatible with various industry-standard CAD software, enhancing its accessibility and integration into existing design workflows. While the principles of the invention apply broadly, specific implementations leverage particular features of different CAD packages. The system requires that the CAD software supports modular object organization and provides programmatic access to model data. These features are crucial for automating variation generation and semantic labeling.
 
-\textbf{Supported CAD Software:} The system is designed for compatibility with CAD software packages that allow for hierarchical object organization and programmatic access to model data. These features are crucial for automating the variation generation and semantic labeling processes. Specifically, the current implementation supports:
-
-\begin{itemize}
-    \item \textbf{Rhinoceros 3D (Rhino):} Rhino is a powerful 3D design environment with a robust scripting API. It is discussed extensively herein because of its robust scripting capabilities using Python, allowing for deep integration with the Automated Data Generation Module. The provided Rhino and Python code show examples of this integration, which skilled practitioners can extrapolate to other design software programs and their respective APIs. 
-    \item \textbf{Fusion 360:} Fusion 360, with its extensive use in engineering and product design, is also a target platform for this invention. Its Python API enables similar functionalities as in Rhino, allowing for seamless integration with the Automated Data Generation Module.
-    \item \textbf{SolidWorks:} SolidWorks, another widely used CAD software, can also be integrated with the system. Its API, while primarily supporting a variant of C++, can be accessed through COM interop from Python, enabling similar functionalities as in Rhino and Fusion 360. Alternatively, the codebase providing the Automated Rendering Module could be refactored to implement the functionality natively.
-\end{itemize}
-
-Any CAD software offering similar functionalities in terms of object hierarchy and programmatic access can be integrated with the system. The core principles of the invention remain applicable across different CAD platforms. For example:
-
+\paragraph{Supported Software}
+Specifically, the current implementation supports the following CAD software:
 
 \begin{itemize}
-    \item \textbf{Layers (Rhino):} In Rhino, layers provide a primary means of organizing objects. The provided code explicitly uses layers (specifically sublayers denoted by "::") to group different parts of the chair model (e.g., "Chair::Legs," "Chair::Seat," "Chair::Backrest"). This layer-based organization directly corresponds to the concept of object groupings in this invention. The code demonstrates how materials are applied to objects based on their layer assignment, highlighting the importance of this hierarchical structure for generating variations.
-    \item \textbf{Components (Fusion 360):} Fusion 360 utilizes components as a fundamental organizational structure. Similar to layers in Rhino, components can represent distinct parts or sub-assemblies within a design. The system can be adapted to utilize component information for object grouping and variation generation in Fusion 360.
-    \item \textbf{Groups/Bodies (SolidWorks):} SolidWorks employs groups and bodies for organizing geometry. The system can be implemented to recognize these groupings and utilize them for applying variations and generating semantic labels.
+    \item \textbf{Rhinoceros 3D (Rhino):} Rhino, with its robust scripting API using Python, enables deep integration with the Automated Data Generation Module. Examples of Rhino and Python code provided herein illustrate this integration. Skilled practitioners can readily adapt these examples to other design software and APIs.
+    \item \textbf{Fusion 360:} Fusion 360, widely used in engineering and product design, is a target platform for this invention. Its Python API provides functionalities similar to those in Rhino, allowing seamless integration with the Automated Data Generation Module.
+    \item \textbf{SolidWorks:} SolidWorks can be integrated with the system through its API, which can be accessed from Python using COM interop, enabling functionalities similar to those in Rhino and Fusion 360. Alternatively, the system can be adapted to directly utilize the native C++ API of SolidWorks.
 \end{itemize}
 
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=\textwidth]{figures/figure-perspective-right-layers-colors-labled-arrows-2.jpg}
-    \caption{CAD Model with Object Groupings and Layer Correspondence}
-    \label{fig:cad_model_groupings}
-\end{figure}
+The core principles of the invention are applicable across different CAD platforms, as long as they offer similar functionalities in terms of object hierarchy and programmatic access.
 
-The system is designed to be adaptable to different object grouping mechanisms. The core concept of organizing objects hierarchically to represent design intent remains consistent, regardless of the specific CAD software or its internal representation of groups.
+paragraph{Object Grouping Mechanisms}
+
+The system is adaptable to different object grouping mechanisms used by various CAD software:
+
+\begin{itemize}
+    \item \textbf{Layers (Rhino):} In Rhino, layers (and sublayers) are used for object organization. The provided code illustrates how layer-based groupings correspond to the invention's object grouping concept. For example, different parts of a chair model are grouped into sublayers like  "Chair::Legs," "Chair::Seat," and "Chair::Backrest," allowing for applying material variations based on layer assignment.
+
+    \item \textbf{Components (Fusion 360):} Components in Fusion 360, similar to layers in Rhino, represent distinct parts or sub-assemblies within a design. The system can be adapted to utilize component information for object grouping and variation generation.
+
+    \item \textbf{Groups/Bodies (SolidWorks):} SolidWorks utilizes groups and bodies for organizing geometry. The system can be implemented to recognize these groupings for applying variations and generating semantic labels.
+\end{itemize}
+
+Irrespective of the specific CAD software or its internal representation, the core concept of organizing objects hierarchically to represent design intent remains consistent.
 
 \paragraph{Importing and Preprocessing CAD Data}
-The process of importing CAD models into the system and any necessary preprocessing steps are crucial for ensuring compatibility and efficient data handling.
+Importing CAD models and any necessary preprocessing steps are essential for compatibility and efficient data handling.
 
-In some cases, it may be necessary to convert the CAD geometry into a mesh representation for efficient rendering and processing. This conversion can be performed within the CAD software itself or using external libraries. The system handles mesh data appropriately, maintaining the object groupings and applying variations to the mesh elements. If mesh conversion is required, the system will ideally use the highest fidelity mesh representation available, balancing detail with computational efficiency.
+\subparagraph{Mesh Conversion}
 
-For very complex CAD models, geometry simplification techniques may be employed to reduce the computational load during variation generation and rendering. Simplification techniques, such as mesh decimation or NURBS curve reduction, can be applied while preserving the overall form and object groupings. The system incorporates parameters to control the level of simplification, allowing designers to balance detail with performance. The decision to simplify geometry is context-dependent and depends on the complexity of the model and the computational resources available. The system provides feedback to the designer if simplification is necessary and allows them to adjust the simplification parameters as needed.
+In some cases, conversion of CAD geometry into a mesh representation might be necessary for efficient rendering and processing. The system handles mesh data, maintaining object groupings and applying variations to mesh elements. If mesh conversion is required, the system prioritizes using the highest fidelity mesh representation, balancing detail and computational efficiency.
+
+\subparagraph{Geometry Simplification}
+For complex CAD models, geometry simplification techniques, such as mesh decimation or NURBS curve reduction, can be used to reduce computational load during variation generation and rendering.  The system incorporates parameters to control the simplification level, allowing designers to balance detail with performance. The system provides feedback to the designer if simplification is necessary and allows for adjustment of simplification parameters.
 
 \subsection{Automated Data Generation Module}
 
 The Automated Data Generation Module is the core of the invention, responsible for creating the diverse and richly labeled dataset required to train the AI model. It interacts directly with the CAD system, extracting object groupings, applying systematic variations, and generating corresponding semantic labels.
 
-\subparagraph{Identifying Object Groupings:} This module parses the CAD model to identify object groupings based on user-defined criteria within the hierarchical organization enforced within the CAD system. The module can be considered both the Rhino template that enforces three levels of hierarchy (dominant, subdominant and subordinate) and the computer code that traverses the layers and sublayers to manipulate the objects found therein as well as return a semantic label based on chosen naming schemas of the designer.
+\subparagraph{Identifying Object Groupings:} 
+% This module parses the CAD model to identify object groupings based on user-defined criteria within the hierarchical organization enforced within the CAD system. The module can be considered both the Rhino template that enforces three levels of hierarchy (dominant, subdominant and subordinate) and the computer code that traverses the layers and sublayers to manipulate the objects found therein as well as return a semantic label based on chosen naming schemas of the designer.
 
-For example, in one exemplary  CAD systes, Rhino, might see code such as the following: 
+This module analyzes the CAD model to identify object groupings based on user-defined criteria within the enforced hierarchical organization. This module utilizes the Rhino template that enforces the three-level hierarchy (dominant, subdominant, subordinate) and the code traversing layers/sublayers to manipulate objects.  This is illustrated with the example code (`get\_objects\_from\_sublayers`) for Rhino, demonstrating the mapping between the CAD model's organization and the system's understanding of design components.
 
-    \begin{verbatim}
-        def get_objects_from_sublayers():
-        """Get all objects from sublayers, organized by sublayer name."""
-        sublayers = get_all_sublayers()
-        objects_by_sublayer = {}
-        for sublayer in sublayers:
-            objects = rs.ObjectsByLayer(sublayer)
-            if objects:
-                objects_by_sublayer[sublayer] = objects
-        return objects_by_sublayer
-    \end{verbatim}  
+% For example, in one exemplary  CAD systes, Rhino, might see code such as the following: 
+
+%     \begin{verbatim}
+%         def get_objects_from_sublayers():
+%         """Get all objects from sublayers, organized by sublayer name."""
+%         sublayers = get_all_sublayers()
+%         objects_by_sublayer = {}
+%         for sublayer in sublayers:
+%             objects = rs.ObjectsByLayer(sublayer)
+%             if objects:
+%                 objects_by_sublayer[sublayer] = objects
+%         return objects_by_sublayer
+%     \end{verbatim}  
 
 This explicit modularity, provided as layer-based grouping in Rhino (as an example), provides a direct mapping between the CAD model's organization and the system's understanding of design components.
 
 
-\subsection{User Interface for Variation Setup and Semantic Label Generation}
+% \subsection{User Interface for Variation Setup and Semantic Label Generation}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{figures/figure-process-choose-render-mode-monochrome.jpg} 
-    %    \caption{Step \arabic{figCounter}
-    \caption{Step   Selecting the Rendering Mode - The user interface allows the designer to choose between different rendering modes, such as "Hero Shot" for focused product-style renders and "Orbital Representation" for a more comprehensive 360-degree view of the design. This flexibility enables the generation of a diverse dataset capturing the object from various perspectives.}
-    \label{fig:render_mode_selection_unique}
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{figures/figure-process-choose-render-mode-monochrome.jpg} 
+%     %    \caption{Step \arabic{figCounter}
+%     \caption{Step   Selecting the Rendering Mode - The user interface allows the designer to choose between different rendering modes, such as "Hero Shot" for focused product-style renders and "Orbital Representation" for a more comprehensive 360-degree view of the design. This flexibility enables the generation of a diverse dataset capturing the object from various perspectives.}
+%     \label{fig:render_mode_selection_unique}
 
-\end{figure}
+% \end{figure}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{figures/figure-process-instance-name-barrier-1up-xy-monochrome.jpg}
-    \caption{Entering a Unique Instance Name - The user interface prompts the designer to enter a unique instance name for the object being rendered. This instance name, along with other relevant information (class name, lighting, etc.), forms part of the semantic label for each generated variation. These labels provide textual descriptions that help the AI model associate visual features with specific attributes.}
-    \label{fig:instance_name_input}
-\end{figure}
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{figures/figure-process-instance-name-barrier-1up-xy-monochrome.jpg}
+%     \caption{Entering a Unique Instance Name - The user interface prompts the designer to enter a unique instance name for the object being rendered. This instance name, along with other relevant information (class name, lighting, etc.), forms part of the semantic label for each generated variation. These labels provide textual descriptions that help the AI model associate visual features with specific attributes.}
+%     \label{fig:instance_name_input}
+% \end{figure}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{figures/figure-process-class-name-bench-4up-bw.jpg}
-    \caption{Specifying the Class Name - The user interface prompts the designer to enter a class name for the object, providing a broader categorization that helps the AI model understand the object's general type (e.g., furniture, vehicle, appliance). This class name, along with the instance name and other details, forms part of the semantic label for each variation.}
-    \label{fig:class_name_input}
-\end{figure}
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{figures/figure-process-class-name-bench-4up-bw.jpg}
+%     \caption{Specifying the Class Name - The user interface prompts the designer to enter a class name for the object, providing a broader categorization that helps the AI model understand the object's general type (e.g., furniture, vehicle, appliance). This class name, along with the instance name and other details, forms part of the semantic label for each variation.}
+%     \label{fig:class_name_input}
+% \end{figure}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{figures/figure-process-light-description-monochrome.jpg}
-    \caption{Describing the Lighting Setup - The user interface allows the designer to enter a description of the lighting setup used for each rendering. This information, captured as part of the semantic label, enables the AI model to learn the relationship between lighting conditions and the object's appearance. In this example, the description "very-soft-light-top-studio" provides a concise representation of the lighting setup.}
-    \label{fig:lighting_description_input}
-\end{figure}
-
-
-\subsection{Generating Variations:} This module systematically applies variations to the CAD model across four key aspects: visual properties, camera viewpoints and perspectives, lighting conditions, and backgrounds.
-
-\subsubsection{Object Visual Properties}
-
-\textbf{Visual Properties (CMF):} The system varies the color, material, and finish (CMF) properties of objects within the defined groupings.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{figures/figure-process-orbital-and-hero-shot-combined-color.jpg} 
-    \caption{The output of both 'hero mode' and product-style perspective renders and "Orbital Representation" to provide comprehensive 360-degree views of the design. The contribution of angles and emphasis isdiscussed to a diverse dataset is discussed in more detail elsewhere but is to be appreciated visually here.}
-    \label{fig:render_mode_selection}
-\end{figure}
-
-\textbf{Randomness and Predefined Ranges:}
-
-The code example showcases the use of randomness and predefined ranges for material assignment. For example, a data structure such as \texttt{MATERIAL\_LIST} defines a library of materials with their associated properties (name, RGB color, gloss, and reflectivity). A function with a name such as \texttt{create\_random\_material()} randomly selects a material from this list and applies it to the objects within a group. This randomized approach ensures a diverse range of CMF variations in the training dataset. The system also allows for user-defined ranges for each CMF property, providing more control over the variation process. For example:
-
-        \begin{verbatim}
-        
-    MATERIAL_LIST = [
-    ("Soft Red Plastic", (220, 60, 50), 30, 0.2),
-    ("Forest Green Metal", (34, 139, 34), 80, 0.5),
-    ("Navy Blue Fabric", (0, 60, 120), 20, 0.1),
-    ("Mustard Yellow Leather", (225, 173, 1), 40, 0.15),
-    ("Teal Ceramic", (0, 128, 128), 70, 0.2),
-    ("Plum Wood", (142, 69, 133), 50, 0.3),
-    ("Off White Paint", (245, 245, 240), 25, 0.1),
-    ("Charcoal Rubber", (54, 69, 79), 35, 0.05),
-    ...etc...
-\end{verbatim}
-
-To apply random materials to all objects in sublayers, while keeping track of of the material choices for labeling purposes, we might use code such as the following:
-
-\begin{verbatim}
-
-    def apply_random_materials():
-
-    objects_by_sublayer = get_objects_from_sublayers()
-    materials = {}
-    
-    for sublayer, objects in objects_by_sublayer.items():
-        material_index, material_name = create_random_material()
-        
-        for obj in objects:
-            rs.ObjectMaterialIndex(obj, material_index)
-        
-        sublayer_name = sublayer.split("::")[-1].lower()
-        
-        # Create a grammatically correct description
-        description = f"{material_name} {sublayer_name}"
-        
-        materials[sublayer_name] = {
-            'name': sublayer_name,
-            'material': material_name,
-            'description': description
-        }
-    
-    print(f"\nApplied materials: {materials}")
-    return materials
-        \end{verbatim}
-
-\subsubsection{Camera Viewpoints and Perspectives}
-
-The system varies the camera perspective to capture the design from different angles and distances. Many ways of doing this are possible. Consider two examples as implemented in Rhino: \texttt{Hero Shot} and \texttt{Orbital Representation}. "Hero shot" generates camera positions clustered around a focal point, simulating product photography. Importantly, the primary focal point is chosen by the designer. The \texttt{'variation\_degrees'} parameter controls the degree of randomness in camera positioning within components of the automated data generation model such as 'Hero Shot'.Thus one representative sample of the object is clustered around a viewpoint representing a preferred view of the object by the designer. Because such preferred views are labled, aspects of the preferred view such as focal lentgh, azimuth, inclination, object orientation relative to groundplane and other aspects of composition (virtual or otherwise) can be trained into the AI model. "Orbital representation" generates camera positions along one or many circular, elliptical  orbits around the object, providing a more comprehensive view of the design. Designers and other parties will appreciate that the form governing or representing the path traversed by the virtual camera used in automated rendering is not limited to circles or ellipses and can be one of many patterns
-
-The \texttt{generate\_viewpoint\_description()} function, as an example, demonstrates how variation in focal length can be implemented, simulating different lens effects and perspectives. This adds additional variation to the generated renders to avoid overfitting in training.
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{figures/figure-process-light-description-monochrome.jpg}
+%     \caption{Describing the Lighting Setup - The user interface allows the designer to enter a description of the lighting setup used for each rendering. This information, captured as part of the semantic label, enables the AI model to learn the relationship between lighting conditions and the object's appearance. In this example, the description "very-soft-light-top-studio" provides a concise representation of the lighting setup.}
+%     \label{fig:lighting_description_input}
+% \end{figure}
 
 
-\subsubsection{Lighting} 
-
-The system generates diverse lighting scenarios, mimicking different environments and times of day.
-
-For example, a function such as \texttt{generate\_lighting\_variation()} can create and store variation in lighting softness, direction, and intensity, as well as save the parameters of the settings and their corresponding natural language description to be used during the labeling process. 
 
 
-\subsubsection{Backgrounds}
 
-The system applies different backgrounds to the rendered images, enhancing context and visual diversity.
 
-A library of predefined backgrounds, including solid colors, gradients, textures, patterns, and environmental scenes, is used to create variations. The language required for such a background can be pulled from a CLIP inference, from a library of knowledge, from the file name itself, or from various other metadata, or a combination thereof.
 
-Additionally, the system integrates with Google Maps, allowing designers to use real-world locations as backgrounds. This function utilizes depth maps derived from Google Maps data and ControlNet to ensure accurate placement and perspective of the 3D model within the chosen environment. 
+\subsubsection{Generating Variations}
+This module applies systematic variations to the CAD model across four key aspects: visual properties, camera viewpoints, lighting conditions, and backgrounds.
 
-\paragraph{Semantic Label Generation:} For each generated variation, the system creates a detailed semantic label.
+\paragraph{Object Visual Properties}
+
+\subparagraph{Visual Properties (CMF)}
+The system varies the color, material, and finish (CMF) properties of objects within defined groupings, ensuring a diverse range of variations for the training dataset.
+
+\subparagraph{Randomness and Predefined Ranges}
+The system utilizes randomness and predefined ranges for CMF property assignments. The provided code examples demonstrate how a data structure like `MATERIAL_LIST` defines a library of materials with associated properties (name, RGB color, gloss, reflectivity). Functions like `create_random_material` select materials randomly from this library, ensuring diversity in CMF variations.
+
+\paragraph{Camera Viewpoints and Perspectives}
+The system varies the camera perspective to capture the design from different angles and distances, enhancing the AI model's understanding of the form.
+
+\subparagraph{Hero Shot and Orbital Representation}
+Two examples implemented in Rhino are 'Hero Shot' and 'Orbital Representation.'  'Hero Shot' clusters camera positions around a designer-chosen focal point, simulating product photography. The `variation_degrees` parameter controls randomness in camera positioning. 'Orbital Representation' places cameras along circular or elliptical paths around the object for comprehensive views. The system can utilize various patterns for camera paths to generate diverse viewpoints.
+
+\subparagraph{Focal Length Variation}
+The `generate_viewpoint_description` function shows how focal length variations are implemented, simulating different lens effects and perspectives, further enriching the dataset.
+
+\paragraph{Lighting}
+The system generates diverse lighting scenarios mimicking various environments and times of day.  For example, the function `generate_lighting_variation` varies lighting parameters like softness, direction, and intensity. It also stores the corresponding natural language descriptions for labeling.
+
+\paragraph{Backgrounds}
+The system applies diverse backgrounds to the rendered images, improving context and visual diversity. It uses a library of predefined backgrounds (colors, gradients, textures, scenes). The system also integrates with Google Maps, allowing real-world locations as backgrounds, with accurate placement and perspective using depth maps and ControlNet.
+
+\subsubsection{Semantic Label Generation}
+For every variation generated, the system creates a detailed semantic label. The `generate_caption` function provides an example.  Labels include information about:
 
 \begin{itemize}
-    \item \textbf{Structured Description:} The \texttt{generate\_caption()} function in the code provides a basic example of semantic label generation. The full system generates more comprehensive labels, incorporating information about:
-    \begin{itemize}
-        \item \textbf{Object Groupings and Materials:} "Chair legs made of brushed aluminum, seat upholstered in dark blue fabric, backrest made of light wood."
-        \item \textbf{Camera Viewpoint:} "Viewed from a high angle, front right perspective, with a 50mm lens."
-        \item \textbf{Lighting Conditions:} "Illuminated with soft, natural light from the left."
-        \item \textbf{Background:} "Against a neutral gray background."
-    \end{itemize}
+    \item Object Groupings and Materials
+    \item Camera Viewpoint
+    \item Lighting Conditions
+    \item Background
 \end{itemize}
 
-The detailed semantic label can be utilized in the generation of the file name for the specific image rendered, or concatenated with other labels into a JSON file or other data structure sufficient to describe each of the images used in fine-tuning the generative AI model. 
+Semantic labels are used in file naming or stored in separate data structures (e.g., JSON) linked to the images, ensuring consistency and aiding the AI model's understanding of the relationship between textual descriptions and visual attributes.
 
-This structured approach ensures consistency and facilitates the AI model's understanding of the relationship between textual descriptions and visual attributes.
+\paragraph{Synthetic Augmentation Techniques}
 
-\subparagraph{Synthetic Augmentation Techniques:} To maximize the diversity of the training dataset and improve the AI model's robustness, the system may utilize various data augmentation techniques, for example:
+The system uses data augmentation to increase dataset diversity and model robustness, including:
 
 \begin{itemize}
-    \item \textbf{Random Cropping:} Randomly cropping sections of the rendered images.
-    \item \textbf{Rotation and Flipping:} Rotating and flipping components to create variations in orientation. It is to be appreciated that because they are flipped in their CAD enviorment as opposed to merely rotating the automatically rendered image, any simulated interaction between the form and its enviorment may be shown. For example, flipping an element in Maya relative to the gravity vector in Maya will cause elements created with nCloth, a flexible mesh simulation, to fall along the gravity vector. In such a way, the essential properties of the form in addition to the form may be deeply encoded into the model by means in addition to mere semantic labeling. One should note that rotation of images may still be done to enrich the training set, but such rotation is properly labled. It is to be appreciated that specialty language used by cinematographers and photographers, such as "dutch angle" may be utilized in a virtual camera enviorment to aptly label the variation to the outputted image. 
-    \item \textbf{Color Jitter:} Randomly adjusting brightness, contrast, saturation, and hue.
-    \item \textbf{Noise Addition:} Adding small amounts of random noise to the images to simulate real-world imperfections.
+    \item Random Cropping
+    \item Rotation and Flipping (while considering physical interactions and accurate labeling)
+    \item Color Jitter
+    \item Noise Addition 
 \end{itemize}
 
-These techniques artificially expand the training dataset, improving the AI model's ability to generalize and reducing the risk of overfitting. The specific data augmentation techniques used can be customized and adjusted based on the design context and the characteristics of the dataset.
-
-\subsubsection{Summary}
-
-In summary, the systematic variation of visual properties, camera viewpoints, lighting conditions, and backgrounds, combined with the automated generation of semantic labels, forms the foundation for training a robust and versatile AI model for design applications. The referenced code examples illustrate how these functionalities are implemented in practice, demonstrating the practicality and effectiveness of the invention.
+The specific data augmentation techniques are customizable based on the design context and dataset characteristics.
 
 \subsection{AI Model Training Module}
-
-This module is responsible for imbuing the AI with the ability to understand and generate variations of the designer's intended form. Instead of merely learning to associate specific visual styles with a design, the AI is trained to recognize and reproduce the form itself as the primary element, independent of potentially distracting variations in color, material, texture, lighting, or viewpoint. This is achieved by leveraging the meticulously curated dataset generated by the Automated Data Generation Module, which embodies the core principle of form isolation.
+This module imbues the AI model with the ability to understand and generate variations of the designer's intended form, focusing on the core form independent of stylistic variations.
 
 \subsubsection{Pre-trained Model Selection}
-The system starts with a pre-trained text-to-image AI model, chosen from a range of suitable options. Key criteria for model selection could include:
-
+The system uses a pre-trained text-to-image AI model. Key criteria for selection include:
 \begin{itemize}
-    \item \textbf{Open-Source License:} Essential for maintaining complete ownership and control over the technology, allowing for unrestricted customization, private deployment, and future development.
-    \item \textbf{Architectural Flexibility:} The model's architecture should be adaptable for fine-tuning, ideally through efficient techniques like Low-Rank Adaptation (LoRA), which allow for targeted modification without retraining the entire model.
-    \item \textbf{Adequate Image Quality:} The model should be capable of generating images with sufficient quality and resolution for design visualization purposes. However, perfect photorealism is not necessarily the primary goal at this stage; the focus is on the model's ability to learn and represent form.
+    \item Open-Source License: for control over customization, deployment, and future development.
+    \item Architectural Flexibility: adaptability for efficient fine-tuning (e.g., using LoRA).
+    \item Adequate Image Quality: sufficient quality and resolution for design visualization purposes.
 \end{itemize}
-
-Examples of potential open-source models include Stable Diffusion or other emerging diffusion-based models known for their flexibility and efficiency. The specific choice of model is not critical to the invention; rather, it's the subsequent training process that imbues the model with the unique capability to understand and generate design forms independently of stylistic variations.
+Potential candidates include Stable Diffusion and other emerging diffusion-based models known for their flexibility and efficiency.
 
 \subsubsection{Training for Form Recognition}
-Unlike conventional approaches that focus on teaching the AI to mimic specific visual styles or aesthetics, this system trains the AI to recognize and reproduce the underlying form of the design as the primary element. This is achieved by leveraging the unique dataset generated by the Automated Data Generation Module.
 
-\paragraph{Dataset Structure:} The dataset consists of numerous variations of the same design, where the form remains constant while all other visual attributes (CMF properties, camera viewpoints, lighting, backgrounds) are systematically and randomly varied. This forces the AI to focus on the only consistent element across all images: the form itself.
+The training emphasizes form recognition over stylistic imitation.
 
-\paragraph{Semantic Label Guidance:} The semantic labels accompanying each image reinforce this focus on form. Instead of merely describing the specific visual features present in each image, the labels emphasize the underlying form and its constituent parts. For example, a label might read: "A chair with [varied material] legs, a [varied material] seat, and a [varied material] backrest, viewed from a [varied angle]." This structured labeling, combined with the dataset's visual emphasis on form, guides the AI to learn a representation of the form that is decoupled from specific stylistic choices.
+\paragraph{Dataset Structure}
+The dataset comprises numerous variations of the same design. The form remains constant while visual attributes (CMF, viewpoints, lighting, backgrounds) are varied, directing the AI's focus to the consistent form.
+
+\paragraph{Semantic Label Guidance}
+Semantic labels emphasize the underlying form and its constituent parts. They guide the AI to learn a representation of the form decoupled from stylistic variations.
+
+
+
+
+
+
+
+
 
 \subsubsection{Fine-tuning with LoRA}
-Low-Rank Adaptation (LoRA) is a highly efficient fine-tuning technique that allows the pre-trained model to learn from the custom dataset without retraining the entire model from scratch. 
+Low-Rank Adaptation (LoRA) is used to fine-tune the pre-trained model efficiently without full retraining.
 
-
-This is particularly beneficial when working with large, complex models:
-
+\paragraph{Benefits of LoRA}
 \begin{itemize}
-    \item \textbf{Targeted Modification:} LoRA injects small, low-rank matrices into specific layers of the pre-trained model, allowing for targeted modifications that specialize the model's behavior without disrupting its general capabilities. This ensures that the model retains its ability to understand and generate images from text prompts while also incorporating the unique knowledge gained from the form-focused dataset.
-    \item \textbf{Preventing Overfitting:} LoRA's efficiency is particularly valuable in this context. Because the training dataset consists of numerous variations of the same form, there is a risk of the model overfitting to the specific variations present in the dataset. LoRA's ability to adapt the model with minimal parameter changes mitigates this risk, ensuring that the model learns the general concept of the form rather than memorizing the specific variations seen during training.
+    \item Targeted Modification: LoRA injects small matrices into specific layers, enabling targeted adjustments without disrupting general capabilities.
+    \item Preventing Overfitting: LoRA's efficiency reduces the risk of overfitting to specific variations in the form-focused dataset.
 \end{itemize}
 
-In addition, multiple LoRAs may be used in combination on the same foundational model, allowing designers to create renders of two or more unique previously unknown (to the model) objects simultaneously within the same scene. For example, a new design for a chair could be rendered alongside a new design for a table. Because fine-tuning is performed using LoRAs, the designer could select both of those forms to be actively available in the interface and then specify that the table is on the chair, or that there are three chairs clustered around the table. 
+Multiple LoRAs can be used in combination, allowing simultaneous rendering of multiple unique objects in a scene.
 
 \subsubsection{Evaluation and Validation}
-The training process is closely monitored and evaluated to ensure that the model is effectively learning to recognize and generate the intended form.
+The training process is monitored and evaluated to ensure the model's effectiveness.
 
 \begin{itemize}
-    \item \textbf{Visual Inspection:} Designers play a crucial role in evaluating the model's outputs. They visually inspect the generated images to assess their fidelity to the original form, ensuring that the AI is capturing the essential design elements and relationships.
-    \item \textbf{Quantitative Metrics:} Objective metrics like Fréchet Inception Distance (FID) and CLIP Score could be used to measure the quality and relevance of the generated images. However, these metrics are interpreted in the context of the invention's specific goal: The focus is not solely on generating photorealistic images but rather on ensuring that the generated images accurately represent the intended form, regardless of the stylistic variations applied.
-    \item \textbf{Generalization Tests:} The model is tested on unseen prompts and variations to assess its ability to generalize beyond the specific examples seen during training. This ensures that the AI can effectively generate novel variations of the form, responding to designer prompts that specify new CMF properties, lighting conditions, or viewpoints while still preserving the essential design characteristics.
+    \item Visual Inspection: Designers assess generated images for fidelity to the original form.
+    \item Quantitative Metrics: Metrics like FID and CLIP Score can be used, but interpreted in the context of form representation rather than photorealism.
+    \item Generalization Tests: Testing on unseen prompts and variations ensures the AI can generalize and generate novel variations while preserving design characteristics.
 \end{itemize}
 
-\subsubsection{Summary}
-The form-isolated dataset, combined with targeted fine-tuning using LoRA, enables the AI to learn and generalize the designer's intended form as the primary element, decoupling it from specific stylistic variations. This approach is central to the invention's ability to empower designers with unprecedented control over visual attributes while maintaining the integrity of their original design.
-
 \subsection{AI-Assisted Design Interface}
-
-This component serves as the bridge between the designer's intent and the AI's rendering capabilities. It's a user-friendly interface that empowers designers to interact with the trained AI model through natural language, leveraging its unique ability to generate variations of a design while preserving its core form. The interface goes beyond basic text-to-image functionality, incorporating a suite of advanced features designed to streamline the design workflow, enhance creative exploration, and facilitate collaboration.
+This user-friendly interface bridges the designer's intent and the AI's rendering capabilities.
 
 \subsubsection{Core Rendering Functionality}
 
-\textbf{Natural Language Prompts}: Designers interact with the AI using natural language descriptions. They can specify desired changes to the CMF properties of the design, adjust lighting conditions, request specific camera viewpoints, and even incorporate elements like characters or backgrounds. 
+\paragraph{Natural Language Prompts}
+Designers interact using natural language descriptions for CMF changes, lighting adjustments, viewpoints, and scene elements.
 
-\textbf{Prompt Parsing and Parameter Translation}: The interface parses the designer's text prompt, identifying key elements and translating them into rendering parameters that the AI model can understand. It looks for agreement between the word choices used in the prompt and the words used to describe the model in the training process, evoking key unique trigger words when necessary if not explicitly evoked. This involves natural language processing techniques to extract relevant information from the prompt, such as:
+\paragraph{Prompt Parsing and Parameter Translation}
+The interface parses prompts using natural language processing, identifying key elements and translating them into rendering parameters for the AI model. This includes:
 
 \begin{itemize}
-\item \textbf{Object References}: Identifying which parts of the design the prompt refers to (e.g., "the legs," "the seat," "the backrest"). This leverages the object groupings defined in the CAD model.
-\item \textbf{CMF Properties}: Extracting desired changes to color, material, and finish. For example, "make the legs brushed aluminum," "upholster the seat in blue fabric," or "give the backrest a wood grain texture."
-\item \textbf{Lighting and Viewpoint}: Interpreting descriptions of lighting conditions (e.g., "soft natural light," "dramatic spotlight") and camera viewpoints (e.g., "front view," "isometric perspective").
+    \item Object References: using object groupings from the CAD model.
+    \item CMF Properties: extracting desired changes to color, material, and finish.
+    \item Lighting and Viewpoint: interpreting descriptions for lighting conditions and camera viewpoints.
 \end{itemize}
 
-\textbf{Rendering Generation}: The AI model, guided by the extracted parameters, generates a rendering of the design, incorporating the specified changes while preserving the integrity of the original form. The model's ability to separate form from style, as trained by the form-isolated dataset, is crucial here. It allows designers to freely manipulate visual attributes without altering the fundamental design.
+\paragraph{Rendering Generation}
+Guided by the extracted parameters, the AI model generates renderings while preserving the integrity of the original form, allowing for manipulation of visual attributes without altering the fundamental design.
 
 \subsubsection{Advanced Features}
+The interface offers a suite of advanced features:
 
-In addition to the fundamental rendering capabilities, the interface provides an extensive array of sophisticated features designed to optimize and streamline the design workflow:
+\paragraph{Automated File Management}
 
-\subsubsection{Automated File Management}
 \begin{itemize}
-\item \textbf{Automated Naming}: The system generates descriptive file names for renderings based on the prompt content, eliminating manual naming and ensuring easy identification. For example, a prompt like "chair with red fabric seat, side view, warm lighting" might result in a file name like \textit{Chair\_RedFabricSeat\_SideView\_WarmLighting.jpg}.
-\item \textbf{Cloud Storage}: Renderings and associated data can be automatically stored in the cloud, providing secure access from anywhere and facilitating collaboration. Version control is integrated, allowing designers to track changes and revert to previous versions if needed.
-\item \textbf{Archiving}: Projects and related data can be archived for future reference, ensuring easy retrieval and organization.
+    \item Automated Naming: generates descriptive file names based on prompt content.
+    \item Cloud Storage: automatically stores renderings and associated data in the cloud with version control.
+    \item Archiving: facilitates project archiving for easy retrieval.
 \end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \subsubsection{Detailed Close-Ups}
 \begin{itemize}
-\item \textbf{Region Selection}: Designers can specify regions of interest within the prompt or directly on the rendered image to generate high-resolution close-ups of specific design elements. For instance, a prompt could include "generate a detailed close-up of the joinery details on the armrest."
+\item \textbf{Region Selection}: Designers can specify regions of interest within the prompt or directly on the rendered image to generate high-resolution close-ups of specific design elements. For instance, a prompt could include "generate a detailed close-up of the joinery details on the armrest." Provided "joinery" was modularized in the pre-training phase -- for example, grouped, named, and assigned to the subordinate layer -- easy and explicit manipulation is possible
 \item \textbf{Resolution Control}: The system allows for adjustable resolution settings for close-up renders, enabling designers to create highly detailed visualizations for presentations or manufacturing purposes. This can be implemented as a simple slider in the UI, allowing the user to select a desired resolution for the close-up.
 \end{itemize}
 
 \subsubsection{Location-Based Backgrounds}
 \begin{itemize}
 \item \textbf{Google Maps Integration}: The system seamlessly integrates with Google Maps, allowing designers to select real-world locations as backgrounds for their renderings. The user can specify a location and viewpoint directly within the prompt (e.g., "place the bench in Central Park, facing the Bethesda Terrace," as depicted in Figure \ref{fig:location-based-background}).
-\item \textbf{Depth Map Generation}: The system automatically retrieves depth information from Google Maps data for the chosen location. This depth data is used to create a 3D representation of the environment, ensuring accurate placement and perspective of the design within the background.
-\item \textbf{ControlNet}: ControlNet is employed to precisely position the design object within the 3D environment created from the Google Maps data. This ensures that the perspective, scale, and occlusion relationships between the design and the background are rendered realistically.
+
+% this is a good time to start showing the renders
+\item \textbf{Depth Map Generation}: The system automatically retrieves depth information from Google Maps data for the chosen location. This depth data is used to create a 3D representation of the environment, which is employed by ControlNet isuch that the description of the scene elements (central park, New York City Skyline) match the actual contours of the buildings from a particular perspective  perspective, which is currently beyond the capabilities of generative AI unaided in this manner. Because the AI understands the essential form of the object and its status, relative to the gravity vector and its class and thus relationship to the world, no manual manipulation of its  relationships between the design. This allows the object the background to be rendered within a realistic background context without tedious manipulation of focal length, perspective and object placement. It just looks right.
 \end{itemize}
 
 \begin{tikzpicture}[
@@ -464,16 +425,15 @@ In addition to the fundamental rendering capabilities, the interface provides an
 
 \subsubsection{Design Callouts}
 \begin{itemize}
-\item \textbf{Automated Callout Generation}: The system can automatically generate professional-style design callouts on the rendered images. These callouts use image segmentation techniques to identify relevant design elements and associate them with text annotations based on the prompt or predefined rules. For example, a prompt like "highlight the ergonomic features" could trigger callouts pointing to the curved backrest, adjustable lumbar support, and padded armrests, with corresponding annotations describing these features. In conjunction with the environmental analysis module previously discussed, callouts with kg/CO2e can then be generated for the drawing to help the design be aware of the potential environmental consequences of their material choices.
-\item \textbf{Editable Annotations}: Designers have full control over the generated callouts. They can edit the text, adjust the positioning, change the style, and add or remove callouts as needed. This allows for precise and personalized annotation of the design.
-\item \textbf{Searchable PDF Export}: When exporting the rendering as a PDF, the callouts are embedded as searchable text elements, facilitating easy navigation and reference. This ensures that the annotations are not just visual elements but also part of the document's searchable content.
+    \item Automated Callout Generation: generates professional-style callouts on rendered images using image segmentation, highlighting relevant design elements and providing annotations based on prompts or rules. 
+    \item Editable Annotations: allows designers to edit callout text, positioning, and style.
+    \item Searchable PDF Export: embeds callouts as searchable text elements in PDF exports.
 \end{itemize}
 
-\subsubsection{Character Continuity}
 \begin{itemize}
-\item \textbf{Consistent Character Appearance}: When rendering scenes involving human figures or characters, the system ensures consistent character appearance across multiple variations. This is particularly important when showing a character interacting with the design in different scenarios or using variations to refine the scene's composition.
-\item \textbf{Face Swapping}: The system employs face-swapping techniques to maintain a consistent facial appearance for the chosen character, even as other aspects of the scene (e.g., clothing, pose, lighting) vary. This allows the designer to experiment with different variations without needing to re-generate or manually adjust the character's face in each rendering.
-\item \textbf{Text-Based Description Matching}: The system analyzes the text prompts for descriptions of the character (e.g., "a woman in her mid-40s with short blonde hair, wearing a business suit"). It uses these descriptions to ensure that the character's appearance consistently matches the designer's intent across different renders, even if the prompt only mentions the character briefly (e.g., "show the woman sitting on the bench").
+    \item Consistent Character Appearance: ensures consistent character appearance across variations.
+    \item Face Swapping: employs face-swapping for consistent facial appearance even with variations in other aspects.
+    \item Text-Based Description Matching: matches character appearance to designer descriptions from the prompts.
 \end{itemize}
 
 \subsubsection{Dynamic UI Sliders}
@@ -502,7 +462,7 @@ This feature provides an advanced level of interactivity and control within the 
 
     \begin{itemize}
         \item \textbf{Adaptive Mapping}: Depending on the parameter's complexity, the mapping can be linear, non-linear, or based on a learned function that correlates slider positions with visual outcomes.
-        \item \textbf{Real-Time Rendering}: As sliders are adjusted, the AI model updates the rendering in real-time or near-real-time, providing immediate visual feedback.
+        \item \textbf{Real-Time Rendering}: Even before the sliders are adjusted, the AI model can cache segmented renders as 2D layers whose opacity or blendings are then easily controlled in in real-time or near-real-time, providing immediate visual feedback.
         \item \textbf{User Customization}: Designers can customize the range and sensitivity of sliders, tailoring the interface to their specific needs and preferences.
     \end{itemize}
 
@@ -522,10 +482,10 @@ Consider a scenario where a designer is creating a rendering of a modern living 
 Based on this prompt, the system generates sliders for:
 
 \begin{itemize}
-    \item \textbf{Window Size}: Adjusts the proportion of windows in the scene.
-    \item \textbf{Cityscape Lighting}: Controls the brightness and activity level of the city view (e.g., daytime vs. nighttime).
-    \item \textbf{Ambient Light}: Modifies the interior lighting to match the desired mood.
-    \item \textbf{Chair Material Reflectivity}: Adjusts how reflective the chair's material appears.
+    \item \textbf{Window Size}: Adjusts the size of windows in the scene.
+    \item \textbf{Cityscape vibe intensity}: Controls visual tension and presence inherent with visualized human activity in view, modifying for example the number of cars on the street, the density of pedestrian foot traffic, the city view (e.g., daytime vs. nighttime).
+    \item \textbf{Ambient Light vs Exterior light}: Modifies the balance of interior lighting vs the intensity of light sources outside the room.
+
 \end{itemize}
 
 By adjusting these sliders, the designer can fine-tune the rendering to achieve the exact visual effect they desire, such as transitioning from a bright morning scene to a cozy evening setting without changing the text prompt.
@@ -533,18 +493,14 @@ By adjusting these sliders, the designer can fine-tune the rendering to achieve 
 
 
 
-\subsubsection{Patent Drawing Generation}
-\begin{itemize}
-\item \textbf{Automated Line Art}: The system can automatically generate line art drawings from the CAD model suitable for patent applications. It utilizes edge detection algorithms and vectorization techniques to create clean, precise line drawings that meet the requirements of patent offices (see Figure \ref{fig:automated-design-callout}).
+
 \item \textbf{Annotation Placement}: Annotations such as dimension lines, reference numerals, and technical labels are automatically placed according to patent drawing conventions. The system uses the structured data from the CAD model to accurately determine dimensions and relationships between design elements, ensuring that the annotations are placed correctly and comply with patent regulations.
-\item \textbf{Export Format Compliance}: The generated patent drawings are exported in a format compliant with the specific requirements of the target patent office, simplifying the patent filing process.
-\end{itemize}
+
 
 
 \subsubsection{Design Analysis}
 \begin{itemize}
-\item \textbf{GPT Integration}: The system integrates with a large language model (LLM) like GPT-3 or a specialized design-focused LLM. This LLM is used to analyze the design in the context of the prompt and identify potential issues or areas for improvement. For example, if the prompt specifies "a park bench made of unfinished hickory wood in West Virginia," the LLM could access external knowledge bases to determine that hickory is susceptible to carpenter ant infestations in that region, flagging a potential durability issue.
-\item \textbf{Problem Highlighting}: The LLM analyzes the design for factors like material suitability, structural integrity, ergonomics, and manufacturing feasibility. It flags potential problems and provides feedback to the designer, highlighting areas that might require further consideration or refinement. This feedback can be presented as text-based warnings, visual highlights on the rendered image, or even suggested modifications to the design or materials.
+\item \textbf{Feedback on enviormental context}: The system integrates with a large language model (LLM) like GPT-r or a fine tuned or specialized LLM. The CMF choices of the designer and the enviornment are combined with existing logic and natural language processing to produce a prompt that asks a LLM to interrogate potential issues that arrise from the new context of the object in its pictured enviorment. For example, if the prompt specifies "a park bench made of unfinished hickory wood in West Virginia," the LLM could access external knowledge bases to determine that hickory is susceptible to carpenter ant infestations in that region, flagging a potential durability issue. A similar issue could be raised around material suitability with regards to corrosion if a designer specified an enamel painted low carbon steel for a seaside bench near salt spray. This feedback can be presented as text-based warnings, questions. Integration options for commercial suppliers of coatings and finishing are present, for example, recommending a durable two-part epoxy coating for a part that will be exposed to electrolytic solvents such as salt water, or adertised a new clear coat if the designer specifies "ultra high gloss" in their natural language CMF prompt. For vendors with products integrated into the system,  visual highlights on the rendered image, or even suggested modifications to the design or materials. Loras can be created for vendors to enter their coatings into the system (real world pictures modifying form and enviornments exentisvely  but keeping the coating the same.) This allows us to all but promise that the industrial deisgn object, once pained with 'rustolium red' will look like the picture of 'rustolium red'  
 \item \textbf{Contextual Feedback}: The design analysis takes into account the specific context described in the prompt. For example, if the prompt mentions "outdoor furniture," the LLM might check for weather resistance and UV degradation of the chosen materials. The more context the designer provides in the prompt, the more refined and relevant the design analysis feedback will be.
 \end{itemize}
 
@@ -610,50 +566,51 @@ By adjusting these sliders, the designer can fine-tune the rendering to achieve 
 This AI-Assisted Design Interface, with its core rendering functionality and extensive suite of advanced features, empowers designers to leverage the power of AI for creative exploration, efficient workflow, and effective communication. By focusing on natural language interaction, form preservation, and a user-centered design, the interface creates a seamless and intuitive experience that enhances the designer's creative process and unlocks new possibilities in design visualization. The integrated file management, analysis tools, collaborative features, and security measures further streamline the design workflow and address the practical needs of professional designers.
 
 \begin{center}
-CLAIMS
-\end{center}
-
-A system for generating training data for an AI-assisted design system, comprising:
-
-\begin{itemize}
-    \item a CAD interface configured to receive a CAD model having a plurality of objects grouped according to a hierarchical structure;
+    \section{CLAIMS}
+    \begin{enumerate}
+    \item A computer-implemented system for generating training data for an AI-assisted design system, comprising:
+       \begin{enumerate}
+           \item a processor;
+           \item a memory coupled to the processor and storing instructions that, when executed by the processor, cause the system to perform operations comprising: 
+           \begin{enumerate}
+               \item receiving, at a CAD interface, a CAD model having a plurality of objects grouped according to a hierarchical structure;
+               \item accessing, using an automated data generation module, the hierarchical structure of the CAD model;
+               \item systematically varying, using the automated data generation module, at least one of: visual properties of the objects in the CAD model,  viewpoints, lighting conditions, and backgrounds while maintaining a core design form of the CAD model, thereby generating a plurality of variations of the CAD model;
+               \item generating, using the automated data generation module, a semantic label for each variation of the CAD model, the semantic label including information about object groupings, applied variations, and design intent; and 
+               \item training, using an AI model training module, a text-to-image AI model using the plurality of variations and corresponding semantic labels.
+           \end{enumerate}
+       \end{enumerate}
     
-    \item an automated data generation module configured to:
-    \begin{itemize}
-        \item access the hierarchical structure of the CAD model;
-        \item systematically vary visual properties of the objects in the CAD model while maintaining a core design form of the CAD model, thereby generating a plurality of variations of the CAD model;
-        \item generate a semantic label for each variation of the CAD model, the semantic label including information about object groupings, applied variations, and design intent;
-    \end{itemize}
+    \item The system of claim 1, wherein the visual properties varied by the automated data generation module include at least one of: color, material, finish, texture, camera viewpoint, and lighting condition.
     
-    \item an AI model training module configured to train a text-to-image AI model using the plurality of variations and corresponding semantic labels.
-\end{itemize}
+    \item The system of claim 1, wherein the automated data generation module varies camera viewpoints using at least one of: hero shot positioning and orbital representation.
+    
+    \item The system of claim 1, wherein the AI model training module utilizes Low-Rank Adaptation (LoRA) to fine-tune a pre-trained text-to-image AI model.
+    
+    \item The system of claim 1, further comprising an AI-assisted design interface configured to:
+        \begin{enumerate}
+            \item receive natural language prompts from a user;
+            \item generate renderings of the CAD model based on the natural language prompts and the trained AI model;
+            \item allow the user to adjust visual attributes of the CAD model without altering the core design form.
+        \end{enumerate}
+    
+    \item The system of claim 5, wherein the AI-assisted design interface further comprises at least one of: automated file management, location-based background integration, cost and environmental impact analysis, automated RFQ generation, design callouts, character continuity management, dynamic UI sliders, patent drawing generation, design analysis feedback, client annotation tools, and image security features.
+    
+    \item A computer-implemented method for generating training data for an AI-assisted design system, comprising:
+        \begin{enumerate}
+            \item receiving, at a CAD interface, a CAD model having a plurality of objects grouped according to a hierarchical structure;
+            \item accessing the hierarchical structure of the CAD model;
+            \item systematically varying, using at least one processor, at least one of: visual properties of the objects in the CAD model, viewpoints, lighting conditions, and backgrounds while maintaining a core design form of the CAD model, thereby generating a plurality of variations of the CAD model;
+            \item generating a semantic label for each variation of the CAD model, the semantic label including information about object groupings, applied variations, and design intent;
+            \item training a text-to-image AI model using the plurality of variations and corresponding semantic labels.
+        \end{enumerate}
+    
+    \item A non-transitory computer-readable storage medium storing instructions that when executed by at least one processor cause the at least one processor to perform the steps of claim 7. 
+    
+    \end{enumerate}
+    
+\section{CONCLUSION}
 
-The system of claim 1, wherein the visual properties varied by the automated data generation module include at least one of: color, material, finish, texture, camera viewpoint, lighting condition, and background.
-
-The system of claim 1, wherein the automated data generation module varies camera viewpoints using at least one of: hero shot positioning and orbital representation.
-
-The system of claim 1, wherein the AI model training module utilizes Low-Rank Adaptation (LoRA) to fine-tune a pre-trained text-to-image AI model.
-
-The system of claim 1, further comprising an AI-assisted design interface configured to:
-\begin{itemize}
-    \item receive natural language prompts from a user;
-    \item generate renderings of the CAD model based on the natural language prompts and the trained AI model;
-    \item allow the user to adjust visual attributes of the CAD model without altering the core design form.
-\end{itemize}
-
-The system of claim 5, wherein the AI-assisted design interface further comprises at least one of: automated file management, location-based background integration, cost and environmental impact analysis, automated RFQ generation, design callouts, character continuity management, dynamic UI sliders, patent drawing generation, design analysis feedback, client annotation tools, and image security features.
-
-A method for generating training data for an AI-assisted design system, comprising:
-\begin{itemize}
-    \item receiving a CAD model having a plurality of objects grouped according to a hierarchical structure;
-    \item accessing the hierarchical structure of the CAD model;
-    \item systematically varying visual properties of the objects in the CAD model while maintaining a core design form of the CAD model, thereby generating a plurality of variations of the CAD model;
-    \item generating a semantic label for each variation of the CAD model, the semantic label including information about object groupings, applied variations, and design intent;
-    \item training a text-to-image AI model using the plurality of variations and corresponding semantic labels.
-\end{itemize}
-
-\begin{center}
-CONCLUSION
 \end{center}
 
 This invention significantly advances the field of AI-assisted design by addressing key challenges in training data generation, workflow integration, and designer control. By focusing on form isolation and incorporating a comprehensive suite of advanced features, the system empowers designers to leverage the creative potential of AI while maintaining full control over their design intent and streamlining their workflow. The provided code examples offer a glimpse into the technical implementation of the system, demonstrating how the core functionalities are realized in practice. 
