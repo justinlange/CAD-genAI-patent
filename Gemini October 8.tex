@@ -6,7 +6,7 @@
 \usepackage{subcaption}
 
 \usepackage{tikz}
-\usetikzlibrary{shapes, arrows.meta, positioning, shapes.geometric, arrows}
+\usetikzlibrary{shapes, arrows.meta, positioning, shapes.geometric, arrows, matrix}
 
 \tikzstyle{block} = [rectangle, draw, fill=lightgray, 
     text width=5em, text centered, rounded corners, minimum height=4em]
@@ -57,26 +57,7 @@ Crucially, these existing solutions do not address the unique challenges of AI-a
 \section{SUMMARY OF THE INVENTION}
 This invention discloses a system and method for the automated generation of training data for AI-assisted design, using object groupings and semantic labeling within CAD models. The invention allows designers to leverage existing CAD functionalities (layers, groups, tags) to organize objects hierarchically, reflecting design principles and relationships. 
 
-\section{Flowchart}
 
-\begin{figure}[h]
-  \centering
-  \begin{tikzpicture}[node distance = 2cm, auto]
-    % Place nodes
-    \node [block] (start) {Start with CAD Model};
-    \node [block, below of=start] (identify) {Identify Object Groupings};
-    \node [block, below left of=identify, node distance=3cm] (dominant) {Dominant Group};
-    \node [block, below of=identify] (subdominant) {Subdominant Group};
-    \node [block, below right of=identify, node distance=3cm] (subordinate) {Subordinate Group};
-
-    % Draw edges
-    \path [line] (start) -- (identify);
-    \path [line] (identify) -- (dominant);
-    \path [line] (identify) -- (subdominant);
-    \path [line] (identify) -- (subordinate);
-  \end{tikzpicture}
-  \caption{Form Isolation Flowchart (Initial Steps)}
-\end{figure}
 
 % \begin{figure}[H]
 %     \centering
@@ -108,79 +89,142 @@ This invention discloses a system and method for the automated generation of tra
 %     \label{fig:flowchart}
 % \end{figure}
 
+% \begin{figure}[H]
+%     \centering
+%     \begin{tikzpicture}[
+%         node distance=2.5cm,
+%         block/.style={rectangle, draw, fill=lightgray, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
+%         optional/.style={rectangle, draw, dashed, fill=lightgray, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
+%         arrow/.style={-Stealth},
+%         extract/.style={rectangle, draw, fill=white, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center}
+%       ]
+
+%       % First block
+%       \node[block] (start) {Start with CAD Model};
+%       \node[block, below of=start] (objectgrouping) {Identify Object Groupings};
+
+%       % Grouping blocks
+%       \node[block, below left of=objectgrouping, xshift=-4cm] (dominantgroup) {Dominant Group};
+%       \node[block, below of=objectgrouping] (subdominantgroup) {Subdominant Group};
+%       \node[block, below right of=objectgrouping, xshift=4cm] (subordinategroup) {Subordinate Group};
+
+%       % Extract names under each group
+%       \node[extract, below of=dominantgroup] (extractdominant) {Extract Names};
+%       \node[extract, below of=subdominantgroup] (extractsubdominant) {Extract Names};
+%       \node[extract, below of=subordinategroup] (extractsubordinate) {Extract Names};
+
+%       % Natural language processing
+%       \node[block, below of=extractsubdominant, yshift=-1.5cm] (nlp) {Natural Language Processing};
+
+%       % CMF properties and extract CMF names
+%       \node[block, left of=nlp, xshift=-4cm] (cmfvariation) {Vary CMF Properties};
+%       \node[extract, right of=cmfvariation, xshift=3cm] (extractcmf) {Extract CMF Names};
+
+%       % Vary Background and Extract Background names
+%       \node[block, right of=nlp, xshift=4cm] (varybackground) {Vary Background};
+%       \node[extract, right of=varybackground, xshift=3cm] (extractbackground) {Extract Background Names};
+
+%       % Semantic Labeling
+%       \node[block, below of=nlp, yshift=-2cm] (semanticlabeling) {Semantic Labeling};
+
+%       % Dataset block
+%       \node[block, below of=semanticlabeling] (dataset) {Form-Isolated Dataset};
+
+%       % Drawing arrows
+%       \draw[arrow] (start) -- (objectgrouping);
+%       \draw[arrow] (objectgrouping) -- (dominantgroup);
+%       \draw[arrow] (objectgrouping) -- (subdominantgroup);
+%       \draw[arrow] (objectgrouping) -- (subordinategroup);
+
+%       % Arrows from groups to Extract Names
+%       \draw[arrow] (dominantgroup) -- (extractdominant);
+%       \draw[arrow] (subdominantgroup) -- (extractsubdominant);
+%       \draw[arrow] (subordinategroup) -- (extractsubordinate);
+
+%       % Arrows from Extract Names to NLP
+%       \draw[arrow] (extractdominant) -- (nlp);
+%       \draw[arrow] (extractsubdominant) -- (nlp);
+%       \draw[arrow] (extractsubordinate) -- (nlp);
+
+%       % CMF and Background
+%       \draw[arrow] (cmfvariation) -- (extractcmf);
+%       \draw[arrow] (varybackground) -- (extractbackground);
+
+%       % Arrow to semantic labeling
+%       \draw[arrow] (nlp) -- (semanticlabeling);
+%       \draw[arrow] (extractcmf) |- (semanticlabeling);
+%       \draw[arrow] (extractbackground) |- (semanticlabeling);
+
+%       % Final arrow to dataset
+%       \draw[arrow] (semanticlabeling) -- (dataset);
+
+%     \end{tikzpicture}
+%     \caption{Form Isolation through Systematic Variation and NLP Flowchart}
+%     \label{fig:firstflowchart}
+% \end{figure}
+
+
+
+\section{Block Diagram}
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[
-        node distance=2.5cm,
-        block/.style={rectangle, draw, fill=lightgray, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
-        optional/.style={rectangle, draw, dashed, fill=lightgray, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
+        block/.style={rectangle, draw, fill=lightgray, rounded corners, minimum width=2cm, minimum height=1cm, align=center, text width=2cm}, % Add text width
+        extract/.style={rectangle, draw, fill=white, rounded corners, minimum width=2cm, minimum height=1cm, align=left, text width=1cm}, % Add text width
         arrow/.style={-Stealth},
-        extract/.style={rectangle, draw, fill=white, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center}
+        matrix of nodes,
+        column sep=0.5cm, 
+        row sep=0.5cm,    
+        nodes={align=center, anchor=center}
       ]
 
-      % First block
-      \node[block] (start) {Start with CAD Model};
-      \node[block, below of=start] (objectgrouping) {Identify Object Groupings};
+      \matrix (m) {
+        & & \node[block] (start) {Start with CAD Model}; & & \\
+        & & \node[block] (objectgrouping) {Identify Object Groupings}; & & \\
+        \node[block] (dominantgroup) {Dominant Group}; & 
+        \node[block] (subdominantgroup) {Subdominant Group}; &
+        \node[block] (subordinategroup) {Subordinate Group}; \\
+        \node[extract] (extractdominant) {Extract Names}; & 
+        \node[extract] (extractsubdominant) {Extract Names}; & 
+        \node[extract] (extractsubordinate) {Extract Names}; \\
+        & & \node[block] (nlp) {Natural Language Processing}; & & \\
+        \node[block] (cmfvariation) {Vary CMF Properties}; & 
+        \node[extract] (extractcmf) {Extract CMF Names}; &
+        &
+        \node[block] (varybackground) {Vary Background}; &
+        \node[extract] (extractbackground) {Extract Background Names}; \\
+        & & \node[block] (semanticlabeling) {Semantic Labeling}; & & \\
+        & & \node[block] (dataset) {Form-Isolated Dataset}; & & \\
+      };
 
-      % Grouping blocks
-      \node[block, below left of=objectgrouping, xshift=-4cm] (dominantgroup) {Dominant Group};
-      \node[block, below of=objectgrouping] (subdominantgroup) {Subdominant Group};
-      \node[block, below right of=objectgrouping, xshift=4cm] (subordinategroup) {Subordinate Group};
-
-      % Extract names under each group
-      \node[extract, below of=dominantgroup] (extractdominant) {Extract Names};
-      \node[extract, below of=subdominantgroup] (extractsubdominant) {Extract Names};
-      \node[extract, below of=subordinategroup] (extractsubordinate) {Extract Names};
-
-      % Natural language processing
-      \node[block, below of=extractsubdominant, yshift=-1.5cm] (nlp) {Natural Language Processing};
-
-      % CMF properties and extract CMF names
-      \node[block, left of=nlp, xshift=-4cm] (cmfvariation) {Vary CMF Properties};
-      \node[extract, right of=cmfvariation, xshift=3cm] (extractcmf) {Extract CMF Names};
-
-      % Vary Background and Extract Background names
-      \node[block, right of=nlp, xshift=4cm] (varybackground) {Vary Background};
-      \node[extract, right of=varybackground, xshift=3cm] (extractbackground) {Extract Background Names};
-
-      % Semantic Labeling
-      \node[block, below of=nlp, yshift=-2cm] (semanticlabeling) {Semantic Labeling};
-
-      % Dataset block
-      \node[block, below of=semanticlabeling] (dataset) {Form-Isolated Dataset};
-
-      % Drawing arrows
       \draw[arrow] (start) -- (objectgrouping);
       \draw[arrow] (objectgrouping) -- (dominantgroup);
       \draw[arrow] (objectgrouping) -- (subdominantgroup);
       \draw[arrow] (objectgrouping) -- (subordinategroup);
 
-      % Arrows from groups to Extract Names
       \draw[arrow] (dominantgroup) -- (extractdominant);
       \draw[arrow] (subdominantgroup) -- (extractsubdominant);
       \draw[arrow] (subordinategroup) -- (extractsubordinate);
 
-      % Arrows from Extract Names to NLP
       \draw[arrow] (extractdominant) -- (nlp);
       \draw[arrow] (extractsubdominant) -- (nlp);
       \draw[arrow] (extractsubordinate) -- (nlp);
 
-      % CMF and Background
       \draw[arrow] (cmfvariation) -- (extractcmf);
       \draw[arrow] (varybackground) -- (extractbackground);
 
-      % Arrow to semantic labeling
       \draw[arrow] (nlp) -- (semanticlabeling);
-      \draw[arrow] (extractcmf) |- (semanticlabeling);
-      \draw[arrow] (extractbackground) |- (semanticlabeling);
+      \draw[arrow] (extractcmf.east) -| (semanticlabeling.north); 
+      \draw[arrow] (extractbackground.east) -| (semanticlabeling.north); 
 
-      % Final arrow to dataset
       \draw[arrow] (semanticlabeling) -- (dataset);
 
     \end{tikzpicture}
     \caption{Form Isolation through Systematic Variation and NLP Flowchart}
     \label{fig:firstflowchart}
 \end{figure}
+
+
 
 
 Figure \ref{fig:firstflowchart} above outlines the process of the system that is detailed below.
@@ -312,10 +356,9 @@ For complex CAD models, geometry simplification techniques, such as mesh decimat
 The Automated Data Generation Module is the core of the invention, responsible for creating the diverse and richly labeled dataset required to train the AI model. It interacts directly with the CAD system, extracting object groupings, applying systematic variations, and generating corresponding semantic labels.
 
 
-\subparagraph{Identifying Object Groupings:} 
-This module analyzes the CAD model to identify object groupings based on user-defined criteria within the enforced hierarchical organization. This module utilizes the Rhino template that enforces the three-level hierarchy (dominant, subdominant, subordinate) and the code traversing layers/sublayers to manipulate objects. This is illustrated with the example code (`get\_objects\_from\_sublayers`) for Rhino, demonstrating the mapping between the CAD model's organization and the system's understanding of design components.
+\subparagraph{Illustrative Embodiment} 
 
-For example, here is a simplified example of code in one exemplary CAD system, Rhino:
+Here is a simplified example of the code in one exemplary CAD system, Rhino:
 
 \begin{verbatim}
 def get_objects_from_sublayers():
@@ -329,6 +372,7 @@ for sublayer in sublayers:
 return objects_by_sublayer
 
 \end{verbatim}  
+
 which would be called in conjunction with 
 
 \begin{verbatim}
@@ -371,21 +415,19 @@ def create_readable_material_description(materials):
     return ", ".join(descriptions)
 \end{verbatim}  
 
-Explicit modularity (provided as an example as layer-based grouping in Rhino) allows a direct mapping between the CAD model's organization and the system's understanding of design components.
-
-\subsection{User Interface for Variation Setup and Semantic Label Generation}
-
-\subsubsection{Generating Variations}
-This module applies systematic variations to the CAD model across four key aspects: visual properties, camera viewpoints, lighting conditions, and backgrounds.
+Explicit modularity (provided as an example as layer-based grouping in Rhino) allows a direct mapping between the designer's CAD model's organization and the system's understanding of the design components. The system applies predictable variation to the CAD model to encode the most essential properties of design: the form itself.
 
 \paragraph{Object Visual Properties}
 
 \subparagraph{Visual Properties (CMF)}
 The system varies the color, material, and finish (CMF) properties of objects within defined groupings, ensuring a diverse range of variations for the training dataset.
 
-\textbf{Randomness and Predefined Ranges:}
+% \textbf{Randomness and Predefined Ranges:}
 
-The code example showcases the use of randomness and predefined ranges for material assignment. For example, a data structure such as \texttt{MATERIAL\_LIST} defines a library of materials with their associated properties (name, RGB color, gloss, and reflectivity). A function with a name such as \texttt{create\_random\_material()} randomly selects a material from this list and applies it to the objects within a group. This randomized set-based approach ensures a diverse range of CMF variations in the training dataset and the accuracy of the semantic labeling.
+% The code example showcases the use of randomness and predefined ranges for material assignment. For example, a data structure such as \texttt{MATERIAL\_LIST} defines a library of materials with their associated properties (name, RGB color, gloss, and reflectivity). A function with a name such as \texttt{create\_random\_material()} randomly selects a material from this list and applies it to the objects within a group. This randomized set-based approach ensures a diverse range of CMF variations in the training dataset and the accuracy of the semantic labeling.
+
+\subparagraph{Randomness and Predefined Ranges}
+ The provided code examples demonstrate how a data structure like \texttt{MATERIAL\_LIST} defines a library of materials with associated properties (name, RGB color, gloss, reflectivity). Functions like \texttt{create\_random\_material} select materials randomly from this library, ensuring diversity in CMF variations.
 
 \begin{verbatim}
 MATERIAL_LIST = [
@@ -399,9 +441,6 @@ MATERIAL_LIST = [
 ("Charcoal Rubber", (54, 69, 79), 35, 0.05),
 ...etc...
 \end{verbatim}
-
-\subparagraph{Randomness and Predefined Ranges}
-The system utilizes randomness and predefined ranges for CMF property assignments. The provided code examples demonstrate how a data structure like \texttt{MATERIAL\_LIST} defines a library of materials with associated properties (name, RGB color, gloss, reflectivity). Functions like \texttt{create\_random\_material} select materials randomly from this library, ensuring diversity in CMF variations.
 
 \paragraph{Camera Viewpoints and Perspectives}
 The system varies the camera perspective to capture the design from different angles and distances, enhancing the AI model's understanding of the form.
@@ -425,11 +464,11 @@ For every variation generated, the system creates a detailed semantic label. The
     \item Background
 \end{itemize}
 
-Semantic labels are used in file naming or stored in separate data structures (e.g., JSON) linked to the images, ensuring consistency and aiding the AI model's understanding of the relationship between textual descriptions and visual attributes.
+Semantic labels are used in file naming or stored in descrete data structures (e.g., JSON) that linked to the training dataset images. These lables describe the differences between images in the dataset, providing for the AI model's understanding of the relationship between textual descriptions and visual attributes.
 
 \paragraph{Synthetic Augmentation Techniques}
 
-The system uses data augmentation to increase dataset diversity and model robustness, including:
+In addition, the system may use data augmentation to increase dataset diversity and model robustness, including:
 
 \begin{itemize}
     \item Random Cropping
