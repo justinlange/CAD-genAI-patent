@@ -59,171 +59,6 @@ This invention discloses a system and method for the automated generation of tra
 
 
 
-% \begin{figure}[H]
-%     \centering
-%     \begin{tikzpicture}[
-%         node distance=2cm,
-%         block/.style={rectangle, draw, fill=lightgray, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
-%         arrow/.style={-Stealth}
-%       ]
-
-%       \node[block] (start) {Start with CAD Model};
-%       \node[block, below of=start] (objectgrouping) {Identify Object Groupings};
-%       \node[block, below of=objectgrouping] (cmfvariation) {Vary CMF Properties (Color, Material, Finish)};
-%       \node[block, below of=cmfvariation] (cameraviewpoint) {Vary Camera Viewpoint/Perspective};
-%       \node[block, below of=cameraviewpoint] (lighting) {Vary Lighting Conditions};
-%       \node[block, below of=lighting] (background) {Apply Backgrounds};
-%       \node[block, below of=background] (semanticlabeling) {Generate Semantic Labels};
-%       \node[block, below of=semanticlabeling] (dataset) {Form-Isolated Dataset};
-
-%       \draw[arrow] (start) -- (objectgrouping);
-%       \draw[arrow] (objectgrouping) -- (cmfvariation);
-%       \draw[arrow] (cmfvariation) -- (cameraviewpoint);
-%       \draw[arrow] (cameraviewpoint) -- (lighting);
-%       \draw[arrow] (lighting) -- (background);
-%       \draw[arrow] (background) -- (semanticlabeling);
-%       \draw[arrow] (semanticlabeling) -- (dataset);
-
-%     \end{tikzpicture}
-%     \caption{Form Isolation through Systematic Variation Flowchart}
-%     \label{fig:flowchart}
-% \end{figure}
-
-% \begin{figure}[H]
-%     \centering
-%     \begin{tikzpicture}[
-%         node distance=2.5cm,
-%         block/.style={rectangle, draw, fill=lightgray, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
-%         optional/.style={rectangle, draw, dashed, fill=lightgray, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
-%         arrow/.style={-Stealth},
-%         extract/.style={rectangle, draw, fill=white, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center}
-%       ]
-
-%       % First block
-%       \node[block] (start) {Start with CAD Model};
-%       \node[block, below of=start] (objectgrouping) {Identify Object Groupings};
-
-%       % Grouping blocks
-%       \node[block, below left of=objectgrouping, xshift=-4cm] (dominantgroup) {Dominant Group};
-%       \node[block, below of=objectgrouping] (subdominantgroup) {Subdominant Group};
-%       \node[block, below right of=objectgrouping, xshift=4cm] (subordinategroup) {Subordinate Group};
-
-%       % Extract names under each group
-%       \node[extract, below of=dominantgroup] (extractdominant) {Extract Names};
-%       \node[extract, below of=subdominantgroup] (extractsubdominant) {Extract Names};
-%       \node[extract, below of=subordinategroup] (extractsubordinate) {Extract Names};
-
-%       % Natural language processing
-%       \node[block, below of=extractsubdominant, yshift=-1.5cm] (nlp) {Natural Language Processing};
-
-%       % CMF properties and extract CMF names
-%       \node[block, left of=nlp, xshift=-4cm] (cmfvariation) {Vary CMF Properties};
-%       \node[extract, right of=cmfvariation, xshift=3cm] (extractcmf) {Extract CMF Names};
-
-%       % Vary Background and Extract Background names
-%       \node[block, right of=nlp, xshift=4cm] (varybackground) {Vary Background};
-%       \node[extract, right of=varybackground, xshift=3cm] (extractbackground) {Extract Background Names};
-
-%       % Semantic Labeling
-%       \node[block, below of=nlp, yshift=-2cm] (semanticlabeling) {Semantic Labeling};
-
-%       % Dataset block
-%       \node[block, below of=semanticlabeling] (dataset) {Form-Isolated Dataset};
-
-%       % Drawing arrows
-%       \draw[arrow] (start) -- (objectgrouping);
-%       \draw[arrow] (objectgrouping) -- (dominantgroup);
-%       \draw[arrow] (objectgrouping) -- (subdominantgroup);
-%       \draw[arrow] (objectgrouping) -- (subordinategroup);
-
-%       % Arrows from groups to Extract Names
-%       \draw[arrow] (dominantgroup) -- (extractdominant);
-%       \draw[arrow] (subdominantgroup) -- (extractsubdominant);
-%       \draw[arrow] (subordinategroup) -- (extractsubordinate);
-
-%       % Arrows from Extract Names to NLP
-%       \draw[arrow] (extractdominant) -- (nlp);
-%       \draw[arrow] (extractsubdominant) -- (nlp);
-%       \draw[arrow] (extractsubordinate) -- (nlp);
-
-%       % CMF and Background
-%       \draw[arrow] (cmfvariation) -- (extractcmf);
-%       \draw[arrow] (varybackground) -- (extractbackground);
-
-%       % Arrow to semantic labeling
-%       \draw[arrow] (nlp) -- (semanticlabeling);
-%       \draw[arrow] (extractcmf) |- (semanticlabeling);
-%       \draw[arrow] (extractbackground) |- (semanticlabeling);
-
-%       % Final arrow to dataset
-%       \draw[arrow] (semanticlabeling) -- (dataset);
-
-%     \end{tikzpicture}
-%     \caption{Form Isolation through Systematic Variation and NLP Flowchart}
-%     \label{fig:firstflowchart}
-% \end{figure}
-
-
-
-
-% \begin{figure}[H]
-%     \centering
-%     \begin{tikzpicture}[
-%         block/.style={rectangle, draw, fill=lightgray, rounded corners, minimum width=2cm, minimum height=1cm, align=center, text width=2cm}, % Add text width
-%         extract/.style={rectangle, draw, fill=white, rounded corners, minimum width=2cm, minimum height=1cm, align=left, text width=1cm}, % Add text width
-%         arrow/.style={-Stealth},
-%         matrix of nodes,
-%         column sep=0.5cm, 
-%         row sep=0.5cm,    
-%         nodes={align=center, anchor=center}
-%       ]
-
-%       \matrix (m) {
-%         & & \node[block] (start) {Start with CAD Model}; & & \\
-%         & & \node[block] (objectgrouping) {Identify Object Groupings}; & & \\
-%         \node[block] (dominantgroup) {Dominant Group}; & 
-%         \node[block] (subdominantgroup) {Subdominant Group}; &
-%         \node[block] (subordinategroup) {Subordinate Group}; \\
-%         \node[extract] (extractdominant) {Extract Names}; & 
-%         \node[extract] (extractsubdominant) {Extract Names}; & 
-%         \node[extract] (extractsubordinate) {Extract Names}; \\
-%         & & \node[block] (nlp) {Natural Language Processing}; & & \\
-%         \node[block] (cmfvariation) {Vary CMF Properties}; & 
-%         \node[extract] (extractcmf) {Extract CMF Names}; &
-%         &
-%         \node[block] (varybackground) {Vary Background}; &
-%         \node[extract] (extractbackground) {Extract Background Names}; \\
-%         & & \node[block] (semanticlabeling) {Semantic Labeling}; & & \\
-%         & & \node[block] (dataset) {Form-Isolated Dataset}; & & \\
-%       };
-
-%       \draw[arrow] (start) -- (objectgrouping);
-%       \draw[arrow] (objectgrouping) -- (dominantgroup);
-%       \draw[arrow] (objectgrouping) -- (subdominantgroup);
-%       \draw[arrow] (objectgrouping) -- (subordinategroup);
-
-%       \draw[arrow] (dominantgroup) -- (extractdominant);
-%       \draw[arrow] (subdominantgroup) -- (extractsubdominant);
-%       \draw[arrow] (subordinategroup) -- (extractsubordinate);
-
-%       \draw[arrow] (extractdominant) -- (nlp);
-%       \draw[arrow] (extractsubdominant) -- (nlp);
-%       \draw[arrow] (extractsubordinate) -- (nlp);
-
-%       \draw[arrow] (cmfvariation) -- (extractcmf);
-%       \draw[arrow] (varybackground) -- (extractbackground);
-
-%       \draw[arrow] (nlp) -- (semanticlabeling);
-%       \draw[arrow] (extractcmf.east) -| (semanticlabeling.north); 
-%       \draw[arrow] (extractbackground.east) -| (semanticlabeling.north); 
-
-%       \draw[arrow] (semanticlabeling) -- (dataset);
-
-%     \end{tikzpicture}
-%     \caption{Form Isolation through Systematic Variation and NLP Flowchart}
-%     \label{fig:firstflowchart}
-% \end{figure}
-
 \subsection{Summary Diagram}
 \begin{figure}[H]
     \centering
@@ -455,11 +290,27 @@ The system varies the camera perspective to capture the design from different an
 \subparagraph{Hero Shot and Orbital Representation}
 Two examples implemented in Rhino are 'Hero Shot' and 'Orbital Representation.' 'Hero Shot' clusters camera positions around a designer-chosen focal point, simulating product photography. The `variation\_degrees` parameter controls randomness in camera positioning. 'Orbital Representation' places cameras along circular or elliptical paths around the object for comprehensive views. The system can utilize various patterns for camera paths to generate diverse viewpoints. In varying camera perspectives, simulated lens length may also be varied, as well as other aspects such as depth of field, further enriching the dataset and isolating the form.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/figure-process-orbital-representation-only-color.jpg}
+    \caption{Example of Orbital Representation output}
+    \label{fig:class_name_input}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/figure-process-hero-shot-only-color.jpg}
+    \caption{Example of 'Hero Shot' Representation output, wherein the Designer's preferred perspective is additionally encoded inton the training data}
+    \label{fig:class_name_input}
+\end{figure}
+
 \paragraph{Lighting}
 The system generates diverse lighting scenarios mimicking various environments and times of day. For example, the function `generate\_lighting\_variation` varies lighting parameters like softness, direction, and intensity. It also stores the corresponding natural language descriptions for labeling.
 
 \paragraph{Backgrounds}
 The system applies diverse backgrounds to the rendered images, improving context and visual diversity. It uses a library of predefined backgrounds (colors, gradients, textures, scenes). The system also integrates with Google Maps, allowing real-world locations as backgrounds, with accurate placement and perspective using depth maps and ControlNet.
+
+
 
 \subsubsection{Semantic Label Generation}
 For every variation generated, the system creates a detailed semantic label. The `generate\_caption` function provides an example. Labels include information about:
@@ -582,6 +433,9 @@ The interface offers a suite of advanced features:
 \end{figure}
 
 
+\begin{figure}
+\centering
+
 \begin{tikzpicture}[
     node distance=2cm,
     block/.style={rectangle, draw, fill=yellow, rounded corners, minimum width=3cm, minimum height=1cm, text width=3cm, align=center},
@@ -598,14 +452,16 @@ The interface offers a suite of advanced features:
   \draw[arrow] (controlnet) -- (rendering);
 
 \end{tikzpicture}
+\caption{Location-Based Background Integration using Google Maps}
 
+\end{figure}
 
 
 
 \subsubsection{Mass \& Volume Calculations}
 \begin{itemize}
-\item \textbf{Automated Analysis}: Based on the dimensional information from the CAD model and CMF properties extracted from prompt language, the system automatically calculates the estimated weight, volume, and material costs of the design. For example, if the prompt specifies "brushed stainless steel" for a bench frame, the system will calculate the volume of the frame, reference the density of stainless steel, and then calculate the estimated weight and cost based on current market prices.
-\item \textbf{Environmental Impact}: The system estimates the environmental impact of the design based on the chosen materials and manufacturing processes. This could involve calculating the carbon footprint based on material extraction, processing, and transportation data. 
+\item \textbf{Automated Analysis}: Based on the dimensional information from the CAD model and CMF properties extracted from prompt language, the system automatically calculates the estimated weight, volume, and material costs of the design. The results of these calculations are stored by the 'Structured Data Capture' process indicated in figure \ref{fig:firstflowchart}. For example, if the prompt specifies "brushed stainless steel" for a bench frame, the system will calculate the volume of the frame, reference the density of stainless steel, and then calculate the estimated weight and cost based on current market prices.
+\item \textbf{Environmental Impact}: The system estimates the environmental impact of the design based on the chosen materials and manufacturing processes. This could involve calculating the carbon footprint based on the embodied carbon emissions profile of the indicated material's extraction requirements, the energy involved with processing it, and the energy envolved with transporting between factories and also to its installation site. 
 \item \textbf{Automated RFQ Generation}: The system can automatically generate requests for quotations (RFQs) based on the calculated material requirements and manufacturing specifications. This could involve automatically filling out web forms or generating emails pre-populated with the relevant design and material information, streamlining the process of obtaining quotes from suppliers.
 \end{itemize}
 
@@ -630,25 +486,16 @@ The interface offers a suite of advanced features:
 
 This feature provides an advanced level of interactivity and control within the AI-assisted design interface, allowing designers to fine-tune rendering parameters intuitively.
 
-\begin{itemize}
-    \item \textbf{Context-Sensitive Sliders}: The interface dynamically generates sliders for controlling rendering parameters based on the context of the text prompt. For instance, if a designer inputs a prompt like "a bench against a backdrop of a stormy sky and waves," the system recognizes elements such as "stormy sky" and "waves." It then generates sliders corresponding to these elements, such as:
-
-    \begin{itemize}
-        \item \textbf{Intensity of the Storm}: Adjusts the severity and visual impact of the stormy sky.
-        \item \textbf{Turbulence of the Waves}: Controls the roughness or calmness of the water.
-        \item \textbf{Brightness of the Lightning}: Modifies the prominence and luminosity of lightning effects.
-        \item \textbf{Time of Day}: Alters the overall lighting and atmosphere, from dawn to dusk. In some versions, sliders may be radial, such as to mimic a clock, or take other forms. The point is to convert the language of the designer's rendering prompt and convert that into adjustable sliders to provide fine-grain, quantitative control over the natural language-specified aspects of the environment and CMF.
-    \end{itemize}
-
-    \item \textbf{Intuitive Control}: These sliders offer a visual and interactive means for designers to adjust parameters without modifying the text prompt directly. This capability allows for:
+\paragraph{Context Sensitivity} Sliders in the interface are dynamically generated for controlling rendering parameters based on the context of the text prompt. For instance, if a designer inputs a prompt like "a bench against a backdrop of a stormy sky and waves," the system recognizes elements such as "stormy sky" and "waves." It then generates sliders corresponding to these elements. These sliders offer a visual and interactive means for designers to adjust parameters without modifying the text prompt directly. This capability allows for:
 
     \begin{itemize}
         \item \textbf{Granular Exploration}: Designers can incrementally adjust parameters to observe subtle changes in real-time.
-        \item \textbf{Rapid Experimentation}: Facilitates quick iteration by enabling immediate visual feedback from slider adjustments.
+        \item \textbf{Rapid Experimentation}: Facilitates quick iteration by enabling immediate visual feedback from slider adjustments. For example, a time-of-day slider could alters the overall lighting and atmosphere, from dawn to dusk. In some versions, sliders may be radial, such as to mimic a clock, or take other forms. The point is to convert the language of the designer's rendering prompt and convert that into adjustable sliders to provide fine-grain, quantitative control over the natural language-specified aspects of the environment and CMF.
         \item \textbf{Enhanced Creativity}: Encourages designers to explore a wider range of design variations that they might not have considered through text prompts alone.
+        \item \textbf{Parameter Mapping}: The system intelligently maps slider values to the AI model's rendering parameters:
+
     \end{itemize}
 
-    \item \textbf{Parameter Mapping}: The system intelligently maps slider values to the AI model's rendering parameters:
 
     \begin{itemize}
         \item \textbf{Adaptive Mapping}: Depending on the parameter's complexity, the mapping can be linear, non-linear, or based on a learned function that correlates slider positions with visual outcomes.
@@ -656,14 +503,13 @@ This feature provides an advanced level of interactivity and control within the 
         \item \textbf{User Customization}: Designers can customize the range and sensitivity of sliders, tailoring the interface to their specific needs and preferences.
     \end{itemize}
 
-    \item \textbf{Integration with Other Features}: The dynamic sliders work in conjunction with other interface elements:
+\paragraph{Integration with Other Features} The dynamic sliders work in conjunction with other interface elements:
 
     \begin{itemize}
         \item \textbf{Preset Management}: Slider configurations can be saved as presets for future use or sharing with team members.
         \item \textbf{Modular UI}: Sliders are part of the modular user interface, allowing designers to add or remove them based on the design context.
         \item \textbf{Design Analysis Feedback}: Adjustments made via sliders can be analyzed by the system to provide feedback or suggestions, enhancing the iterative design process.
     \end{itemize}
-\end{itemize}
 
 \textbf{Illustrative Example}:
 
@@ -696,14 +542,6 @@ By adjusting these sliders, the designer can fine-tune the rendering to achieve 
 \end{figure}
 
 
-
-
-
-
-
-
-
-
 \begin{itemize}
 
 
@@ -714,7 +552,10 @@ By adjusting these sliders, the designer can fine-tune the rendering to achieve 
 
 \subsubsection{Design Analysis}
 \begin{itemize}
-\item \textbf{Feedback on environmental context}: The system integrates with a large language model (LLM) like GPT-r or a fine-tuned or specialized LLM. The CMF choices of the designer and the environment are combined with existing logic and natural language processing to produce a prompt that asks an LLM to interrogate potential issues that arise from the new context of the object in its pictured environment. For example, if the prompt specifies "a park bench made of unfinished hickory wood in West Virginia," the LLM could access external knowledgebases to determine that hickory is susceptible to carpenter ant infestations in that region, flagging a potential durability issue. A similar issue could be raised around material suitability with regards to corrosion if a designer specified an enamel painted low carbon steel for a seaside bench near salt spray. This feedback can be presented as text-based warnings, questions. Integration options for commercial suppliers of coatings and finishing are present, for example, recommending a durable two-part epoxy coating for a part that will be exposed to electrolytic solvents such as saltwater, or advertising a new clear coat if the designer specifies "ultra-high gloss" in their natural language CMF prompt. For vendors with products integrated into the system, visual highlights on the rendered image, or even suggested modifications to the design or materials. LoRAs can be created for vendors to enter their coatings into the system (real-world pictures modifying form and environments extensively but keeping the coating the same.) This allows us to all but promise that the industrial design object, once painted with 'rustoleum red,' will look like the picture of 'rustoleum red.'
+\item \textbf{Feedback on environmental context}: The system integrates with a large language model (LLM) like GPT-r or a fine-tuned or specialized LLM. The CMF choices of the designer and the environment are combined with existing logic and natural language processing to produce a prompt that asks an LLM to interrogate potential issues that arise from the new context of the object in its pictured environment. 
+\item \textbf{Illustrative example}:If the prompt specifies "a park bench made of unfinished hickory wood in West Virginia," the LLM could access external knowledgebases to determine that hickory is susceptible to carpenter ant infestations in that region, flagging a potential durability issue. A similar issue could be raised around material suitability with regards to corrosion if a designer specified an enamel painted low carbon steel for a seaside bench near salt spray. This feedback can be presented as text-based warnings, questions. 
+\item \textbf{Integration of coatings and CMF processes from Commercial Vendors }:Integration options for commercial suppliers of coatings and finishing are present in some embodiements of the invention; for example, recommending a durable two-part epoxy coating for a part that will be exposed to electrolytic solvents such as saltwater, or advertising a new clear coat if the designer specifies "ultra-high gloss" in their natural language CMF prompt. For vendors with products integrated into the system, visual highlights on the rendered image, or even suggested modifications to the design or materials. 
+\item \textbf{Method of Vendor Integration}LoRAs can be created for vendors to enter their coatings into the system (trained, conversely, on real-world pictures of varrying objects all treated with the same coating, such that the training set extensively varies the forms and environments pictured but picture  the same coating in all training images.) This CMF isolation technique allows the system to all but promise that the industrial design object, once applied with a proprietary coating such as 'rustoleum red,' will look like the picture of their prerferred design objecte rednered on screen in 'rustoleum red'. This process of vendor integration is to be appreciated by practitioners trained in the state of the art as a valuable and unique method of alligning designer intent in digital space with predictable real-world outcomes.
 
 \item \textbf{Contextual Feedback}: The design analysis takes into account the specific context described in the prompt. For example, if the prompt mentions "outdoor furniture," the LLM might check for weather resistance and UV degradation of the chosen materials. The more context the designer provides in the prompt, the more refined and relevant the design analysis feedback will be.
 \end{itemize}
